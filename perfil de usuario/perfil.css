@@ -18,10 +18,11 @@
     object-fit: cover;         /* ajusta la imagen sin deformarla */
 }
 
+
 .nombre-usuario {
     position: absolute;        /* posicionamiento absoluto para colocar el texto */
     top: 80px;                 /* baja 20px desde la parte superior del contenedor */
-    left: 170px;                /* se corre 50px a la derecha */
+    left: 200px;                /* se corre 50px a la derecha */
 
     width: 335px;
     height: 40px;
@@ -39,13 +40,12 @@
 }
 
 
-
 .descriccion-perfil {
     /* POSICIÓN */
             /* espacio exterior de 20px en todos lados */
     position: absolute;         /* posicionamiento relativo al flujo normal */
     top: 155px;                 /* baja 30px desde su posición original */
-    left: 170px;               /* se corre 50px a la derecha */
+    left: 200px;               /* se corre 50px a la derecha */
 
     /* TAMAÑO */
     width: 300px;              /* ancho del rectángulo */
@@ -67,14 +67,81 @@
     justify-content: center;   /* centra el texto horizontalmente */
 }
 
+.facebook {
+    position: absolute;
+    top: 260px;
+    left: 200px;
+    border-radius: 50%;
+
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    padding: 0;
+
+    background-color: #000000;
+    border: 2px solid #2c3e50;
+    cursor: pointer;
+}
+
+.facebook img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.instagram {
+    position: absolute;
+    top: 260px;
+    left: 270px;
+    border-radius: 50%;
+
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    padding: 0;
+
+    background-color: #000000;
+    border: 2px solid #2c3e50;
+    cursor: pointer;
+}
+
+.instagram img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.twitter {
+    position: absolute;
+    top: 260px;
+    left: 340px;
+    border-radius: 50%;
+
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    padding: 0;
+
+    background-color: #000000;
+    border: 2px solid #2c3e50;
+    cursor: pointer;
+}
+
+.twitter img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
 .editar-perfil {
     position: absolute;
-    top: 250px;
+    top: 260px;
     left: 35px;
   
 
     width: 100px;
-    height: 35px;
+    height: 50px;
     border-radius: 50px;
    
     background-color: wheat;
