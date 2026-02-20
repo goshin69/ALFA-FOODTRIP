@@ -1,9 +1,136 @@
-.receta { border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; border-radius: 8px; }
-.restaurante { background-color: #fff3e0; border-left: 5px solid #ff9800; }
-.imagenes img { max-width: 150px; margin-right: 10px; border-radius: 5px; }
-.autor { font-weight: bold; color: #555; }
 
-@media (max-width: 600px) {
-  .imagenes img { max-width: 100px; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Oswald', 'Segoe UI', sans-serif;
 }
 
+body {
+    /* Gradiente sofisticado usando el Rojo Chili y el Oro Oscuro */
+    background: linear-gradient(135deg, #d86262 0%, #F1DEAF 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #333;
+}
+
+main {
+    /* Usamos Cookies & Cream para el fondo del contenedor */
+    background: #F1DEAF;
+    padding: 2.5rem;
+    border-radius: 4px;
+    border: 3px solid #9D6934; /* Marco en Oro Oscuro */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    max-width: 450px;
+    position: relative;
+}
+
+h2 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #C21514; /* Rojo Chili Pepper */
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #9D6934;
+    display: inline-block;
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+/* Estilos de Recetas y Restaurantes */
+.receta {
+    background: #fff; /* Blanco puro para contraste interno */
+    border: 1px solid #9D6934;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.restaurante {
+    /* Usamos Cashmere para resaltar suavemente */
+    background-color: #EDBCA8;
+    border-left: 8px solid #C21514;
+    padding: 15px;
+    font-weight: bold;
+}
+
+.imagenes img {
+    max-width: 150px;
+    margin-right: 10px;
+    border-radius: 0; /* Estilo más clásico */
+    border: 3px solid #9D6934;
+}
+
+/* Inputs y Formulario */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #9D6934; /* Oro para las etiquetas */
+    text-transform: uppercase;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 1rem;
+    border: 2px solid #EDBCA8; /* Borde Cashmere */
+    background: #FFF;
+    border-radius: 2px;
+    font-size: 1rem;
+    color: #333;
+}
+
+input:focus {
+    outline: none;
+    border-color: #C21514;
+    background: #fff;
+}
+
+/* El botón con el Rojo Chili Pepper */
+button {
+    width: 100%;
+    padding: 14px;
+    background-color: #C21514;
+    color: #F1DEAF; /* Texto en Cookies & Cream */
+    border: none;
+    border-bottom: 5px solid #9D6934; /* Sombra en Oro */
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background-color: #9D6934;
+    color: #fff;
+    border-bottom: 5px solid #7a5229;
+}
+
+button:active {
+    transform: translateY(3px);
+    border-bottom: 2px solid #9D6934;
+}
+
+a {
+    color: #C21514;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #9D6934;
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    main { padding: 1.5rem; }
+    .imagenes img { max-width: 100px; }
+}
