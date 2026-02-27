@@ -414,7 +414,7 @@ body{
   color:#fff;
 }
 .btn-ghost{
-  background: rgba(241,222,175,.55);
+  background: rgba(0, 0, 0, 0.55);
 }
 .btn-small{
   padding: 8px 10px;
@@ -437,3 +437,8 @@ body{
   .search{ justify-content:stretch; flex-wrap:wrap; }
   .search input{ flex:1; }
 }
+body {
+  background-image: url('imageness/Fondo_pant.jpg');
+  color: #000000;
+}
+
