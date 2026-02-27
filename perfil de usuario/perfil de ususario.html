@@ -1,47 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FoodTrid</title>
-    <link rel="stylesheet" href="perfil.css">
-    <script src="scits_usuario.js"></script>
+  <meta charset="UTF-8">
+  <title>Perfil de Usuario</title>
+  <link rel="stylesheet" href="perfil.css">
 </head>
 <body>
-
-
-    <div 
-    class="cuadro-de-fondo">
-    </div>
-
-
-    <h1>Mi perfil</h1>
-
-    <div class="foto-perfil">
-        <img src="OIP.webp" alt="foto de perfil">
-    </div> 
-
-    <div class="descriccion-perfil">
-        descripción de perfil
-    </div>
     
+  <!-- Perfil -->
+  <div id="VerPerfil">
+    <h2>Perfil</h2>
+    <img id="fotoPerfil" src="OIP.webp" alt="foto de perfil">
+    <p><strong id="Tnombre">Nombre:</strong> <span id="nombrePerfil">Usuario</span></p>
+    <p><strong id="Tcorreo"></strong> <span id="correoPerfil"></span></p>
+    <p> <span id="descripcionPerfil">Descriccion</span></p>
+    <button onclick="abrirEditor()">Editar Perfil</button>
+  </div>
 
-    <button class="editar-perfil">Editar perfil</button>
+  <!-- Editor oculto -->
+<div id="editorModal" class="modal">
+  <div class="modal-content">
+    <span class="cerrar" onclick="cerrarEditor()">&times;</span>
+    <h2>Editar perfil</h2>
+    <form onsubmit="guardarCambios(event)">
+      <label>Nombre:</label>
+      <input type="text" id="nuevoNombre" maxlength="20"><br>
 
-    
-    <button class="facebook">
-        <img src="facebook.jpg" alt="redes">
-    </button>
+      <label>Correo:</label>
+      <input type="email" id="nuevoCorreo"><br>
 
-    <button class="instagram">
-        <img src="insta.webp" alt="redes">
-    </button>
+      <label>Descripción:</label>
+      <input type="text" id="nuevaDescripcion"><br>
 
-    <button class="twitter">
-        <img src="x.webp" alt="redes">
+      <button type="submit">Guardar cambios</button>
+    </form>
+  </div>
+</div>
 
-    <footer class="cuadro-de-fondo">
-    </footer>
 
+<script src="scits_usuario.js"></script>  
+ 
 </body>
 </html>
