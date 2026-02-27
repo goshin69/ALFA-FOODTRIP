@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ALFA FoodTrip - Recetas Deliciosas</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <h1> ALFA FoodTrip</h1>
+      </div>
+      <nav class="nav-menu">
+        <a href="crear_receta.html" class="btn-primary">
+          <i class="fas fa-plus"></i> Publicar receta
+        </a>
+        <a href="logout.php" class="btn-secondary">
+          <i class="fas fa-sign-out-alt"></i> Salir
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="app">
+    <div class="hero-section">
+      <h2>Recetas Recientes</h2>
+      <p class="subtitle">Descubre las mejores recetas compartidas por nuestra comunidad</p>
+    </div>
+    
+    <div class="container">
+      <div id="recetas-container" class="recetas-grid">
+        <div class="loading-spinner">
+          <i class="fas fa-utensils"></i> Cargando recetas...
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 ALFA FoodTrip - Comparte tus mejores recetas</p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
