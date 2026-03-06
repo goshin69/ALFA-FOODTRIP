@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario - ALFA FOODTRIP</title>
+    <link rel="stylesheet" href="perfil.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Estilos adicionales para el panel de edición y los nuevos campos */
+        .profile-bio {
+            margin: 10px 0 5px;
+            font-size: 1rem;
+            color: #555;
+        }
+        .profile-birthday {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            color: #777;
+        }
+        .profile-birthday i {
+            margin-right: 5px;
+            color: #FF9A50;
+        }
+        /* Panel de edición */
+        .edit-panel {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 350px;
+            height: 100%;
+            background: white;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            padding: 30px 20px;
+            transition: right 0.3s ease;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        .edit-panel.active {
+            right: 0;
+        }
+        .edit-panel h3 {
+            margin-top: 0;
+            color: #333;
+            border-bottom: 2px solid #FF9A50;
+            padding-bottom: 10px;
+        }
+        .edit-panel label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        .edit-panel input,
+        .edit-panel textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        .edit-panel textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .edit-panel .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .edit-panel button {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn-save {
+            background: #FF9A50;
+            color: white;
+        }
+        .btn-cancel {
+            background: #ccc;
+            color: #333;
+        }
+        .btn-save:hover {
+            background: #e0883d;
+        }
+        .btn-cancel:hover {
+            background: #b3b3b3;
+        }
+        /* Overlay oscuro detrás del panel */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 999;
+        }
+        .overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Banner -->
+    <div class="header-banner"></div>
+
+    <!-- Contenedor Principal -->
+    <div class="profile-container">
+        <!-- Sección Superior del Perfil -->
+        <div class="profile-header">
+            <div class="profile-photo">
+                <img src="perfil de usuario\OIP.webp" alt="Foto de perfil">
+            </div>
+
+            <div class="profile-info">
+                <div class="user-header">
+                    <div class="user-name-section">
+                        <h1 class="user-name">XNombre</h1>
+                        <button class="btn-edit">
+                            <i class="fas fa-pen"></i> Editar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="rating-section">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <span class="rating-value">4.5</span>
+                </div>
+
+                <!-- Nuevos campos: biografía y cumpleaños -->
+                <div class="profile-bio">
+                    <p class="bio-text">Amante de la cocina y los viajes. Comparto mis recetas favoritas.</p>
+                </div>
+                <div class="profile-birthday">
+                    <i class="fas fa-birthday-cake"></i> <span class="birthday-date">15/03/1992</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de Publicaciones (sin cambios) -->
+        <div class="publications-section">
+            <h2 class="section-title">Publicaciones</h2>
+            <div class="publications-grid">
+                <!-- Tus tarjetas existentes (las mantengo igual) -->
+                <div class="publication-card">
+                    <div class="card-image">
+                        <img src="https://via.placeholder.com/250x200/FF9A50/ffffff?text=Pan+Francés" alt="Pan Francés con Moras">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Pan Francés con Moras</h3>
+                        <p class="card-author">Por: XNombre</p>
+                        <span class="card-time">11:04m</span>
+                    </div>
+                </div>
+                <!-- ... (repetir las otras 7 tarjetas) ... -->
+                <!-- Por brevedad no copio todas, pero tú mantén las que ya tienes -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Panel de edición (oculto inicialmente) -->
+    <div class="overlay"></div>
+    <div class="edit-panel">
+        <h3>Editar perfil</h3>
+        <form id="edit-form">
+            <label for="edit-name">Nombre</label>
+            <input type="text" id="edit-name" value="XNombre">
+
+            <label for="edit-bio">Biografía</label>
+            <textarea id="edit-bio">Amante de la cocina y los viajes. Comparto mis recetas favoritas.</textarea>
+
+            <label for="edit-birthday">Fecha de cumpleaños</label>
+            <input type="date" id="edit-birthday" value="1992-03-15">
+
+            <div class="btn-group">
+                <button type="button" class="btn-save">Guardar</button>
+                <button type="button" class="btn-cancel">Cancelar</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elementos del perfil
+            const userName = document.querySelector('.user-name');
+            const userBio = document.querySelector('.bio-text');
+            const userBirthday = document.querySelector('.birthday-date');
+            
+            // Botón editar
+            const editButton = document.querySelector('.btn-edit');
+            
+            // Panel y overlay
+            const editPanel = document.querySelector('.edit-panel');
+            const overlay = document.querySelector('.overlay');
+            
+            // Campos del formulario
+            const editName = document.getElementById('edit-name');
+            const editBio = document.getElementById('edit-bio');
+            const editBirthday = document.getElementById('edit-birthday');
+            
+            // Botones guardar y cancelar
+            const saveButton = document.querySelector('.btn-save');
+            const cancelButton = document.querySelector('.btn-cancel');
+
+            // Función para formatear fecha de DD/MM/AAAA a YYYY-MM-DD para input date
+            function formatDateToInput(dateStr) {
+                if (!dateStr) return '';
+                const parts = dateStr.split('/');
+                if (parts.length === 3) {
+                    return `${parts[2]}-${parts[1]}-${parts[0]}`;
+                }
+                return '';
+            }
+
+            // Función para formatear fecha de YYYY-MM-DD a DD/MM/AAAA
+            function formatDateToDisplay(dateStr) {
+                if (!dateStr) return '';
+                const parts = dateStr.split('-');
+                if (parts.length === 3) {
+                    return `${parts[2]}/${parts[1]}/${parts[0]}`;
+                }
+                return '';
+            }
+
+            // Abrir panel con los datos actuales
+            function openEditPanel() {
+                editName.value = userName.textContent;
+                editBio.value = userBio.textContent;
+                // Convertir fecha actual al formato del input date
+                const currentDate = userBirthday.textContent.trim();
+                editBirthday.value = formatDateToInput(currentDate);
+                
+                editPanel.classList.add('active');
+                overlay.classList.add('active');
+            }
+
+            // Cerrar panel sin guardar
+            function closeEditPanel() {
+                editPanel.classList.remove('active');
+                overlay.classList.remove('active');
+            }
+
+            // Guardar cambios
+            function saveChanges() {
+                const newName = editName.value.trim();
+                const newBio = editBio.value.trim();
+                const newBirthday = editBirthday.value;
+
+                if (newName) {
+                    userName.textContent = newName;
+                }
+                if (newBio) {
+                    userBio.textContent = newBio;
+                }
+                if (newBirthday) {
+                    userBirthday.textContent = formatDateToDisplay(newBirthday);
+                }
+
+                closeEditPanel();
+            }
+
+            // Eventos
+            editButton.addEventListener('click', openEditPanel);
+            saveButton.addEventListener('click', saveChanges);
+            cancelButton.addEventListener('click', closeEditPanel);
+            overlay.addEventListener('click', closeEditPanel);
+        });
+    </script>
+</body>
+</html>
