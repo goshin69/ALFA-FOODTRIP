@@ -1,7 +1,7 @@
 # Koalicus
 EQUIPO 3
 
-	<h1>Koalicius</h1> es una plataforma web interactiva diseñada para amantes de la cocina que buscan descubrir, compartir y organizar sus recetas favoritas. Con una interfaz intuitiva y visualmente atractiva, la aplicación permite explorar diversas culturas gastronómicas y conectar con otros entusiastas del arte culinario.
+<h1>Koalicius</h1> es una plataforma web interactiva diseñada para amantes de la cocina que buscan descubrir, compartir y organizar sus recetas favoritas. Con una interfaz intuitiva y visualmente atractiva, la aplicación permite explorar diversas culturas gastronómicas y conectar con otros entusiastas del arte culinario.
 
 Características Principales
 Exploración por Categorías: Navega fácilmente entre diferentes tipos de cocina (Japonesa, Mexicana, Argentina, etc.) mediante carruseles dinámicos.
