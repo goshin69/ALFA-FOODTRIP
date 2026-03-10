@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Receta - Koalicius</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/crear_receta.css">
+</head>
+<body>
+    <div id="loader-wrapper">
+        <div class="loader"></div>
+    </div>
+
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-utensils"></i>
+            <span>Koalicius</span>
+        </div>
+        <div class="search-bar">
+            <i class="fa-solid fa-search"></i>
+            <input type="text" placeholder="Buscar recetas...">
+        </div>
+        <div class="user-profile">
+            <i class="fa-solid fa-user"></i>
+        </div>
+    </header>
+
+    <nav id="main-nav">
+        <a href="index.html" class="nav-item"><i class="fa-solid fa-house"></i> Inicio</a>
+        <a href="tendencia.html" class="nav-item"><i class="fa-solid fa-fire"></i> Tendencia</a>
+        <a href="videos.html" class="nav-item"><i class="fa-solid fa-play"></i> Videos</a>
+        <a href="notificacion.html" class="nav-item"><i class="fa-solid fa-bell"></i> Notificación</a>
+        <a href="crear_receta.html" class="nav-item active"><i class="fa-solid fa-utensils"></i> Crear Receta</a>
+        <a href="configuracion.html" class="nav-item"><i class="fa-solid fa-gear"></i> Configuración</a>
+    </nav>
+    
+    <main class="form-container">
+        <h2 class="form-title">Nueva Video-Receta</h2>
+        
+        <form id="recetaForm" enctype="multipart/form-data">
+            <div class="input-group">
+                <label for="titulo">Título de la receta:</label>
+                <input type="text" id="titulo" name="titulo" placeholder="Ej. Tacos al Pastor" required>
+            </div>
+
+            <div class="input-group">
+                <label for="descripcion">Descripción / Preparación:</label>
+                <textarea id="descripcion" name="descripcion" rows="4" placeholder="Explica cómo se prepara..." required></textarea>
+            </div>
+
+            <div class="input-group" id="etiquetas-group">
+                <label>Etiquetas (para filtrar búsquedas)</label>
+                <div class="etiquetas-container">
+                    <input type="text" id="etiqueta-input" placeholder="Escribe para buscar o crear etiquetas...">
+                    <div id="etiquetas-sugerencias" class="sugerencias"></div>
+                </div>
+                <div id="etiquetas-seleccionadas" class="etiquetas-seleccionadas"></div>
+                <input type="hidden" name="etiquetas" id="etiquetas-hidden" value="">
+            </div>
+
+            <div class="input-group">
+                <label for="imagenes">Imágenes de la receta (puedes seleccionar varias):</label>
+                <input type="file" id="imagenes" name="imagenes[]" accept="image/*" multiple>
+                <div id="imagenes-preview" class="imagenes-preview"></div>
+            </div>
+
+            <div class="input-group upload-box" id="uploadBox">
+                <label for="video">Video de la receta (MP4, máximo 40 minutos, 1080p):</label>
+                <label for="video" class="btn-subir">
+                    <i class="fa-solid fa-upload"></i> Seleccionar Video
+                </label>
+                <input type="file" id="video" name="video" accept="video/mp4">
+                <div id="file-info" class="file-info"></div>
+            </div>
+
+            <button type="submit" class="btn-submit" id="btnPublicar">
+                <span class="btn-text">Publicar Receta</span>
+                <span class="btn-loader" style="display: none;">Publicando...</span>
+            </button>
+            <div id="mensaje" class="mensaje"></div>
+        </form>
+    </main>
+
+    <script src="assets/js/etiquetas.js"></script>
+    <script src="assets/js/crear_receta.js"></script>
+</body>
+</html>

@@ -1,0 +1,280 @@
+[2026-03-10 06:38:16] Inicio de crear_receta.php
+[2026-03-10 06:38:16] Includes cargados
+[2026-03-10 06:38:16] Usuario ID: 4
+[2026-03-10 06:38:16] Título: puto, Descripción: buenas
+[2026-03-10 06:38:16] Palabras prohibidas detectadas
+[2026-03-10 06:38:27] Inicio de crear_receta.php
+[2026-03-10 06:38:27] Includes cargados
+[2026-03-10 06:38:27] Usuario ID: 4
+[2026-03-10 06:38:27] Título: buenas, Descripción: buenas
+[2026-03-10 06:38:27] Files: Array
+(
+    [imagenes] => Array
+        (
+            [name] => Array
+                (
+                    [0] => 
+                )
+
+            [full_path] => Array
+                (
+                    [0] => 
+                )
+
+            [type] => Array
+                (
+                    [0] => 
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => 
+                )
+
+            [error] => Array
+                (
+                    [0] => 4
+                )
+
+            [size] => Array
+                (
+                    [0] => 0
+                )
+
+        )
+
+    [video] => Array
+        (
+            [name] => Fortnite 2025.04.09 - 23.45.09.20.Victoria.DVR.mp4
+            [full_path] => Fortnite 2025.04.09 - 23.45.09.20.Victoria.DVR.mp4
+            [type] => video/mp4
+            [tmp_name] => C:\xampp\tmp\phpE693.tmp
+            [error] => 0
+            [size] => 141527231
+        )
+
+)
+
+[2026-03-10 06:38:27] Insertando receta
+[2026-03-10 06:38:27] Receta ID: 18
+[2026-03-10 06:38:27] Carpeta creada: C:\xampp\htdocs\ALFA\public\api/../../uploads/comidas/18/
+[2026-03-10 06:38:27] Procesando video...
+[2026-03-10 06:38:28] Duración: 15.467, Resolución: 1920x1080
+[2026-03-10 06:38:28] Video guardado: /uploads/comidas/18/69afae5464add.mp4
+[2026-03-10 06:38:28] Ruta guardada en BD: /uploads/comidas/18/69afae5464add.mp4
+[2026-03-10 06:38:28] Commit exitoso
+[2026-03-10 06:39:17] Inicio de crear_receta.php
+[2026-03-10 06:39:17] Includes cargados
+[2026-03-10 06:39:17] Usuario ID: 4
+[2026-03-10 06:39:17] Título: joto, Descripción: ttttt
+[2026-03-10 06:39:17] Files: Array
+(
+    [imagenes] => Array
+        (
+            [name] => Array
+                (
+                    [0] => 
+                )
+
+            [full_path] => Array
+                (
+                    [0] => 
+                )
+
+            [type] => Array
+                (
+                    [0] => 
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => 
+                )
+
+            [error] => Array
+                (
+                    [0] => 4
+                )
+
+            [size] => Array
+                (
+                    [0] => 0
+                )
+
+        )
+
+    [video] => Array
+        (
+            [name] => Fortnite 2025.04.09 - 23.45.09.20.Victoria.DVR.mp4
+            [full_path] => Fortnite 2025.04.09 - 23.45.09.20.Victoria.DVR.mp4
+            [type] => video/mp4
+            [tmp_name] => C:\xampp\tmp\phpA9A6.tmp
+            [error] => 0
+            [size] => 141527231
+        )
+
+)
+
+[2026-03-10 06:39:17] Insertando receta
+[2026-03-10 06:39:17] Receta ID: 19
+[2026-03-10 06:39:17] Carpeta creada: C:\xampp\htdocs\ALFA\public\api/../../uploads/comidas/19/
+[2026-03-10 06:39:17] Procesando video...
+[2026-03-10 06:39:18] Duración: 15.467, Resolución: 1920x1080
+[2026-03-10 06:39:18] Video guardado: /uploads/comidas/19/69afae860a2a3.mp4
+[2026-03-10 06:39:18] Ruta guardada en BD: /uploads/comidas/19/69afae860a2a3.mp4
+[2026-03-10 06:39:18] Commit exitoso
+[2026-03-10 14:05:22] Inicio de crear_receta.php
+[2026-03-10 14:05:22] Includes cargados
+[2026-03-10 14:05:22] Usuario ID: 4
+[2026-03-10 14:05:22] Título: puto, Descripción: pudrete
+[2026-03-10 14:05:22] Palabras prohibidas detectadas
+[2026-03-10 14:06:45] Inicio de crear_receta.php
+[2026-03-10 14:06:45] Includes cargados
+[2026-03-10 14:06:45] Usuario ID: 4
+[2026-03-10 14:06:45] Título: Puto, Descripción: pudrete
+[2026-03-10 14:06:45] Palabras prohibidas detectadas
+[2026-03-10 14:07:06] Inicio de crear_receta.php
+[2026-03-10 14:07:06] Includes cargados
+[2026-03-10 14:07:06] Usuario ID: 4
+[2026-03-10 14:07:06] Título: hola, Descripción: buenas
+[2026-03-10 14:07:06] Files: Array
+(
+    [imagenes] => Array
+        (
+            [name] => Array
+                (
+                    [0] => 
+                )
+
+            [full_path] => Array
+                (
+                    [0] => 
+                )
+
+            [type] => Array
+                (
+                    [0] => 
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => 
+                )
+
+            [error] => Array
+                (
+                    [0] => 4
+                )
+
+            [size] => Array
+                (
+                    [0] => 0
+                )
+
+        )
+
+    [video] => Array
+        (
+            [name] => Fortnite 2025.04.09 - 23.45.09.20.Victoria.DVR.mp4
+            [full_path] => Fortnite 2025.04.09 - 23.45.09.20.Victoria.DVR.mp4
+            [type] => video/mp4
+            [tmp_name] => C:\xampp\tmp\phpA100.tmp
+            [error] => 0
+            [size] => 141527231
+        )
+
+)
+
+[2026-03-10 14:07:06] Insertando receta
+[2026-03-10 14:07:06] Receta ID: 20
+[2026-03-10 14:07:06] Carpeta creada: C:\xampp\htdocs\ALFA\public\api/../../uploads/comidas/20/
+[2026-03-10 14:07:06] Procesando video...
+[2026-03-10 14:07:06] Duración: 15.467, Resolución: 1920x1080
+[2026-03-10 14:07:06] Video guardado: /uploads/comidas/20/69b0177ab9b46.mp4
+[2026-03-10 14:07:06] Ruta guardada en BD: /uploads/comidas/20/69b0177ab9b46.mp4
+[2026-03-10 14:07:06] Commit exitoso
+[2026-03-10 19:59:27] Inicio de crear_receta.php
+[2026-03-10 19:59:27] Includes cargados
+[2026-03-10 19:59:27] Usuario ID: 4
+[2026-03-10 19:59:27] Título: Prueba, Descripción: explicacion, Etiquetas: 
+[2026-03-10 19:59:27] Files: Array
+(
+    [imagenes] => Array
+        (
+            [name] => Array
+                (
+                    [0] => 
+                )
+
+            [full_path] => Array
+                (
+                    [0] => 
+                )
+
+            [type] => Array
+                (
+                    [0] => 
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => 
+                )
+
+            [error] => Array
+                (
+                    [0] => 4
+                )
+
+            [size] => Array
+                (
+                    [0] => 0
+                )
+
+        )
+
+    [video] => Array
+        (
+            [name] => Fortnite 2025.04.09 - 23.45.09.20.Victoria.DVR.mp4
+            [full_path] => Fortnite 2025.04.09 - 23.45.09.20.Victoria.DVR.mp4
+            [type] => video/mp4
+            [tmp_name] => C:\xampp\tmp\php31C9.tmp
+            [error] => 0
+            [size] => 141527231
+        )
+
+)
+
+[2026-03-10 19:59:27] Insertando receta
+[2026-03-10 19:59:27] Receta ID: 21
+[2026-03-10 19:59:27] Carpeta creada: C:\xampp\htdocs\ALFA\public\api/../../uploads/comidas/21/
+[2026-03-10 19:59:27] Procesando video...
+[2026-03-10 19:59:29] Duración: 15.467, Resolución: 1920x1080
+[2026-03-10 19:59:29] Video guardado: /uploads/comidas/21/69b06a1147848.mp4
+[2026-03-10 19:59:29] Ruta guardada en BD: /uploads/comidas/21/69b06a1147848.mp4
+[2026-03-10 19:59:29] Commit exitoso
+[2026-03-10 20:01:22] Inicio de crear_receta.php
+[2026-03-10 20:01:22] Includes cargados
+[2026-03-10 20:01:22] Usuario ID: 4
+[2026-03-10 20:01:22] Título: puto, Descripción: puto, Etiquetas: 
+[2026-03-10 20:01:22] Palabras prohibidas detectadas
+[2026-03-10 20:01:26] Inicio de crear_receta.php
+[2026-03-10 20:01:26] Includes cargados
+[2026-03-10 20:01:26] Usuario ID: 4
+[2026-03-10 20:01:26] Título: puto, Descripción: puto, Etiquetas: 
+[2026-03-10 20:01:26] Palabras prohibidas detectadas
+[2026-03-10 20:01:26] Inicio de crear_receta.php
+[2026-03-10 20:01:26] Includes cargados
+[2026-03-10 20:01:26] Usuario ID: 4
+[2026-03-10 20:01:26] Título: puto, Descripción: puto, Etiquetas: 
+[2026-03-10 20:01:26] Palabras prohibidas detectadas
+[2026-03-10 20:01:27] Inicio de crear_receta.php
+[2026-03-10 20:01:27] Includes cargados
+[2026-03-10 20:01:27] Usuario ID: 4
+[2026-03-10 20:01:27] Título: puto, Descripción: puto, Etiquetas: 
+[2026-03-10 20:01:27] Palabras prohibidas detectadas
+[2026-03-10 20:01:27] Inicio de crear_receta.php
+[2026-03-10 20:01:27] Includes cargados
+[2026-03-10 20:01:27] Usuario ID: 4
+[2026-03-10 20:01:27] Título: puto, Descripción: puto, Etiquetas: 
+[2026-03-10 20:01:27] Palabras prohibidas detectadas

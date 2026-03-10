@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir Archivos - Koalicus</title>
+    <link rel="stylesheet" href="assets/css/subir-archivo.css">
+</head>
+<body>
+    <div class="container">
+        <div class="upload-box" id="uploadBox">
+            <div class="upload-icon">⬆️</div>
+            
+            <div class="upload-text">
+                <h3>Arrastra y suelta los archivos de video/foto para subirlos</h3>
+                <p>Tus archivos serán privados hasta que los publiques</p>
+                <p class="upload-subtitle">Soporta: JPG, PNG, AVIF, MP4, WebM</p>
+            </div>
+
+            <button class="upload-btn" id="uploadBtn">Seleccionar Archivo</button>
+            <input type="file" id="fileInput" accept="image/*,video/*" multiple>
+
+            <div class="preview-section" id="previewSection" style="display: none;">
+                <h4>Archivos Seleccionados</h4>
+                <div class="file-preview" id="filePreview"></div>
+            </div>
+
+            <div class="submit-section" id="submitSection" style="display: none;">
+                <button class="submit-btn" id="submitBtn">Subir Archivos</button>
+                <button class="submit-btn cancel-btn" id="cancelBtn">Limpiar</button>
+            </div>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Subiendo archivos...</p>
+            </div>
+
+            <div class="success-message" id="successMessage">
+                ✓ Archivos subidos correctamente
+            </div>
+            <div class="error-message" id="errorMessage">
+                ✗ Error al subir archivos
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/subir-archivo.js"></script>
+</body>
+</html>
