@@ -56,6 +56,144 @@ body {
     padding: 10px 0;
 }
 
+#VerPerfil h2{
+    color: #e8b211;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* ========== FOTO DE PERFIL ========== */
+#fotoPerfil {
+    width: 155px;              /* ancho del círculo */
+    height: 155px;             /* alto del círculo */
+    border-radius: 50%;        /* hace que sea redondo (50% = círculo perfecto) */
+    overflow: hidden;          /* corta cualquier contenido que salga del círculo */
+    border: 3px solid cadetblue; /* borde azul claro de 3px */
+}
+
+/* imagen dentro del círculo */
+#fotoPerfil img {
+    width: 100px;               /* imagen ocupa todo el ancho del contenedor */
+    height: 100px;              /* imagen ocupa todo el alto del contenedor */
+    object-fit: cover;         /* ajusta la imagen sin deformarla */
+}
+
+#nombrePerfil {
+    position: absolute;        /* posicionamiento absoluto para colocar el texto */
+    top: 84.5px;                 /* baja 20px desde la parte superior del contenedor */
+    left: 274px;                /* se corre 50px a la derecha */
+
+    width: 335px;
+    height: 35px;
+    border-radius: 50px;
+
+    background-color: rgb(227, 204, 0);
+    font-size: 18px;           /* tamaño del letra */
+    color: rgb(1, 4, 9);              /* color del texto blanco */
+    font-weight: bold;         /* texto en negrita */
+    border: 2px solid #000000;
+
+    display: flex;            
+    align-items: center;
+    justify-content: left;
+    padding: 8px;
+    box-sizing: border-box;     /* incluye el padding dentro del tamaño total */
+     z-index: 2; /* asegura que el texto esté por encima del fondo */
+}
+
+#Tnombre {
+    position: absolute;
+    height: 30px;
+    width: 90px;
+    border-radius: 50px;
+
+    left: 175px;
+    top: 85px;
+    
+    background-color: rgb(234, 234, 234);
+    color: #000000;
+    border: 2px solid #000000;
+
+    font-size: 18px;    
+    display: flex;            
+    align-items: center;
+    justify-content: center;
+    z-index: 2; /* asegura que el texto esté por encima del fondo */
+}
+
+#descripcionPerfil {
+    
+    position: absolute;       /* posicionamiento relativo al flujo normal */
+    top: 130px;               /* baja 30px desde su posición original */
+    left: 180px;              /* se corre 50px a la derecha */
+    width: 300px;             /* ancho del rectángulo */
+    height: 100px;             /* alto del rectángulo */
+
+    /* ESTILO VISUAL */
+    border-radius: 20px;        /* esquina redondeada */
+    background-color: rgb(255, 237, 73); /* color de fondo */
+    border: 2px solid #000000; /* borde azul oscuro de 2px */
+
+    padding: 8px;   
+    min-height: 0px;
+    max-height: 200px;
+    width: 300px;
+    resize: vertical;          /* permite al usuario ajustar la altura del cuadro */
+    overflow: auto;          /* espacio interior entre el contenido y el borde */
+
+    /* TEXTO */
+    font-size: 18px;           /* tamaño del letra */
+    color: rgb(0, 0, 0);  /* color del texto blanco */
+
+
+    /* ALINEACIÓN DEL CONTENIDO */
+    text-align: left;
+    display: flex;             /* activa el modelo flexbox para alinear contenido */
+    align-items: center;       /* centra el texto verticalmente */
+    justify-content: left; 
+    box-sizing: border-box;  /* centra el texto horizontalmente */
+}
+
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Posición fija para cubrir toda la pantalla */
+    z-index: 1; /* Asegura que el modal esté por encima de otros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Alto completo */
+    overflow: auto; /* Habilita el scroll si el contenido es largo */
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 2;
+}
+
+.modal-content {
+    background-color: #ffe448;
+    margin: 15% auto; /* Centra el contenido del modal */
+    padding: 20px;
+    border: 1px solid #000000;
+    width: 80%; /* Ancho del contenido del modal */
+}
+
+.cerrar {
+    float: right;
+    font-size: 32px;
+    cursor: pointer;
+}
+
+.cuadro-de-fondo {
+         
+    height: 370px;
+    left: -10px;
+    background-color: #Ffa420;
+    color: #3498db;
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+}
+
 /* Header del Usuario */
 .user-header {
     display: flex;
@@ -76,7 +214,7 @@ body {
     margin: 0;
 }
 
-/* Botón Editar */
+/* Boton Editar */
 .btn-edit {
     background: white;
     border: 2px solid #D4805F;
