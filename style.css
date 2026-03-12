@@ -9,8 +9,8 @@ body {
     background: linear-gradient(135deg, #bc4747 0%, #d86262 100%);
     min-height: 100vh;
     display: flex;
-    flex-direction: column; /* alineado vertical */
-    justify-content: center; /* vertical */
+    flex-direction: column; /* Vertical */
+    justify-content: center; /* Vertical */
     align-items: center;     /* Oigan este es el centrado horizontal*/
     padding: 40px 20px;
     color: #333;
@@ -25,9 +25,9 @@ body {
     color: #C21514;
     font-weight: bold;
     padding: 10px 15px;
-    border: 2px solid #9D6934; /* Usando tu Oro Oscuro */
+    border: 2px solid #9D6934; 
     border-radius: 4px;
-    background: #F1DEAF;      /* Tu Cookies & Cream */
+    background: #F1DEAF;      
     font-size: 0.9rem;
     transition: 0.3s;
     z-index: 10;
@@ -86,4 +86,5 @@ h2 {
     width: 100%;
     padding-bottom: 10px;
 }
+
 
