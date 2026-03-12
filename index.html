@@ -2,47 +2,38 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>ALFA FoodTrip - Recetas Deliciosas</title>
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width5,initial-scale=1">
+  <title>Inicio - Recetas</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="navbar">
-    <div class="nav-container">
-      <div class="logo">
-        <h1> ALFA FoodTrip</h1>
-      </div>
-      <nav class="nav-menu">
-        <a href="crear_receta.html" class="btn-primary">
-          <i class="fas fa-plus"></i> Publicar receta
-        </a>
-        <a href="logout.php" class="btn-secondary">
-          <i class="fas fa-sign-out-alt"></i> Salir
-        </a>
-      </nav>
-    </div>
-  </header>
 
-  <main id="app">
-    <div class="hero-section">
-      <h2>Recetas Recientes</h2>
-      <p class="subtitle">Descubre las mejores recetas compartidas por nuestra comunidad</p>
+    <header class="header-rojo">
+  <div class="header-superior">
+    <div class="logo-contenedor">
+      <img src="imageness/Koalii.png" alt="KoaliCious">
     </div>
     
-    <div class="container">
-      <div id="recetas-container" class="recetas-grid">
-        <div class="loading-spinner">
-          <i class="fas fa-utensils"></i> Cargando recetas...
-        </div>
-      </div>
+    <div class="search-bar">
+      <span class="icon-search">🔍</span>
+      <input type="text" placeholder="Buscar recetas...">
+      <span class="icon-close"><img src="imageness/x 32.png" alt="Salir"></span>
     </div>
-  </main>
 
-  <footer class="footer">
-    <p>&copy; 2026 ALFA FoodTrip - Comparte tus mejores recetas</p>
-  </footer>
+    <div class="user-icon">
+      <img src="imageness/logo sesion.png" alt="Perfil">
+    </div>
+  </div>
 
-  <script src="assets/js/main.js"></script>
-</body>
-</html>
+  <nav class="menu-opciones">
+    <ul>
+      <li><img src="imageness/Inicio 32.png"> Inicio</li>
+      <li><img src="imageness/fuego 32.png"> Tendencia</li>
+      <li><img src="imageness/videos 32.png"> Videos</li>
+      <li><img src="imageness/notificacion 32.png"> Notificación</li>
+      <li><img src="imageness/notificacion 32.png"> Notificación</li>
+      <li><img src="imageness/crear receta 32.png"> Crear Receta</li>
+      <li><img src="imageness/Configuracion 32.png"> Configuración</li>
+    </ul>
+  </nav>
+</header>
