@@ -12,6 +12,9 @@
     <!-- Header Banner -->
     <div class="header-banner"></div>
 
+    <!-- Botón Salir -->
+    <button class="exit-button"><i class="fas fa-door-open"></i> Salir</button>
+
     <!-- Contenedor Principal -->
     <div class="profile-container">
         <!-- Sección Superior del Perfil -->
@@ -24,6 +27,7 @@
                 <div class="user-header">
                     <div class="user-name-section">
                         <h1 class="user-name">XNombre</h1>
+                        <button class="btn-edit"><i class="fas fa-edit"></i> Editar</button>
                     </div>
                 </div>
 
@@ -205,9 +209,44 @@
             // Botones guardar y cancelar
             const saveButton = document.querySelector('.btn-save');
             const cancelButton = document.querySelector('.btn-cancel');
+            const exitButton = document.querySelector('.exit-button');
 
             // Variable para almacenar la nueva foto seleccionada (objeto File)
             let selectedPhotoFile = null;
+
+            // Función para cargar datos del perfil desde localStorage
+            function loadProfileData() {
+                const savedName = localStorage.getItem('profileName');
+                const savedBio = localStorage.getItem('profileBio');
+                const savedBirthday = localStorage.getItem('profileBirthday');
+                const savedPhoto = localStorage.getItem('profilePhoto');
+                if (savedName) userName.textContent = savedName;
+                if (savedBio) userBio.textContent = savedBio;
+                if (savedBirthday) userBirthday.textContent = savedBirthday;
+                if (savedPhoto) profileImage.src = savedPhoto;
+            }
+
+            // Variable para determinar si es el perfil propio (cambiar a false para perfil visitante)
+            const isOwnProfile = true; // true para propietario, false para visitante
+
+            // Mostrar/ocultar botones según el modo
+            if (isOwnProfile) {
+                editButton.style.display = 'inline-block';
+                btnSeguir.style.display = 'none';
+            } else {
+                editButton.style.display = 'none';
+                btnSeguir.style.display = 'inline-block';
+                // Lógica para el botón seguir en perfil visitante
+                btnSeguir.addEventListener('click', function() {
+                    if (btnSeguir.classList.contains('siguiendo')) {
+                        btnSeguir.classList.remove('siguiendo');
+                        btnSeguir.textContent = 'Seguir';
+                    } else {
+                        btnSeguir.classList.add('siguiendo');
+                        btnSeguir.textContent = 'Siguiendo';
+                    }
+                });
+            }
 
             // Función para formatear fecha de DD/MM/AAAA a YYYY-MM-DD para input date
             function formatDateToInput(dateStr) {
@@ -288,13 +327,22 @@
                     userBirthday.textContent = formatDateToDisplay(newBirthday);
                 }
 
-                // Si hay una nueva foto seleccionada, actualizar la imagen de perfil
+                // Guardar datos de texto en localStorage
+                localStorage.setItem('profileName', userName.textContent);
+                localStorage.setItem('profileBio', userBio.textContent);
+                localStorage.setItem('profileBirthday', userBirthday.textContent);
+
+                // Si hay una nueva foto seleccionada, actualizar la imagen de perfil y guardar
                 if (selectedPhotoFile) {
                     const reader = new FileReader();
                     reader.onload = function(event) {
                         profileImage.src = event.target.result;
+                        localStorage.setItem('profilePhoto', event.target.result);
                     };
                     reader.readAsDataURL(selectedPhotoFile);
+                } else {
+                    // Si no hay nueva foto, guardar la actual
+                    localStorage.setItem('profilePhoto', profileImage.src);
                 }
 
                 closeEditPanel();
@@ -305,6 +353,12 @@
             saveButton.addEventListener('click', saveChanges);
             cancelButton.addEventListener('click', closeEditPanel);
             overlay.addEventListener('click', closeEditPanel);
+
+            // Salir del perfil
+            exitButton.addEventListener('click', function() {
+                // Regresa a la página anterior (o ajusta la URL según tu navegación)
+                window.history.back();
+            });
         });
     </script>
 </body>
