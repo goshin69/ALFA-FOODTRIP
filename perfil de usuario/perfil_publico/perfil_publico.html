@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario - ALFA FOODTRIP</title>
+    <link rel="stylesheet" href="perfil_publico.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        
+</head>
+<body>
+    <!-- Header Banner -->
+    <div class="header-banner"></div>
+
+    <!-- Botón Salir -->
+    <button class="exit-button"><i class="fas fa-door-open"></i> Salir</button>
+
+    <!-- Contenedor Principal -->
+    <div class="profile-container">
+        <!-- Sección Superior del Perfil -->
+        <div class="profile-header">
+            <div class="profile-photo">
+                <img src="perfil de usuario\OIP.webp" alt="Foto de perfil" id="profile-image">
+            </div>
+
+            <div class="profile-info">
+                <div class="user-header">
+                    <div class="user-name-section">
+                        <h1 class="user-name">XNombre</h1>
+                        <button class="btn-edit"><i class="fas fa-edit"></i> Editar</button>
+                    </div>
+                </div>
+
+                <div class="social-stats">
+            <button id="btnSeguir">Seguir</button>
+        </div>
+
+                <div class="rating-section">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <span class="rating-value">4.5</span>
+                </div>
+
+                <!-- Nuevos campos: biografía y cumpleaños -->
+                <div class="profile-bio">
+                    <p class="bio-text">Amante de la cocina y los viajes. Comparto mis recetas favoritas.</p>
+                </div>
+                <div class="profile-birthday">
+                    <i class="fas fa-birthday-cake"></i> <span class="birthday-date">15/03/1992</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de Publicaciones -->
+        <div class="publications-section">
+            <h2 class="section-title">Publicaciones</h2>
+            <div class="publications-grid">
+                <!-- Tarjeta de Publicación 1 -->
+                <div class="publication-card">
+                    <div class="card-image">
+                        <img src="https://via.placeholder.com/250x200/FF9A50/ffffff?text=Pan+Francés" alt="Pan Francés con Moras">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Pan Francés con Moras</h3>
+                        <p class="card-author">Por: XNombre</p>
+                        <span class="card-time">11:04m</span>
+                    </div>
+                </div>
+                <!-- Tarjeta de Publicación 2 -->
+                <div class="publication-card">
+                    <div class="card-image">
+                        <img src="https://via.placeholder.com/250x200/D2691E/ffffff?text=Sincronizadas" alt="Sincronizadas">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Sincronizadas</h3>
+                        <p class="card-author">Por: XNombre</p>
+                        <span class="card-time">10:01m</span>
+                    </div>
+                </div>
+                <!-- Tarjeta de Publicación 3 -->
+                <div class="publication-card">
+                    <div class="card-image">
+                        <img src="https://via.placeholder.com/250x200/CD7F32/ffffff?text=Tempura" alt="Tempura">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Tempura</h3>
+                        <p class="card-author">Por: XNombre</p>
+                        <span class="card-time">22:55m</span>
+                    </div>
+                </div>
+                <!-- Tarjeta de Publicación 4 -->
+                <div class="publication-card">
+                    <div class="card-image">
+                        <img src="https://via.placeholder.com/250x200/F4A460/ffffff?text=Carlota+Limón" alt="Carlota de Limón">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Carlota de Limón</h3>
+                        <p class="card-author">Por: XNombre</p>
+                        <span class="card-time">9:54m</span>
+                    </div>
+                </div>
+                <!-- Tarjeta de Publicación 5 -->
+                <div class="publication-card">
+                    <div class="card-image">
+                        <img src="https://via.placeholder.com/250x200/8B4513/ffffff?text=Ramen" alt="Ramen">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Ramen</h3>
+                        <p class="card-author">Por: XNombre</p>
+                        <span class="card-time">17:44m</span>
+                    </div>
+                </div>
+                <!-- Tarjeta de Publicación 6 -->
+                <div class="publication-card">
+                    <div class="card-image">
+                        <img src="https://via.placeholder.com/250x200/D4A574/ffffff?text=Arroz+Leche" alt="Arroz con Leche">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Arroz con Leche</h3>
+                        <p class="card-author">Por: XNombre</p>
+                        <span class="card-time">10:04m</span>
+                    </div>
+                </div>
+                <!-- Tarjeta de Publicación 7 -->
+                <div class="publication-card">
+                    <div class="card-image">
+                        <img src="https://via.placeholder.com/250x200/E67E22/ffffff?text=Pizza" alt="Pizza">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Pizza</h3>
+                        <p class="card-author">Por: XNombre</p>
+                        <span class="card-time">20:00m</span>
+                    </div>
+                </div>
+                <!-- Tarjeta de Publicación 8 -->
+                <div class="publication-card">
+                    <div class="card-image">
+                        <img src="https://via.placeholder.com/250x200/B8860B/ffffff?text=Ensalada+Atún" alt="Ensalada de Atún">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Ensalada de Atún</h3>
+                        <p class="card-author">Por: XNombre</p>
+                        <span class="card-time">9:09m</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Panel de edición -->
+    <div class="overlay"></div>
+    <div class="edit-panel">
+        <h3>Editar perfil</h3>
+        <form id="edit-form">
+            <!-- Sección para cambiar foto -->
+            <div class="edit-photo-section">
+                <img src="perfil de usuario\OIP.webp" alt="Vista previa" class="edit-photo-preview" id="photo-preview">
+                <label for="edit-photo-input" class="edit-photo-btn">
+                    <i class="fas fa-camera"></i> Cambiar foto
+                </label>
+                <input type="file" id="edit-photo-input" accept="image/*">
+            </div>
+
+            <label for="edit-name">Nombre</label>
+            <input type="text" id="edit-name" value="XNombre">
+
+            <label for="edit-bio">Biografía</label>
+            <textarea id="edit-bio">Amante de la cocina y los viajes. Comparto mis recetas favoritas.</textarea>
+
+            <label for="edit-birthday">Fecha de cumpleaños</label>
+            <input type="date" id="edit-birthday" value="1992-03-15">
+
+            <div class="btn-group">
+                <button type="button" class="btn-save">Guardar</button>
+                <button type="button" class="btn-cancel">Cancelar</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elementos del perfil
+            const profileImage = document.getElementById('profile-image');
+            const userName = document.querySelector('.user-name');
+            const userBio = document.querySelector('.bio-text');
+            const userBirthday = document.querySelector('.birthday-date');
+            
+            // Botón editar
+            const editButton = document.querySelector('.btn-edit');
+            
+            // Panel y overlay
+            const editPanel = document.querySelector('.edit-panel');
+            const overlay = document.querySelector('.overlay');
+            
+            // Campos del formulario
+            const editName = document.getElementById('edit-name');
+            const editBio = document.getElementById('edit-bio');
+            const editBirthday = document.getElementById('edit-birthday');
+            
+            // Elementos de foto
+            const photoInput = document.getElementById('edit-photo-input');
+            const photoPreview = document.getElementById('photo-preview');
+            
+            // Botones guardar y cancelar
+            const saveButton = document.querySelector('.btn-save');
+            const cancelButton = document.querySelector('.btn-cancel');
+            const exitButton = document.querySelector('.exit-button');
+
+            // Variable para almacenar la nueva foto seleccionada (objeto File)
+            let selectedPhotoFile = null;
+
+            // Función para cargar datos del perfil desde localStorage
+            function loadProfileData() {
+                const savedName = localStorage.getItem('profileName');
+                const savedBio = localStorage.getItem('profileBio');
+                const savedBirthday = localStorage.getItem('profileBirthday');
+                const savedPhoto = localStorage.getItem('profilePhoto');
+                if (savedName) userName.textContent = savedName;
+                if (savedBio) userBio.textContent = savedBio;
+                if (savedBirthday) userBirthday.textContent = savedBirthday;
+                if (savedPhoto) profileImage.src = savedPhoto;
+            }
+
+            // Variable para determinar si es el perfil propio (cambiar a false para perfil visitante)
+            const isOwnProfile = true; // true para propietario, false para visitante
+
+            // Mostrar/ocultar botones según el modo
+            if (isOwnProfile) {
+                editButton.style.display = 'inline-block';
+                btnSeguir.style.display = 'none';
+            } else {
+                editButton.style.display = 'none';
+                btnSeguir.style.display = 'inline-block';
+                // Lógica para el botón seguir en perfil visitante
+                btnSeguir.addEventListener('click', function() {
+                    if (btnSeguir.classList.contains('siguiendo')) {
+                        btnSeguir.classList.remove('siguiendo');
+                        btnSeguir.textContent = 'Seguir';
+                    } else {
+                        btnSeguir.classList.add('siguiendo');
+                        btnSeguir.textContent = 'Siguiendo';
+                    }
+                });
+            }
+
+            // Función para formatear fecha de DD/MM/AAAA a YYYY-MM-DD para input date
+            function formatDateToInput(dateStr) {
+                if (!dateStr) return '';
+                const parts = dateStr.split('/');
+                if (parts.length === 3) {
+                    return `${parts[2]}-${parts[1]}-${parts[0]}`;
+                }
+                return '';
+            }
+
+            // Función para formatear fecha de YYYY-MM-DD a DD/MM/AAAA
+            function formatDateToDisplay(dateStr) {
+                if (!dateStr) return '';
+                const parts = dateStr.split('-');
+                if (parts.length === 3) {
+                    return `${parts[2]}/${parts[1]}/${parts[0]}`;
+                }
+                return '';
+            }
+
+            // Abrir panel con los datos actuales
+            function openEditPanel() {
+                editName.value = userName.textContent;
+                editBio.value = userBio.textContent;
+                // Convertir fecha actual al formato del input date
+                const currentDate = userBirthday.textContent.trim();
+                editBirthday.value = formatDateToInput(currentDate);
+                
+                // Restablecer la vista previa a la foto actual
+                photoPreview.src = profileImage.src;
+                selectedPhotoFile = null; // Limpiar selección previa
+                photoInput.value = ''; // Limpiar input file
+                
+                editPanel.classList.add('active');
+                overlay.classList.add('active');
+            }
+
+            // Cerrar panel sin guardar
+            function closeEditPanel() {
+                editPanel.classList.remove('active');
+                overlay.classList.remove('active');
+            }
+
+            // Manejar selección de nueva foto
+            photoInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    // Verificar que sea una imagen
+                    if (file.type.startsWith('image/')) {
+                        selectedPhotoFile = file;
+                        // Mostrar vista previa
+                        const reader = new FileReader();
+                        reader.onload = function(event) {
+                            photoPreview.src = event.target.result;
+                        };
+                        reader.readAsDataURL(file);
+                    } else {
+                        alert('Por favor selecciona un archivo de imagen válido.');
+                        photoInput.value = '';
+                    }
+                }
+            });
+
+            // Guardar cambios
+            function saveChanges() {
+                const newName = editName.value.trim();
+                const newBio = editBio.value.trim();
+                const newBirthday = editBirthday.value;
+
+                if (newName) {
+                    userName.textContent = newName;
+                }
+                if (newBio) {
+                    userBio.textContent = newBio;
+                }
+                if (newBirthday) {
+                    userBirthday.textContent = formatDateToDisplay(newBirthday);
+                }
+
+                // Guardar datos de texto en localStorage
+                localStorage.setItem('profileName', userName.textContent);
+                localStorage.setItem('profileBio', userBio.textContent);
+                localStorage.setItem('profileBirthday', userBirthday.textContent);
+
+                // Si hay una nueva foto seleccionada, actualizar la imagen de perfil y guardar
+                if (selectedPhotoFile) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        profileImage.src = event.target.result;
+                        localStorage.setItem('profilePhoto', event.target.result);
+                    };
+                    reader.readAsDataURL(selectedPhotoFile);
+                } else {
+                    // Si no hay nueva foto, guardar la actual
+                    localStorage.setItem('profilePhoto', profileImage.src);
+                }
+
+                closeEditPanel();
+            }
+
+            // Eventos
+            editButton.addEventListener('click', openEditPanel);
+            saveButton.addEventListener('click', saveChanges);
+            cancelButton.addEventListener('click', closeEditPanel);
+            overlay.addEventListener('click', closeEditPanel);
+
+            // Salir del perfil
+            exitButton.addEventListener('click', function() {
+                // Regresa a la página anterior (o ajusta la URL según tu navegación)
+                window.history.back();
+            });
+        });
+    </script>
+</body>
+</html>
