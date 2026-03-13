@@ -1,17 +1,40 @@
-.header-rojo {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Oswald', 'Segoe UI', sans-serif;
+}
 
+body {
+    background: linear-gradient(135deg, rgba(231, 159, 71, 0.8) 0%, rgba(244, 220, 179, 0.8) 100%), url('imageness/Fondo_pant.jpg');
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    color: #333;
+    padding-top: 220px; 
+    margin: 0;
+}
+
+/*uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu*/
+
+.header-rojo {
     background-color: #973a3a; 
-    padding: 15px 0;
-    position: sticky;
+    padding: 18px 0;
+    position: fixed; 
     top: 0;
+    left: 0;
     z-index: 1000;
-    width: 100%;
+    width: 100%; 
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
 }
-
 
 .header-superior {
     display: flex;
@@ -22,11 +45,9 @@
 }
 
 .logo-contenedor img {
-    height: 60px; 
-    align-items: left;
+    height: 68px; 
     width: auto;
 }
-
 
 .search-bar {
     background: white;
@@ -46,11 +67,12 @@
     font-size: 16px;
 }
 
+
 .menu-opciones {
     background-color: #eedbb6; 
     border-radius: 15px;
-    padding: 8px 25px;
-    width: fit-content;
+    padding: 10px 25px;
+    width: fit-content; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -58,8 +80,9 @@
     display: flex;
     list-style: none;
     gap: 30px;
-    margin: 0;
-    padding: 0;
+    margin: 0; 
+    padding: 0; 
+    justify-content: center;
 }
 
 .menu-opciones li {
@@ -72,7 +95,7 @@
 }
 
 .menu-opciones img {
-    width: 18px; /* Tamaño de los iconos pequeñitos del menú */
+    width: 18px; 
     height: 18px;
 }
 
@@ -80,21 +103,36 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: hsl(40, 59%, 84%); /* Por si la imagen no carga */
+    background: #fff; 
 }
 
-body {
-    background: linear-gradient(135deg, rgba(231, 159, 71, 0.8) 0%, rgba(244, 220, 179, 0.8) 100%), url('imageness/Fondo_pant.jpg');
-    background-size: cover; 
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 20px;
-    color: #333;
+/*uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu*/
+
+.navbar {
+    width: 100%;
+    max-width: 1400px;
+    margin-bottom: 20px;
+}
+
+main {
+    background: #F1DEAF;
+    padding: 2.5rem;
+    border-radius: 4px;
+    border: 3px solid #9D6934;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    max-width: 450px;
     position: relative;
-}                             
+    outline: 1px solid rgba(255,255,255,0.5);
+    outline-offset: -5px;
+}
+
+h2 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #C21514;
+    font-weight: 800;
+    text-transform: uppercase;
+    border-bottom: 2px solid #9D6934;
+    width: 100;
+}
