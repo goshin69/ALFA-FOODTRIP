@@ -6,7 +6,7 @@
 }
 
 body {
-    background: linear-gradient(135deg, rgba(231, 159, 71, 0.8) 0%, rgba(244, 220, 179, 0.8) 100%), url('imageness/Fondo_pant.jpg');
+    background: linear-gradient(135deg, rgba(255, 231, 170, 0.8) 0%, rgba(255, 224, 172, 0.838) 100%), url('imageness/fondoComi.jpg');
     background-size: cover; 
     background-position: center;
     background-repeat: no-repeat;
@@ -16,15 +16,14 @@ body {
     flex-direction: column;
     align-items: center; 
     color: #333;
-    padding-top: 220px; 
+    padding-top: 240px; 
     margin: 0;
 }
 
-/*uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu*/
 
 .header-rojo {
-    background-color: #973a3a; 
-    padding: 18px 0;
+    background-color: #d64040; 
+    padding: 20px 0;
     position: fixed; 
     top: 0;
     left: 0;
@@ -32,7 +31,7 @@ body {
     width: 100%; 
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; 
     gap: 20px;
 }
 
@@ -40,14 +39,16 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 95%;
-    max-width: 1400px;
+    width: 90%;
+    max-width: 1200px;
 }
 
 .logo-contenedor img {
-    height: 68px; 
+    height: 60px; 
     width: auto;
 }
+
+/*uuuuuuuuuuuuuuuuuuuuuuuuuuuuu*/
 
 .search-bar {
     background: white;
@@ -65,24 +66,27 @@ body {
     width: 100%;
     padding: 8px;
     font-size: 16px;
+    align-items: center;
 }
 
 
 .menu-opciones {
     background-color: #eedbb6; 
     border-radius: 15px;
-    padding: 10px 25px;
-    width: fit-content; 
+    padding: 10px 30px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    width: fit-content;
 }
 
 .menu-opciones ul {
     display: flex;
     list-style: none;
-    gap: 30px;
-    margin: 0; 
-    padding: 0; 
-    justify-content: center;
+    gap: 25px;
+    margin: 0 !important; 
+    padding: 0 !important; 
+    align-items: center;
 }
 
 .menu-opciones li {
@@ -92,47 +96,52 @@ body {
     font-weight: bold;
     font-size: 14px;
     cursor: pointer;
+    color: #5d3a3a;
 }
 
 .menu-opciones img {
-    width: 18px; 
-    height: 18px;
+    width: 20px; 
+    height: 20px;
+}
+
+/*uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu*/
+
+.btn-publicar {
+    background-color: #C21514;
+    color: #F1DEAF;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border-bottom: 4px solid #9D6934;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.2s;
+}
+
+.btn-publicar:hover {
+    background-color: #ff7c3fe7;
+    color: white;
+    transform: translateY(-2px);
 }
 
 .user-icon img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: #fff; 
+    border: 2px solid #eedbb6;
 }
 
-/*uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu*/
-
-.navbar {
-    width: 100%;
-    max-width: 1400px;
-    margin-bottom: 20px;
-}
 
 main {
     background: #F1DEAF;
     padding: 2.5rem;
-    border-radius: 4px;
+    border-radius: 10px;
     border: 3px solid #9D6934;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    width: 100%;
-    max-width: 450px;
-    position: relative;
-    outline: 1px solid rgba(255,255,255,0.5);
-    outline-offset: -5px;
-}
-
-h2 {
-    margin-bottom: 1.5rem;
-    text-align: center;
-    color: #C21514;
-    font-weight: 800;
-    text-transform: uppercase;
-    border-bottom: 2px solid #9D6934;
-    width: 100;
+    width: 95%;
+    max-width: 500px;
 }
