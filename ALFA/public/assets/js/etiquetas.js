@@ -69,34 +69,51 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function crearNuevaEtiqueta(nombre) {
-    const formData = new FormData();
-    formData.append('nombre', nombre);
+        const formData = new FormData();
+        formData.append('nombre', nombre);
 
-    fetch('api/crear_etiqueta.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(async response => {
-        const text = await response.text();
-        console.log('Respuesta del servidor:', text);
-        try {
-            return JSON.parse(text);
-        } catch (e) {
-            throw new Error('Respuesta no JSON: ' + text);
-        }
-    })
-    .then(data => {
-        if (data.ok) {
-            agregarEtiqueta(data.id, data.nombre);
-        } else {
-            alert('Error: ' + data.error);
-        }
-    })
-    .catch(error => {
-        console.error('Error detallado:', error);
-        alert('Error de conexión al crear etiqueta. Revisa la consola (F12) para más detalles.');
-    });
-}
+        fetch('api/crear_etiqueta.php', {
+            method: 'POST',
+            credentials: 'include',
+            body: formData
+        })
+        .then(async response => {
+            const text = await response.text();
+            console.log('Respuesta del servidor:', text);
+            try {
+                return JSON.parse(text);
+            } catch (e) {
+                throw new Error('Respuesta no JSON: ' + text);
+            }
+        })
+        .then(data => {
+            if (data.ok) {
+                agregarEtiqueta(data.id, data.nombre);
+            } else {
+                const mensajeDiv = document.getElementById('mensaje');
+                if (mensajeDiv) {
+                    mensajeDiv.innerHTML = 'Error: ' + data.error;
+                    mensajeDiv.className = 'mensaje error';
+                    mensajeDiv.style.display = 'block';
+                    setTimeout(() => mensajeDiv.style.display = 'none', 5000);
+                } else {
+                    alert('Error: ' + data.error);
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Error detallado:', error);
+            const mensajeDiv = document.getElementById('mensaje');
+            if (mensajeDiv) {
+                mensajeDiv.innerHTML = 'Debes <a href="login.html">iniciar sesión</a> para crear etiquetas.';
+                mensajeDiv.className = 'mensaje error';
+                mensajeDiv.style.display = 'block';
+                setTimeout(() => mensajeDiv.style.display = 'none', 5000);
+            } else {
+                alert('Error de conexión al crear etiqueta. Revisa la consola (F12) para más detalles.');
+            }
+        });
+    }
 
     input.addEventListener('input', function() {
         const termino = this.value.trim();

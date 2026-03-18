@@ -5,9 +5,9 @@ window.addEventListener('load', function() {
             loader.style.opacity = '0';
             setTimeout(() => {
                 loader.style.visibility = 'hidden';
-            }, 800);
+            }, 300);
         }
-    }, 500);
+    }, 200);
 });
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -22,8 +22,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const imagenesPreview = document.getElementById('imagenes-preview');
 
     function mostrarMensaje(texto, tipo) {
-        mensajeDiv.textContent = texto;
+        mensajeDiv.innerHTML = texto;
         mensajeDiv.className = `mensaje ${tipo}`;
+        mensajeDiv.style.display = 'block';
         setTimeout(() => {
             mensajeDiv.style.display = 'none';
         }, 5000);
@@ -66,13 +67,23 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Verificar sesión al cargar la página
+    fetch('api/verificar_sesion.php', { credentials: 'include' })
+    .then(response => response.json())
+    .then(data => {
+        if (!data.logueado) {
+            mostrarMensaje('Debes iniciar sesión para publicar una receta. <a href="login.html" style="color: #721c24; font-weight: bold;">Inicia sesión aquí</a>', 'error');
+            document.querySelectorAll('#recetaForm input, #recetaForm textarea, #recetaForm button[type="submit"]').forEach(el => el.disabled = true);
+            const etiquetaInput = document.getElementById('etiqueta-input');
+            if (etiquetaInput) etiquetaInput.disabled = true;
+        }
+    })
+    .catch(error => console.error('Error al verificar sesión:', error));
+
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
 
-        // Limpiar mensaje anterior
         mensajeDiv.style.display = 'none';
-        mensajeDiv.textContent = '';
-
         btnPublicar.disabled = true;
         btnText.style.display = 'none';
         btnLoader.style.display = 'inline';
@@ -82,6 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             const response = await fetch('api/crear_receta.php', {
                 method: 'POST',
+                credentials: 'include',
                 body: formData
             });
 
@@ -115,4 +127,49 @@ document.addEventListener('DOMContentLoaded', function() {
             btnLoader.style.display = 'none';
         }
     });
+
+(function() {
+    const header = document.querySelector('header');
+    if (!header) return;
+
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+    let rafId = null;
+    const SCROLL_THRESHOLD = 100;     
+    const DIRECTION_THRESHOLD = 100;   
+
+    function updateHeader() {
+        const currentScrollY = window.scrollY;
+        const delta = currentScrollY - lastScrollY;
+
+        if (Math.abs(delta) < DIRECTION_THRESHOLD) {
+            ticking = false;
+            return;
+        }
+
+        if (currentScrollY > SCROLL_THRESHOLD && delta > 0) {
+            header.classList.add('header-shrink');
+        } else if (delta < 0 || currentScrollY <= SCROLL_THRESHOLD) {
+            header.classList.remove('header-shrink');
+        }
+
+        lastScrollY = currentScrollY;
+        ticking = false;
+    }
+
+    function onScroll() {
+        if (!ticking) {
+            rafId = requestAnimationFrame(updateHeader);
+            ticking = true;
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    window.addEventListener('beforeunload', function() {
+        if (rafId) cancelAnimationFrame(rafId);
+        window.removeEventListener('scroll', onScroll);
+    });
+    header.classList.remove('header-shrink');
+})();
 });

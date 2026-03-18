@@ -5,7 +5,7 @@
     <title>Crear Receta - Koalicius</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/crear_receta.css">
+    <link rel="stylesheet" href="assets/css/crear_receta.css?v=3.0">
 </head>
 <body>
     <div id="loader-wrapper">
@@ -13,31 +13,33 @@
     </div>
 
     <header>
-        <div class="logo">
-            <i class="fa-solid fa-utensils"></i>
-            <span>Koalicius</span>
+        <div class="header-top">
+            <div class="logo">
+                <i class="fa-solid fa-utensils"></i>
+                <span>Koalicius</span>
+            </div>
+            <div class="search-bar">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" placeholder="Buscar recetas...">
+            </div>
+            <div class="user-profile">
+                <i class="fa-solid fa-user"></i>
+            </div>
         </div>
-        <div class="search-bar">
-            <i class="fa-solid fa-search"></i>
-            <input type="text" placeholder="Buscar recetas...">
-        </div>
-        <div class="user-profile">
-            <i class="fa-solid fa-user"></i>
-        </div>
+        <nav id="main-nav" class="header-nav">
+            <a href="index.html" class="nav-item"><i class="fa-solid fa-house"></i> Inicio</a>
+            <a href="tendencia.html" class="nav-item"><i class="fa-solid fa-fire"></i> Tendencia</a>
+            <a href="videos.html" class="nav-item"><i class="fa-solid fa-play"></i> Videos</a>
+            <a href="notificacion.html" class="nav-item"><i class="fa-solid fa-bell"></i> Notificación</a>
+            <a href="crear_receta.html" class="nav-item active"><i class="fa-solid fa-utensils"></i> Crear Receta</a>
+            <a href="configuracion.html" class="nav-item"><i class="fa-solid fa-gear"></i> Configuración</a>
+        </nav>
     </header>
 
-    <nav id="main-nav">
-        <a href="index.html" class="nav-item"><i class="fa-solid fa-house"></i> Inicio</a>
-        <a href="tendencia.html" class="nav-item"><i class="fa-solid fa-fire"></i> Tendencia</a>
-        <a href="videos.html" class="nav-item"><i class="fa-solid fa-play"></i> Videos</a>
-        <a href="notificacion.html" class="nav-item"><i class="fa-solid fa-bell"></i> Notificación</a>
-        <a href="crear_receta.html" class="nav-item active"><i class="fa-solid fa-utensils"></i> Crear Receta</a>
-        <a href="configuracion.html" class="nav-item"><i class="fa-solid fa-gear"></i> Configuración</a>
-    </nav>
-    
     <main class="form-container">
         <h2 class="form-title">Nueva Video-Receta</h2>
-        
+        <div id="mensaje" class="mensaje"></div>
+
         <form id="recetaForm" enctype="multipart/form-data">
             <div class="input-group">
                 <label for="titulo">Título de la receta:</label>
@@ -78,11 +80,10 @@
                 <span class="btn-text">Publicar Receta</span>
                 <span class="btn-loader" style="display: none;">Publicando...</span>
             </button>
-            <div id="mensaje" class="mensaje"></div>
         </form>
     </main>
 
-    <script src="assets/js/etiquetas.js"></script>
-    <script src="assets/js/crear_receta.js"></script>
+    <script src="assets/js/etiquetas.js?v=3.0"></script>
+    <script src="assets/js/crear_receta.js?v=3.0"></script>
 </body>
 </html>
