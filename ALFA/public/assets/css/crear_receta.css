@@ -1,14 +1,36 @@
 :root {
-    --bg-color: #FDF6F0;
-    --header-bg: #E6A2A2;
-    --text-dark: #333333;
-    --text-light: #666666;
-    --white: #FFFFFF;
-    --accent: #D9534F;
-    --card-bg: #F5EAE1;
+    /* Colores principales */
+    --bg-color: #eedbb6;                /* Fondo general (antes --bg-color y --card-bg) */
+    --header-bg: #d64040;                /* Barra superior */
+    --text-dark: #333333;                 /* Texto principal */
+    --text-light: #666666;                /* Texto secundario */
+    --white: #ffffff;                      /* Fondo de contenedores (formulario) */
+    --accent: #000000;                      /* Color de acento (negro) */
+
+    /* Colores de interfaz */
+    --input-border: #eeeeee;                /* Borde de inputs */
+    --input-bg: #fafafa;                     /* Fondo de upload-box */
+    --input-hover-bg: #f5f5f5;               /* Fondo hover de upload-box */
+    --sugerencia-border: #dddddd;            /* Borde de sugerencias */
+    --nav-bg: #ffffff;                         /* Fondo del menú de navegación */
+
+    /* Variables compartidas para botones principales */
+    --btn-bg: var(--accent);                   /* Fondo normal de botones (negro) */
+    --btn-hover-bg: #e86c00;                   /* Fondo al pasar el ratón (rojo) */
+    --btn-text: #ffffff;                         /* Color del texto (blanco) */
+
+    /* Mensajes */
+    --success-bg: #d4edda;
+    --success-text: #155724;
+    --success-border: #28a745;
+    --error-bg: #f8d7da;
+    --error-text: #721c24;
+    --error-border: #dc3545;
+
+    /* Transiciones */
     --transition-fast: 0.3s ease;
     --transition-slow: 0.5s ease;
-    --header-gap: 15px;        /* Variable para el espacio entre elementos superiores */
+    --header-gap: 15px;
 }
 
 * {
@@ -19,7 +41,12 @@
 }
 
 body {
-    background-color: var(--bg-color);
+    background: linear-gradient(135deg, rgba(255, 231, 170, 0.8) 0%, rgba(255, 224, 172, 0.838) 100%), url('../../imageness/fondoComi.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
     color: var(--text-dark);
     overflow-x: hidden;
 }
@@ -40,7 +67,7 @@ body {
 }
 
 .loader {
-    border: 5px solid var(--card-bg);
+    border: 5px solid var(--bg-color);
     border-top: 5px solid var(--header-bg);
     border-radius: 50%;
     width: 50px;
@@ -62,17 +89,16 @@ header {
     top: 0;
     z-index: 100;
     display: grid;
-    grid-template-rows: auto auto; /* Dos filas: superior y menú */
-    gap: var(--header-gap);        /* Espacio entre filas (usa la misma variable) */
+    grid-template-rows: auto auto;
+    gap: var(--header-gap);
     transition: grid-template-rows 0.3s ease, padding 0.3s ease;
 }
 
-/* Fila superior: logo, buscador, perfil */
 .header-top {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Distribución: izquierda, centro, derecha */
-    gap: var(--header-gap);          /* Espacio entre ellos */
+    justify-content: space-between;
+    gap: var(--header-gap);
 }
 
 .logo {
@@ -92,7 +118,7 @@ header {
 }
 
 .search-bar {
-    flex: 1 1 300px;                /* Ocupa el espacio disponible */
+    flex: 1 1 300px;
     min-width: 200px;
     max-width: 500px;
     position: relative;
@@ -137,29 +163,28 @@ header {
 
 .user-profile:hover {
     transform: scale(1.1);
-    background-color: #000;
+    background-color: var(--accent);
 }
 
-/* ===== NAVEGACIÓN (segunda fila) ===== */
+/* ===== NAVEGACIÓN ===== */
 .header-nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
-    background: white;
+    background: var(--nav-bg);
     padding: 12px 20px;
     border-radius: 20px 20px 0 0;
     max-width: 700px;
     width: 90%;
     box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
-    justify-self: center;           /* Centra el menú horizontalmente */
-    overflow: hidden;               /* Para que al colapsar no se vea */
+    justify-self: center;
+    overflow: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease, padding 0.3s ease;
 }
 
-/* Cuando el header se encoge, la segunda fila se colapsa y el menú se oculta */
 header.header-shrink {
-    grid-template-rows: auto 0fr;   /* Segunda fila con altura cero */
+    grid-template-rows: auto 0fr;
 }
 
 header.header-shrink .header-nav {
@@ -169,7 +194,6 @@ header.header-shrink .header-nav {
     padding-bottom: 0;
 }
 
-/* Ajustes para pantallas grandes */
 @media (min-width: 1080px) {
     .header-nav {
         max-width: 900px;
@@ -215,7 +239,7 @@ header.header-shrink .header-nav {
 }
 
 .nav-item.active {
-    background-color: var(--card-bg);
+    background-color: var(--bg-color);
     color: var(--accent);
 }
 
@@ -223,7 +247,7 @@ header.header-shrink .header-nav {
     width: 0;
 }
 
-/* ===== MAIN Y FORMULARIO (sin cambios) ===== */
+/* ===== MAIN Y FORMULARIO ===== */
 main {
     padding: 20px 60px;
     animation: fadeIn 1s ease forwards;
@@ -266,7 +290,7 @@ main {
 .input-group input[type="file"] {
     width: 100%;
     padding: 12px;
-    border: 2px solid #EEE;
+    border: 2px solid var(--input-border);
     border-radius: 10px;
     font-size: 16px;
     outline: none;
@@ -289,12 +313,12 @@ main {
     text-align: center;
     border-radius: 10px;
     margin-bottom: 10px;
-    background: #FAFAFA;
+    background: var(--input-bg);
     transition: all var(--transition-fast);
 }
 
 .upload-box:hover {
-    background: #F5F5F5;
+    background: var(--input-hover-bg);
     border-color: var(--accent);
 }
 
@@ -302,42 +326,43 @@ input[type="file"] {
     display: none;
 }
 
-.btn-subir {
-    background: var(--header-bg);
-    padding: 10px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    display: inline-block;
+/* ===== BOTONES COMPARTIDOS ===== */
+.btn-subir,
+.btn-submit {
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    border: none;
     font-weight: bold;
-    margin-top: 10px;
+    cursor: pointer;
     transition: all var(--transition-fast);
 }
 
-.btn-subir:hover {
-    background: var(--accent);
-    color: white;
-    transform: translateY(-2px);
+.btn-subir {
+    padding: 10px 20px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-top: 10px;
 }
 
 .btn-submit {
     width: 100%;
     padding: 15px;
-    background: var(--accent);
-    color: var(--white);
-    border: none;
     border-radius: 10px;
     font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
     margin-top: 20px;
-    transition: all var(--transition-fast);
     position: relative;
     overflow: hidden;
 }
 
+/* Hover compartido */
+.btn-subir:hover,
 .btn-submit:hover {
-    background: #c9302c;
+    background: var(--btn-hover-bg);
     transform: translateY(-2px);
+}
+
+/* Efectos adicionales solo para .btn-submit */
+.btn-submit:hover {
     box-shadow: 0 5px 15px rgba(217, 83, 79, 0.3);
 }
 
@@ -385,15 +410,15 @@ input[type="file"] {
 }
 
 .mensaje.success {
-    background: #d4edda;
-    color: #155724;
-    border-left-color: #28a745;
+    background: var(--success-bg);
+    color: var(--success-text);
+    border-left-color: var(--success-border);
 }
 
 .mensaje.error {
-    background: #f8d7da;
-    color: #721c24;
-    border-left-color: #dc3545;
+    background: var(--error-bg);
+    color: var(--error-text);
+    border-left-color: var(--error-border);
 }
 
 .mensaje a {
@@ -410,7 +435,7 @@ input[type="file"] {
 #etiqueta-input {
     width: 100%;
     padding: 12px;
-    border: 2px solid #EEE;
+    border: 2px solid var(--input-border);
     border-radius: 10px;
     font-size: 16px;
     outline: none;
@@ -421,8 +446,8 @@ input[type="file"] {
     top: 100%;
     left: 0;
     right: 0;
-    background: white;
-    border: 1px solid #ddd;
+    background: var(--white);
+    border: 1px solid var(--sugerencia-border);
     border-radius: 0 0 10px 10px;
     max-height: 200px;
     overflow-y: auto;
@@ -433,12 +458,12 @@ input[type="file"] {
 .sugerencias div {
     padding: 10px;
     cursor: pointer;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--sugerencia-border);
 }
 
 .sugerencias div:hover,
 .sugerencias div.seleccionado {
-    background-color: var(--card-bg);
+    background-color: var(--bg-color);
 }
 
 .sugerencias .crear-nueva {
