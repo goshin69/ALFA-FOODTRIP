@@ -1,0 +1,211 @@
+:root {
+    --fondo: #eedbb6;
+    --rojo: #d64040;
+    --rojo-oscuro: #b32e2e;
+    --texto-oscuro: #2d1e1e;
+    --texto-claro: #5a3e3e;
+    --blanco: #ffffff;
+    --sombra: 0 15px 35px rgba(0, 0, 0, 0.2);
+    --borde-input: #e0c9a6;
+    --hover-rojo: #c03939;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, rgba(255, 231, 170, 0.9) 0%, rgba(255, 224, 172, 0.9) 100%), url('../../imageness/fondoComi.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.registro-wrapper {
+    width: 100%;
+    max-width: 550px;
+}
+
+.registro-card {
+    background: var(--blanco);
+    border-radius: 32px;
+    padding: 3rem 2.5rem;
+    box-shadow: var(--sombra);
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.registro-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.logo-registro {
+    height: 80px;
+    margin-bottom: 1rem;
+}
+
+.registro-header h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--texto-oscuro);
+    margin-bottom: 0.25rem;
+}
+
+.registro-header p {
+    color: var(--texto-claro);
+    font-weight: 400;
+    font-size: 1.1rem;
+}
+
+.registro-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.campo label {
+    font-weight: 700;
+    color: var(--texto-oscuro);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.campo label i {
+    color: var(--rojo);
+    font-size: 1.1rem;
+}
+
+.campo input,
+.campo select {
+    padding: 1rem 1.2rem;
+    border: 2px solid var(--borde-input);
+    border-radius: 18px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-color: #fefcf7;
+}
+
+/* Select más grande y con flecha personalizada */
+.campo select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%235a3e3e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 1.2rem center;
+    background-size: 1.2rem;
+    cursor: pointer;
+}
+
+.campo input:focus,
+.campo select:focus {
+    border-color: var(--rojo);
+    box-shadow: 0 0 0 4px rgba(214, 64, 64, 0.2);
+}
+
+.btn-registro {
+    background: var(--rojo);
+    color: white;
+    border: none;
+    padding: 1.2rem;
+    border-radius: 40px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 8px 20px rgba(214, 64, 64, 0.3);
+}
+
+.btn-registro:hover {
+    background: var(--rojo-oscuro);
+    transform: translateY(-2px);
+}
+
+.btn-registro:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-loader i {
+    margin-right: 6px;
+}
+
+.mensaje {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: 16px;
+    text-align: center;
+    font-weight: 600;
+    display: none;
+}
+
+.mensaje.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #a3d0b1;
+    display: block;
+}
+
+.mensaje.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f1b0b7;
+    display: block;
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1rem;
+    color: var(--texto-claro);
+}
+
+.login-link a {
+    color: var(--rojo);
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.login-link a:hover {
+    border-bottom-color: var(--rojo);
+}
+
+@media (max-width: 480px) {
+    .registro-card {
+        padding: 2rem 1.5rem;
+    }
+    .registro-header h1 {
+        font-size: 1.8rem;
+    }
+    .campo input,
+    .campo select {
+        padding: 0.9rem 1rem;
+    }
+    .btn-registro {
+        padding: 1rem;
+    }
+}

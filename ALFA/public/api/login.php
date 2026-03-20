@@ -34,3 +34,4 @@ if ($usuario && password_verify($password, $usuario['password'])) {
 http_response_code(401);
 echo json_encode(['ok' => false, 'error' => 'Email o contraseña incorrectos']);
 exit;
+?>

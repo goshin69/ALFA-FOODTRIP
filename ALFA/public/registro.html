@@ -1,32 +1,62 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Registro</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro · Koalicius</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/registro.css">
 </head>
 <body>
-  <main>
-    <h2>Registro de Usuario</h2>
-    <div id="error" style="color:red"></div>
-    <form id="registro-form">
-      <label>Nombre:</label><br>
-      <input type="text" name="nombre" required><br><br>
-      <label>Email:</label><br>
-      <input type="email" name="email" required><br><br>
-      <label>Contraseña:</label><br>
-      <input type="password" name="password" required><br><br>
-      <label>Tipo de cuenta:</label><br>
-      <select name="rol" required>
-        <option value="">Selecciona...</option>
-        <option value="usuario">Usuario normal</option>
-        <option value="restaurante">Restaurante</option>
-      </select><br><br>
-      <button type="submit">Registrarse</button>
-    </form>
-    <p>¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
-  </main>
-  <script src="assets/js/registro.js"></script>
+    <div class="registro-wrapper">
+        <div class="registro-card">
+            <div class="registro-header">
+                <img src="imageness/Koalii.png" alt="Koalicius" class="logo-registro">
+                <h1>Únete a Koalicius</h1>
+                <p>Comparte tus recetas con la comunidad</p>
+            </div>
+
+            <form id="registro-form" class="registro-form">
+                <div class="campo">
+                    <label for="nombre"><i class="fa-regular fa-user"></i> Nombre completo</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ej. Juan Pérez" required>
+                </div>
+
+                <div class="campo">
+                    <label for="email"><i class="fa-regular fa-envelope"></i> Correo electrónico</label>
+                    <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+                </div>
+
+                <div class="campo">
+                    <label for="password"><i class="fa-regular fa-lock"></i> Contraseña</label>
+                    <input type="password" id="password" name="password" placeholder="Mínimo 6 caracteres, 2 números, 1 carácter especial" required>
+                </div>
+
+                <div class="campo">
+                    <label for="confirm_password"><i class="fa-regular fa-lock"></i> Confirmar contraseña</label>
+                    <input type="password" id="confirm_password" name="confirm_password" placeholder="Repite la contraseña" required>
+                </div>
+
+                <div class="campo">
+                    <label for="rol"><i class="fa-regular fa-store"></i> Tipo de cuenta</label>
+                    <select id="rol" name="rol" required>
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="usuario">Usuario normal</option>
+                        <option value="restaurante">Restaurante</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-registro" id="btnRegistro">
+                    <span class="btn-text">Crear cuenta</span>
+                    <span class="btn-loader" style="display: none;"><i class="fa-solid fa-circle-notch fa-spin"></i> Registrando...</span>
+                </button>
+            </form>
+
+            <div id="mensaje" class="mensaje"></div>
+            <div class="login-link">¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></div>
+        </div>
+    </div>
+    <script src="assets/js/registro.js"></script>
 </body>
 </html>
