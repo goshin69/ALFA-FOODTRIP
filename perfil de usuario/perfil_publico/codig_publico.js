@@ -38,6 +38,7 @@ btnSeguir.addEventListener("click", function() {
             // Botones guardar y cancelar
             const saveButton = document.querySelector('.btn-save');
             const cancelButton = document.querySelector('.btn-cancel');
+            const exitButton = document.querySelector('.exit-button');
 
             // Variable para almacenar la nueva foto seleccionada (objeto File)
             let selectedPhotoFile = null;
@@ -181,6 +182,11 @@ btnSeguir.addEventListener("click", function() {
             saveButton.addEventListener('click', saveChanges);
             cancelButton.addEventListener('click', closeEditPanel);
             overlay.addEventListener('click', closeEditPanel);
+
+            // Salir del perfil
+            exitButton.addEventListener('click', function() {
+                window.history.back();
+            });
         });
     
 
