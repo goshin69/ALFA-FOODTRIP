@@ -21,6 +21,7 @@ btnSeguir.addEventListener("click", function() {
             
             // Botón editar
             const editButton = document.querySelector('.btn-edit');
+            const uploadButton = document.querySelector('.btn-upload');
             
             // Panel y overlay
             const editPanel = document.querySelector('.edit-panel');
@@ -61,9 +62,11 @@ btnSeguir.addEventListener("click", function() {
             // Mostrar/ocultar botones según el modo
             if (isOwnProfile) {
                 editButton.style.display = 'inline-block';
+                uploadButton.style.display = 'inline-block';
                 btnSeguir.style.display = 'none';
             } else {
                 editButton.style.display = 'none';
+                uploadButton.style.display = 'none';
                 btnSeguir.style.display = 'inline-block';
                 // Lógica para el botón seguir en perfil visitante
                 btnSeguir.addEventListener('click', function() {
@@ -187,6 +190,10 @@ btnSeguir.addEventListener("click", function() {
             exitButton.addEventListener('click', function() {
                 window.history.back();
             });
-        });
-    
 
+            // Cargar datos del perfil
+            loadProfileData();
+
+            // Cargar contadores
+            loadCounters();
+        });
