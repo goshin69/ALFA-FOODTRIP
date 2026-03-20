@@ -1,13 +1,13 @@
 
-const btn = document.getElementById("btnSeguir");
+const btnSeguir = document.getElementById("btnSeguir");
 
-btn.addEventListener("click", function() {
-    if (!btn.classList.contains("siguiendo")) {
-        btn.classList.add("siguiendo");
-        btn.innerText = "Siguiendo";
+btnSeguir.addEventListener("click", function() {
+    if (!btnSeguir.classList.contains("siguiendo")) {
+        btnSeguir.classList.add("siguiendo");
+        btnSeguir.innerText = "Siguiendo";
     } else {
-        btn.classList.remove("siguiendo");
-        btn.innerText = "Seguir";
+        btnSeguir.classList.remove("siguiendo");
+        btnSeguir.innerText = "Seguir";
     }
 });
 
