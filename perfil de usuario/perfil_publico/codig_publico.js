@@ -1,13 +1,13 @@
 
-const btnSeguir = document.getElementById("btnSeguir");
+const btn = document.getElementById("btnSeguir");
 
-btnSeguir.addEventListener("click", function() {
-    if (!btnSeguir.classList.contains("siguiendo")) {
-        btnSeguir.classList.add("siguiendo");
-        btnSeguir.innerText = "Siguiendo";
+btn.addEventListener("click", function() {
+    if (!btn.classList.contains("siguiendo")) {
+        btn.classList.add("siguiendo");
+        btn.innerText = "Siguiendo";
     } else {
-        btnSeguir.classList.remove("siguiendo");
-        btnSeguir.innerText = "Seguir";
+        btn.classList.remove("siguiendo");
+        btn.innerText = "Seguir";
     }
 });
 
@@ -21,7 +21,6 @@ btnSeguir.addEventListener("click", function() {
             
             // Botón editar
             const editButton = document.querySelector('.btn-edit');
-            const uploadButton = document.querySelector('.btn-upload');
             
             // Panel y overlay
             const editPanel = document.querySelector('.edit-panel');
@@ -39,7 +38,6 @@ btnSeguir.addEventListener("click", function() {
             // Botones guardar y cancelar
             const saveButton = document.querySelector('.btn-save');
             const cancelButton = document.querySelector('.btn-cancel');
-            const exitButton = document.querySelector('.exit-button');
 
             // Variable para almacenar la nueva foto seleccionada (objeto File)
             let selectedPhotoFile = null;
@@ -62,11 +60,9 @@ btnSeguir.addEventListener("click", function() {
             // Mostrar/ocultar botones según el modo
             if (isOwnProfile) {
                 editButton.style.display = 'inline-block';
-                uploadButton.style.display = 'inline-block';
                 btnSeguir.style.display = 'none';
             } else {
                 editButton.style.display = 'none';
-                uploadButton.style.display = 'none';
                 btnSeguir.style.display = 'inline-block';
                 // Lógica para el botón seguir en perfil visitante
                 btnSeguir.addEventListener('click', function() {
@@ -185,15 +181,6 @@ btnSeguir.addEventListener("click", function() {
             saveButton.addEventListener('click', saveChanges);
             cancelButton.addEventListener('click', closeEditPanel);
             overlay.addEventListener('click', closeEditPanel);
-
-            // Salir del perfil
-            exitButton.addEventListener('click', function() {
-                window.history.back();
-            });
-
-            // Cargar datos del perfil
-            loadProfileData();
-
-            // Cargar contadores
-            loadCounters();
         });
+    
+
