@@ -1,13 +1,13 @@
 
-const btn = document.getElementById("btnSeguir");
+const btnSeguir = document.getElementById("btnSeguir");
 
-btn.addEventListener("click", function() {
-    if (!btn.classList.contains("siguiendo")) {
-        btn.classList.add("siguiendo");
-        btn.innerText = "Siguiendo";
+btnSeguir.addEventListener("click", function() {
+    if (!btnSeguir.classList.contains("siguiendo")) {
+        btnSeguir.classList.add("siguiendo");
+        btnSeguir.innerText = "Siguiendo";
     } else {
-        btn.classList.remove("siguiendo");
-        btn.innerText = "Seguir";
+        btnSeguir.classList.remove("siguiendo");
+        btnSeguir.innerText = "Seguir";
     }
 });
 
@@ -38,6 +38,7 @@ btn.addEventListener("click", function() {
             // Botones guardar y cancelar
             const saveButton = document.querySelector('.btn-save');
             const cancelButton = document.querySelector('.btn-cancel');
+            const exitButton = document.querySelector('.exit-button');
 
             // Variable para almacenar la nueva foto seleccionada (objeto File)
             let selectedPhotoFile = null;
@@ -181,6 +182,11 @@ btn.addEventListener("click", function() {
             saveButton.addEventListener('click', saveChanges);
             cancelButton.addEventListener('click', closeEditPanel);
             overlay.addEventListener('click', closeEditPanel);
+
+            // Salir del perfil
+            exitButton.addEventListener('click', function() {
+                window.history.back();
+            });
         });
     
 
