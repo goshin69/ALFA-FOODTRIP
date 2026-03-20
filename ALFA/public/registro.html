@@ -29,22 +29,25 @@
                 </div>
 
                 <div class="campo">
-                    <label for="password"><i class="fa-regular fa-lock"></i> Contraseña</label>
+                    <label for="password"><i class="fa-solid fa-lock fa-2x"></i> Contraseña</label>
                     <input type="password" id="password" name="password" placeholder="Mínimo 6 caracteres, 2 números, 1 carácter especial" required>
                 </div>
 
                 <div class="campo">
-                    <label for="confirm_password"><i class="fa-regular fa-lock"></i> Confirmar contraseña</label>
+                    <label for="confirm_password"><i class="fa-solid fa-lock fa-2x"></i> Confirmar contraseña</label>
                     <input type="password" id="confirm_password" name="confirm_password" placeholder="Repite la contraseña" required>
                 </div>
 
                 <div class="campo">
-                    <label for="rol"><i class="fa-regular fa-store"></i> Tipo de cuenta</label>
-                    <select id="rol" name="rol" required>
-                        <option value="" disabled selected>Selecciona una opción</option>
-                        <option value="usuario">Usuario normal</option>
-                        <option value="restaurante">Restaurante</option>
-                    </select>
+                    <label for="rol"><i class="fa-regular fa-envelope"></i> Tipo de cuenta</label>
+                    <div class="custom-select" id="custom-select">
+                        <div class="select-selected" data-value="">Selecciona una opción</div>
+                        <div class="select-items">
+                            <div data-value="usuario">Usuario normal</div>
+                            <div data-value="restaurante">Restaurante</div>
+                        </div>
+                        <input type="hidden" name="rol" id="rol" required>
+                    </div>
                 </div>
 
                 <button type="submit" class="btn-registro" id="btnRegistro">
