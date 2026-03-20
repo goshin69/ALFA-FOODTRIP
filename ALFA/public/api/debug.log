@@ -492,3 +492,67 @@
 [2026-03-18 20:35:03] Usuario ID: 4
 [2026-03-18 20:35:03] Título: puto, Descripción: hisjdf'ohs, Etiquetas: 1
 [2026-03-18 20:35:03] Palabras prohibidas detectadas
+[2026-03-20 14:35:26] Inicio de crear_receta.php
+[2026-03-20 14:35:26] Includes cargados
+[2026-03-20 14:35:26] Usuario ID: 4
+[2026-03-20 14:35:26] Título: puto, Descripción: verga, Etiquetas: 1
+[2026-03-20 14:35:26] Palabras prohibidas detectadas
+[2026-03-20 15:49:06] Inicio de crear_receta.php
+[2026-03-20 15:49:06] Includes cargados
+[2026-03-20 15:49:06] Usuario ID: 4
+[2026-03-20 15:49:06] Título: Posole, Descripción: Con, Etiquetas: 15,16,17
+[2026-03-20 15:49:06] Files: Array
+(
+    [imagenes] => Array
+        (
+            [name] => Array
+                (
+                    [0] => 
+                )
+
+            [full_path] => Array
+                (
+                    [0] => 
+                )
+
+            [type] => Array
+                (
+                    [0] => 
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => 
+                )
+
+            [error] => Array
+                (
+                    [0] => 4
+                )
+
+            [size] => Array
+                (
+                    [0] => 0
+                )
+
+        )
+
+    [video] => Array
+        (
+            [name] => 
+            [full_path] => 
+            [type] => 
+            [tmp_name] => 
+            [error] => 4
+            [size] => 0
+        )
+
+)
+
+[2026-03-20 15:49:06] Insertando receta
+[2026-03-20 15:49:06] Receta ID: 24
+[2026-03-20 15:49:06] Etiqueta 15 asociada
+[2026-03-20 15:49:06] Etiqueta 16 asociada
+[2026-03-20 15:49:06] Etiqueta 17 asociada
+[2026-03-20 15:49:06] Carpeta creada: C:\xampp\htdocs\ALFA\public\api/../../uploads/comidas/24/
+[2026-03-20 15:49:06] Commit exitoso

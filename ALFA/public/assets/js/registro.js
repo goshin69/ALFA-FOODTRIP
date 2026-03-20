@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Custom dropdown
     const customSelect = document.getElementById('custom-select');
     if (customSelect) {
         const selected = customSelect.querySelector('.select-selected');
@@ -19,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 const text = this.textContent;
                 selected.textContent = text;
                 hiddenInput.value = value;
-                // Quitar selección previa
                 items.forEach(i => i.classList.remove('same-as-selected'));
                 this.classList.add('same-as-selected');
                 itemsContainer.classList.remove('show');
@@ -27,14 +25,11 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        // Cerrar al hacer clic fuera
         document.addEventListener('click', function() {
             itemsContainer.classList.remove('show');
             selected.classList.remove('select-arrow-active');
         });
     }
-
-    // Resto del código (validaciones y envío)
     const form = document.getElementById('registro-form');
     const btnRegistro = document.getElementById('btnRegistro');
     const btnText = btnRegistro.querySelector('.btn-text');
@@ -67,8 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
-
-        // Validar que se haya seleccionado un rol
         const rolInput = document.getElementById('rol');
         if (!rolInput.value) {
             mostrarMensaje('Debes seleccionar un tipo de cuenta.', 'error');
