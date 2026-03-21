@@ -556,3 +556,100 @@
 [2026-03-20 15:49:06] Etiqueta 17 asociada
 [2026-03-20 15:49:06] Carpeta creada: C:\xampp\htdocs\ALFA\public\api/../../uploads/comidas/24/
 [2026-03-20 15:49:06] Commit exitoso
+[2026-03-21 01:27:33] Inicio de crear_receta.php
+Nueva receta publicada ID: 25
+Carpeta creada: C:\xampp\htdocs\ALFA\public\api/../../uploads/comidas/25/
+Procesando 12 archivos
+Archivo: Captura de pantalla 2026-02-12 090452.png, MIME: image/png, Ext: png
+Imagen guardada: /uploads/comidas/25/69bde5f5d6ae3_4_1774052853.png
+Archivo: Captura de pantalla 2026-02-12 090520.png, MIME: image/png, Ext: png
+Imagen guardada: /uploads/comidas/25/69bde5f5d7055_4_1774052853.png
+Archivo: Captura de pantalla 2026-02-12 091125.png, MIME: image/png, Ext: png
+Imagen guardada: /uploads/comidas/25/69bde5f5d74c8_4_1774052853.png
+Archivo: Captura de pantalla 2026-02-12 082817.png, MIME: image/png, Ext: png
+Imagen guardada: /uploads/comidas/25/69bde5f5d7d1e_4_1774052853.png
+Archivo: Captura de pantalla 2026-02-12 090429.png, MIME: image/png, Ext: png
+Imagen guardada: /uploads/comidas/25/69bde5f5d8058_4_1774052853.png
+Archivo: 2026-03-17 23-14-54.mkv, MIME: video/x-matroska, Ext: mkv
+Video guardado: /uploads/comidas/25/69bde5f646a45_4_1774052854.mkv
+Archivo: Captura de pantalla 2026-02-12 090452.png, MIME: image/png, Ext: png
+EXCEPCIÓN: Solo se permiten 5 imágenes por receta
+#0 {main}
+Carpeta eliminada por error
+[2026-03-21 01:27:49] Inicio de guardar_borrador.php
+Nuevo borrador creado ID: 26
+[2026-03-21 01:27:51] Inicio de guardar_borrador.php
+Borrador actualizado ID: 26
+[2026-03-21 01:30:49] Inicio de crear_receta.php
+Nueva receta publicada ID: 27
+Carpeta creada: C:\xampp\htdocs\ALFA\public\api/../../uploads/comidas/27/
+Procesando 10 archivos
+Archivo: Captura de pantalla 2026-02-12 082817.png, MIME: image/png, Ext: png
+Imagen guardada: /uploads/comidas/27/69bde6b98ae11_4_1774053049.png
+Archivo: Captura de pantalla 2026-02-12 090429.png, MIME: image/png, Ext: png
+Imagen guardada: /uploads/comidas/27/69bde6b98b2f4_4_1774053049.png
+Archivo: Captura de pantalla 2026-02-12 090452.png, MIME: image/png, Ext: png
+Imagen guardada: /uploads/comidas/27/69bde6b98b76e_4_1774053049.png
+Archivo: Captura de pantalla 2026-02-12 090520.png, MIME: image/png, Ext: png
+Imagen guardada: /uploads/comidas/27/69bde6b98bdcd_4_1774053049.png
+Archivo: 2026-03-17 23-14-54.mkv, MIME: video/x-matroska, Ext: mkv
+Video guardado: /uploads/comidas/27/69bde6b99045e_4_1774053049.mkv
+Archivo: Captura de pantalla 2026-02-12 082817.png, MIME: image/png, Ext: png
+Imagen guardada: /uploads/comidas/27/69bde6b990991_4_1774053049.png
+Archivo: Captura de pantalla 2026-02-12 090429.png, MIME: image/png, Ext: png
+EXCEPCIÓN: Solo se permiten 5 imágenes por receta
+#0 {main}
+Carpeta eliminada por error
+[2026-03-21 01:33:36] Inicio de crear_receta.php
+Nueva receta publicada ID: 28
+Carpeta creada: C:\xampp\htdocs\ALFA\public\api/../../uploads/comidas/28/
+Procesando 8 archivos
+Archivo: Captura de pantalla 2026-02-12 082817.png, MIME: image/png, Ext: png
+Imagen guardada: /uploads/comidas/28/69bde760e74e9_4_1774053216.png
+Archivo: Captura de pantalla 2026-02-12 090429.png, MIME: image/png, Ext: png
+Imagen guardada: /uploads/comidas/28/69bde760e789f_4_1774053216.png
+Archivo: Captura de pantalla 2026-02-12 090452.png, MIME: image/png, Ext: png
+Imagen guardada: /uploads/comidas/28/69bde760e7d30_4_1774053216.png
+Archivo: 2026-02-13 11-54-37.mkv, MIME: video/x-matroska, Ext: mkv
+Video guardado: /uploads/comidas/28/69bde760ec02a_4_1774053216.mkv
+Archivo: Captura de pantalla 2026-02-12 082817.png, MIME: image/png, Ext: png
+Imagen guardada: /uploads/comidas/28/69bde760ec48d_4_1774053216.png
+Archivo: Captura de pantalla 2026-02-12 090429.png, MIME: image/png, Ext: png
+Imagen guardada: /uploads/comidas/28/69bde760ec8ae_4_1774053216.png
+Archivo: Captura de pantalla 2026-02-12 090452.png, MIME: image/png, Ext: png
+EXCEPCIÓN: Solo se permiten 5 imágenes por receta
+#0 {main}
+Carpeta eliminada por error
+[2026-03-21 01:36:34] Inicio de crear_receta.php
+Nueva receta publicada ID: 29
+Carpeta creada: C:\xampp\htdocs\ALFA\public\api/../../uploads/comidas/29/
+Procesando 4 archivos
+Archivo: fondoComi.jpeg, MIME: image/jpeg, Ext: jpeg
+Imagen guardada: /uploads/comidas/29/69bde812b6296_4_1774053394.jpeg
+Archivo: WhatsApp Image 2026-03-20 at 11.32.41 AM.jpeg, MIME: image/jpeg, Ext: jpeg
+Imagen guardada: /uploads/comidas/29/69bde812b66bf_4_1774053394.jpeg
+Archivo: fondoComi.jpeg, MIME: image/jpeg, Ext: jpeg
+Imagen guardada: /uploads/comidas/29/69bde812b6ad9_4_1774053394.jpeg
+Archivo: WhatsApp Image 2026-03-20 at 11.32.41 AM.jpeg, MIME: image/jpeg, Ext: jpeg
+Imagen guardada: /uploads/comidas/29/69bde812b6fdc_4_1774053394.jpeg
+Transacción completada con éxito - Videos: 0, Imágenes: 4
+[2026-03-21 01:37:59] Inicio de crear_receta.php
+Nueva receta publicada ID: 30
+Carpeta creada: C:\xampp\htdocs\ALFA\public\api/../../uploads/comidas/30/
+Procesando 12 archivos
+Archivo: Captura de pantalla 2026-02-12 082817.png, MIME: image/png, Ext: png
+Imagen guardada: /uploads/comidas/30/69bde86719113_4_1774053479.png
+Archivo: Captura de pantalla 2026-02-12 090429.png, MIME: image/png, Ext: png
+Imagen guardada: /uploads/comidas/30/69bde867194c1_4_1774053479.png
+Archivo: Captura de pantalla 2026-02-12 090452.png, MIME: image/png, Ext: png
+Imagen guardada: /uploads/comidas/30/69bde86719889_4_1774053479.png
+Archivo: Captura de pantalla 2026-02-12 090520.png, MIME: image/png, Ext: png
+Imagen guardada: /uploads/comidas/30/69bde8671a3ba_4_1774053479.png
+Archivo: Captura de pantalla 2026-02-12 091125.png, MIME: image/png, Ext: png
+Imagen guardada: /uploads/comidas/30/69bde8671a9d8_4_1774053479.png
+Archivo: 2026-03-17 23-14-54.mkv, MIME: video/x-matroska, Ext: mkv
+Video guardado: /uploads/comidas/30/69bde8671f799_4_1774053479.mkv
+Archivo: Captura de pantalla 2026-02-12 082817.png, MIME: image/png, Ext: png
+EXCEPCIÓN: Solo se permiten 5 imágenes por receta
+#0 {main}
+Carpeta eliminada por error
