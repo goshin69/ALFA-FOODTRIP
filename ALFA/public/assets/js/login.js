@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (data.ok) {
                 mostrarMensaje('¡Bienvenido! Redirigiendo...', 'success');
                 setTimeout(() => {
-                    window.location.href = 'index.html';
+                    window.location.href = 'index.php';
                 }, 1500);
             } else {
                 mostrarMensaje(data.error || 'Credenciales incorrectas.', 'error');

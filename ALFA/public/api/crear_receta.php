@@ -105,9 +105,47 @@ try {
             }
 
             if (strpos($mime, 'image/') === 0 && in_array($extension, $allowedImageExtensions)) {
-                $nuevoNombre = uniqid() . '_' . $usuario_id . '_' . time() . '.' . $extension;
-                $ruta = '/uploads/comidas/' . $receta_id . '/' . $nuevoNombre;
+                $nuevoNombre = uniqid() . '_' . $usuario_id . '.' . $extension;
+                $rutaBase = '/uploads/comidas/' . $receta_id . '/' . $nuevoNombre;
                 if (move_uploaded_file($tmpFile, $uploadDir . $nuevoNombre)) {
+                    $processed = false;
+                    if (function_exists('imagecreatefromstring')) {
+                        $imgInfo = getimagesize($uploadDir . $nuevoNombre);
+                        if ($imgInfo !== false && in_array($imgInfo[2], [IMAGETYPE_JPEG, IMAGETYPE_PNG, IMAGETYPE_GIF, IMAGETYPE_WEBP])) {
+                            switch ($imgInfo[2]) {
+                                case IMAGETYPE_JPEG: $img = imagecreatefromjpeg($uploadDir . $nuevoNombre); break;
+                                case IMAGETYPE_PNG:  $img = imagecreatefrompng($uploadDir . $nuevoNombre); break;
+                                case IMAGETYPE_GIF:  $img = imagecreatefromgif($uploadDir . $nuevoNombre); break;
+                                case IMAGETYPE_WEBP: $img = imagecreatefromwebp($uploadDir . $nuevoNombre); break;
+                                default: $img = false;
+                            }
+                            if ($img) {
+                                $maxWidth = 1920;
+                                $maxHeight = 1920;
+                                $width = imagesx($img);
+                                $height = imagesy($img);
+                                $scale = min($maxWidth / $width, $maxHeight / $height, 1);
+                                if ($scale < 1) {
+                                    $newWidth = (int)($width * $scale);
+                                    $newHeight = (int)($height * $scale);
+                                    $imgResized = imagecreatetruecolor($newWidth, $newHeight);
+                                    imagecopyresampled($imgResized, $img, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+                                    imagedestroy($img);
+                                    $img = $imgResized;
+                                }
+                                $webpPath = $uploadDir . pathinfo($nuevoNombre, PATHINFO_FILENAME) . '.webp';
+                                imagewebp($img, $webpPath, 80);
+                                imagedestroy($img);
+                                unlink($uploadDir . $nuevoNombre);
+                                $nuevoNombre = pathinfo($nuevoNombre, PATHINFO_FILENAME) . '.webp';
+                                $ruta = '/uploads/comidas/' . $receta_id . '/' . $nuevoNombre;
+                                $processed = true;
+                            }
+                        }
+                    }
+                    if (!$processed) {
+                        $ruta = $rutaBase;
+                    }
                     $archivosSubidos[] = $ruta;
                     $imageCount++;
                 } else throw new Exception("Error al mover imagen: $originalName");
@@ -121,7 +159,7 @@ try {
                     if ($duracion > 2400) throw new Exception('El video no puede durar más de 40 minutos');
                     if ($ancho > 1920 || $alto > 1080) throw new Exception('El video no puede tener resolución mayor a 1080p');
                 }
-                $nuevoNombre = uniqid() . '_' . $usuario_id . '_' . time() . '.' . $extension;
+                $nuevoNombre = uniqid() . '_' . $usuario_id . '.' . $extension;
                 $ruta = '/uploads/comidas/' . $receta_id . '/' . $nuevoNombre;
                 if (move_uploaded_file($tmpFile, $uploadDir . $nuevoNombre)) {
                     $archivosSubidos[] = $ruta;

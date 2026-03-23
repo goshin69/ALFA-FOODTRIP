@@ -230,72 +230,70 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     async function enviarFormulario(accion) {
-    const titulo = document.getElementById('titulo').value.trim();
-    const descripcion = document.getElementById('descripcion').value.trim();
+        const titulo = document.getElementById('titulo').value.trim();
+        const descripcion = document.getElementById('descripcion').value.trim();
 
-    if (accion === 'publicar') {
-        if (!titulo || !descripcion) {
-            mostrarMensaje('Título y descripción son obligatorios para publicar', 'error');
-            return false;
-        }
-        if (selectedFiles.length === 0) {
-            mostrarMensaje('Debes seleccionar al menos una imagen o video', 'error');
-            return false;
-        }
-        if (videoCount > MAX_VIDEOS || imageCount > MAX_IMAGES) {
-            mostrarMensaje(`No se pueden enviar más de ${MAX_VIDEOS} video y ${MAX_IMAGES} imágenes.`, 'error');
-            return false;
-        }
-    } else {
-        if (!titulo && !descripcion && selectedFiles.length === 0) {
-            mostrarMensaje('No hay datos para guardar', 'error');
-            return false;
-        }
-    }
-
-    progressOverlay.style.display = 'flex';
-
-    // Construir FormData manualmente para evitar duplicar archivos
-    const formData = new FormData();
-    formData.append('titulo', titulo);
-    formData.append('descripcion', descripcion);
-    formData.append('etiquetas', document.getElementById('etiquetas-hidden').value);
-    if (recetaIdTemp) formData.append('receta_id_temp', recetaIdTemp);
-    selectedFiles.forEach(file => formData.append('archivos[]', file));
-
-    try {
-        const url = accion === 'publicar' ? 'api/crear_receta.php' : 'api/guardar_borrador.php';
-        const response = await fetch(url, { method: 'POST', credentials: 'include', body: formData });
-        const data = await response.json();
-
-        if (data.ok) {
-            if (accion === 'publicar') {
-                mostrarMensaje('¡Receta publicada exitosamente!', 'success');
-                localStorage.removeItem('borrador_receta');
-                selectedFiles = [];
-                actualizarContadores();
-                actualizarPreviews();
-                document.getElementById('recetaForm').reset();
-                setTimeout(() => window.location.href = 'receta.html?id=' + data.receta_id, 2000);
-            } else {
-                mostrarMensaje('Borrador guardado exitosamente', 'success');
-                recetaIdTemp = data.receta_id;
-                document.getElementById('receta_id_temp').value = recetaIdTemp;
-                guardarBorradorLocal();
+        if (accion === 'publicar') {
+            if (!titulo || !descripcion) {
+                mostrarMensaje('Título y descripción son obligatorios para publicar', 'error');
+                return false;
             }
-            return true;
+            if (selectedFiles.length === 0) {
+                mostrarMensaje('Debes seleccionar al menos una imagen o video', 'error');
+                return false;
+            }
+            if (videoCount > MAX_VIDEOS || imageCount > MAX_IMAGES) {
+                mostrarMensaje(`No se pueden enviar más de ${MAX_VIDEOS} video y ${MAX_IMAGES} imágenes.`, 'error');
+                return false;
+            }
         } else {
-            mostrarMensaje(data.error || `Error al ${accion === 'publicar' ? 'publicar' : 'guardar'} la receta`, 'error');
-            return false;
+            if (!titulo && !descripcion && selectedFiles.length === 0) {
+                mostrarMensaje('No hay datos para guardar', 'error');
+                return false;
+            }
         }
-    } catch (error) {
-        console.error(error);
-        mostrarMensaje('Error de conexión al servidor', 'error');
-        return false;
-    } finally {
-        progressOverlay.style.display = 'none';
+
+        progressOverlay.style.display = 'flex';
+        const formData = new FormData();
+        formData.append('titulo', titulo);
+        formData.append('descripcion', descripcion);
+        formData.append('etiquetas', document.getElementById('etiquetas-hidden').value);
+        if (recetaIdTemp) formData.append('receta_id_temp', recetaIdTemp);
+        selectedFiles.forEach(file => formData.append('archivos[]', file));
+
+        try {
+            const url = accion === 'publicar' ? 'api/crear_receta.php' : 'api/guardar_borrador.php';
+            const response = await fetch(url, { method: 'POST', credentials: 'include', body: formData });
+            const data = await response.json();
+
+            if (data.ok) {
+                if (accion === 'publicar') {
+                    mostrarMensaje('¡Receta publicada exitosamente!', 'success');
+                    localStorage.removeItem('borrador_receta');
+                    selectedFiles = [];
+                    actualizarContadores();
+                    actualizarPreviews();
+                    form.reset();
+                    setTimeout(() => window.location.href = 'receta.html?id=' + data.receta_id, 2000);
+                } else {
+                    mostrarMensaje('Borrador guardado exitosamente', 'success');
+                    recetaIdTemp = data.receta_id;
+                    document.getElementById('receta_id_temp').value = recetaIdTemp;
+                    guardarBorradorLocal();
+                }
+                return true;
+            } else {
+                mostrarMensaje(data.error || `Error al ${accion === 'publicar' ? 'publicar' : 'guardar'} la receta`, 'error');
+                return false;
+            }
+        } catch (error) {
+            console.error(error);
+            mostrarMensaje('Error de conexión al servidor', 'error');
+            return false;
+        } finally {
+            progressOverlay.style.display = 'none';
+        }
     }
-}
 
     btnGuardarBorrador.addEventListener('click', async function() {
         this.disabled = true;
@@ -315,16 +313,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.close-modal').onclick = () => confirmModal.style.display = 'none';
     window.onclick = (event) => { if (event.target === confirmModal) confirmModal.style.display = 'none'; };
 
-    fetch('api/verificar_sesion.php', { credentials: 'include' })
-        .then(res => res.json())
-        .then(data => {
-            if (!data.logueado) {
-                mostrarMensaje('Debes iniciar sesión. <a href="login.html" style="color:#721c24;">Inicia sesión aquí</a>', 'error');
-                document.querySelectorAll('#recetaForm input, #recetaForm textarea, #recetaForm button').forEach(el => el.disabled = true);
-            }
-        })
-        .catch(console.error);
-
     setInterval(() => {
         const titulo = document.getElementById('titulo').value;
         const descripcion = document.getElementById('descripcion').value;
@@ -336,40 +324,4 @@ document.addEventListener('DOMContentLoaded', function() {
         const descripcion = document.getElementById('descripcion').value;
         if (titulo || descripcion || selectedFiles.length) guardarBorradorLocal();
     });
-
-    (function() {
-        const header = document.querySelector('header');
-        if (!header) return;
-        let lastScrollY = window.scrollY;
-        let ticking = false;
-        let rafId = null;
-        const SCROLL_THRESHOLD = 100;
-        const DIRECTION_THRESHOLD = 100;
-
-        function updateHeader() {
-            const currentScrollY = window.scrollY;
-            const delta = currentScrollY - lastScrollY;
-            if (Math.abs(delta) < DIRECTION_THRESHOLD) {
-                ticking = false;
-                return;
-            }
-            if (currentScrollY > SCROLL_THRESHOLD && delta > 0) header.classList.add('header-shrink');
-            else if (delta < 0 || currentScrollY <= SCROLL_THRESHOLD) header.classList.remove('header-shrink');
-            lastScrollY = currentScrollY;
-            ticking = false;
-        }
-
-        function onScroll() {
-            if (!ticking) {
-                rafId = requestAnimationFrame(updateHeader);
-                ticking = true;
-            }
-        }
-        window.addEventListener('scroll', onScroll, { passive: true });
-        window.addEventListener('beforeunload', () => {
-            if (rafId) cancelAnimationFrame(rafId);
-            window.removeEventListener('scroll', onScroll);
-        });
-        header.classList.remove('header-shrink');
-    })();
 });
