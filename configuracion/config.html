@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración ALFA FOODTRIP</title>
+    <link rel="stylesheet" href="config.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- SIDEBAR VERTICAL -->
+    <aside class="sidebar-profile">
+        <div class="sidebar-header">
+            <div class="sidebar-photo">
+                <img src="https://via.placeholder.com/120" alt="Foto de perfil" class="sidebar-image">
+            </div>
+            <div class="sidebar-user-info">
+                <h3 class="sidebar-name">Tu Nombre</h3>
+                <div class="sidebar-role">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Usuario</span>
+                </div>
+            </div>
+        </div>
+
+        <nav class="sidebar-menu">
+            <ul class="menu-list">
+                <li><a href="#privacidad" class="menu-item active" data-section="privacidad">
+                    <i class="fas fa-lock"></i>
+                    <span>Privacidad</span>
+                </a></li>
+                <li><a href="#seguridad" class="menu-item" data-section="seguridad">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Seguridad</span>
+                </a></li>
+                <li><a href="#notificaciones" class="menu-item" data-section="notificaciones">
+                    <i class="fas fa-bell"></i>
+                    <span>Notificaciones</span>
+                </a></li>
+            </ul>
+        </nav>
+
+        <button class="btn-logout" id="logoutBtn">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Cerrar sesión</span>
+        </button>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-content">
+        <div class="config-header">
+            <h1>Configuración</h1>
+            <p>Administra tu perfil y preferencias</p>
+        </div>
+
+        <div class="config-container">
+            <!-- SECCIÓN: PRIVACIDAD -->
+            <section id="privacidad" class="config-section active-section">
+                <div class="section-header">
+                    <i class="fas fa-lock"></i>
+                    <h2>Privacidad</h2>
+                </div>
+                <div class="section-content">
+                    <div class="privacy-option">
+                        <label>
+                            <input type="checkbox" checked>
+                            Perfil Público
+                        </label>
+                        <p class="option-desc">Otros usuarios pueden ver tu perfil y recetas</p>
+                    </div>
+                    <div class="privacy-option">
+                        <label>
+                            <input type="checkbox" checked>
+                            Mostrar Email
+                        </label>
+                        <p class="option-desc">Permite que otros usuarios vean tu correo</p>
+                    </div>
+                    <div class="privacy-option">
+                        <label>
+                            <input type="checkbox">
+                            Mostrar Teléfono
+                        </label>
+                        <p class="option-desc">Permite que otros usuarios vean tu número</p>
+                    </div>
+                    <button class="btn-save">
+                        <i class="fas fa-save"></i>
+                        <span>Guardar Cambios</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- SECCIÓN: SEGURIDAD -->
+            <section id="seguridad" class="config-section">
+                <div class="section-header">
+                    <i class="fas fa-shield-alt"></i>
+                    <h2>Seguridad</h2>
+                </div>
+                <div class="section-content">
+                    <div class="config-item">
+                        <label for="password-actual">Contraseña Actual</label>
+                        <input type="password" id="password-actual" class="config-input" placeholder="Escribe tu contraseña actual">
+                    </div>
+                    <div class="config-item">
+                        <label for="password-nueva">Nueva Contraseña</label>
+                        <input type="password" id="password-nueva" class="config-input" placeholder="Nueva contraseña">
+                    </div>
+                    <div class="config-item">
+                        <label for="password-confirmar">Confirmar Contraseña</label>
+                        <input type="password" id="password-confirmar" class="config-input" placeholder="Confirma tu contraseña">
+                    </div>
+                    <button class="btn-save">
+                        <i class="fas fa-save"></i>
+                        <span>Cambiar Contraseña</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- SECCIÓN: NOTIFICACIONES -->
+            <section id="notificaciones" class="config-section">
+                <div class="section-header">
+                    <i class="fas fa-bell"></i>
+                    <h2>Notificaciones</h2>
+                </div>
+                <div class="section-content">
+                    <div class="privacy-option">
+                        <label>
+                            <input type="checkbox" checked>
+                            Comentarios en mis recetas
+                        </label>
+                        <p class="option-desc">Recibir notificaciones cuando alguien comente</p>
+                    </div>
+                    <div class="privacy-option">
+                        <label>
+                            <input type="checkbox" checked>
+                            Nuevas recetas seguidas
+                        </label>
+                        <p class="option-desc">Notificaciones de usuarios que sigo</p>
+                    </div>
+                    <div class="privacy-option">
+                        <label>
+                            <input type="checkbox">
+                            Recomendaciones semanales
+                        </label>
+                        <p class="option-desc">Recetas recomendadas cada semana</p>
+                    </div>
+                    <button class="btn-save">
+                        <i class="fas fa-save"></i>
+                        <span>Guardar Cambios</span>
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="config.js"></script>
+</body>
+</html>
