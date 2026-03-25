@@ -13,63 +13,66 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(err => {
             console.error(err);
-            container.textContent = 'No se pudieron cargar las recetas.';
+            container.innerHTML = '<div class="error-message">No se pudieron cargar las recetas. Intenta más tarde.</div>';
         });
 });
 
 function renderRecetas(recetas, container) {
     container.innerHTML = '';
     if (!recetas || recetas.length === 0) {
-        container.textContent = 'Aún no hay recetas. ¡Sé el primero en publicar!';
+        container.innerHTML = '<div class="empty-message">Aún no hay recetas. ¡Sé el primero en publicar!</div>';
         return;
     }
 
     recetas.forEach(r => {
-        const div = document.createElement('div');
-        div.className = 'receta ' + (r.autor_rol === 'restaurante' ? 'restaurante' : '');
+        const card = document.createElement('div');
+        card.className = 'receta';
+        if (r.autor_rol === 'restaurante') card.classList.add('restaurante');
 
-        const h3 = document.createElement('h3');
-        h3.textContent = r.titulo || 'Sin título';
-        div.appendChild(h3);
+        const titulo = document.createElement('h3');
+        titulo.textContent = r.titulo || 'Sin título';
+        card.appendChild(titulo);
 
-        const pAutor = document.createElement('p');
-        pAutor.className = 'autor';
-        pAutor.textContent = `Publicado por: ${r.autor_nombre || 'Anónimo'} (${r.autor_rol || ''})`;
-        div.appendChild(pAutor);
+        const autor = document.createElement('div');
+        autor.className = 'autor';
+        autor.textContent = `Publicado por: ${r.autor_nombre || 'Anónimo'}`;
+        if (r.autor_rol) autor.innerHTML += ` <span class="rol">(${r.autor_rol})</span>`;
+        card.appendChild(autor);
 
-        const pDesc = document.createElement('p');
-        pDesc.innerHTML = (r.descripcion) ? nl2br(escapeHtml(r.descripcion)) : '';
-        div.appendChild(pDesc);
+        if (r.descripcion) {
+            const desc = document.createElement('p');
+            desc.innerHTML = nl2br(escapeHtml(r.descripcion));
+            card.appendChild(desc);
+        }
 
         if (r.imagenes && r.imagenes.length > 0) {
-            const g = document.createElement('div');
-            g.className = 'imagenes';
+            const galeria = document.createElement('div');
+            galeria.className = 'imagenes';
             r.imagenes.forEach(src => {
                 const lower = String(src).toLowerCase();
                 if (lower.match(/\.(mp4|webm|ogg)$/)) {
-                    const v = document.createElement('video');
-                    v.controls = true;
-                    v.src = src;
-                    v.style.maxWidth = '100%';
-                    g.appendChild(v);
+                    const video = document.createElement('video');
+                    video.controls = true;
+                    video.src = src;
+                    video.style.maxWidth = '100%';
+                    galeria.appendChild(video);
                 } else {
                     const img = document.createElement('img');
                     img.src = src;
                     img.alt = 'Imagen de receta';
-                    g.appendChild(img);
+                    img.loading = 'lazy';
+                    galeria.appendChild(img);
                 }
             });
-            div.appendChild(g);
+            card.appendChild(galeria);
         }
 
-        const pLink = document.createElement('p');
-        const a = document.createElement('a');
-        a.href = `receta.html?id=${encodeURIComponent(r.id)}`;
-        a.textContent = 'Ver detalles y comentar';
-        pLink.appendChild(a);
-        div.appendChild(pLink);
+        const link = document.createElement('a');
+        link.href = `receta.html?id=${encodeURIComponent(r.id)}`;
+        link.textContent = 'Ver detalles';
+        card.appendChild(link);
 
-        container.appendChild(div);
+        container.appendChild(card);
     });
 }
 
