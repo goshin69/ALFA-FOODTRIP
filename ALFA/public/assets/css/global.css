@@ -22,7 +22,6 @@
     --warning-text: #856404;
     --warning-border: #ffc107;
     --transition-fast: 0.3s ease;
-    --header-gap: 15px;
 }
 
 * {
@@ -40,19 +39,28 @@ body {
     min-height: 100vh;
     color: var(--text-dark);
     overflow-x: hidden;
+    overflow-anchor: none;
 }
 
 header {
     background-color: var(--header-bg);
     padding: 8px 2px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 100;
+    left: 0;
+    right: 0;
+    z-index: 1000;
     display: grid;
     grid-template-rows: auto auto;
     gap: 4px;
-    transition: padding 0.3s ease, gap 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    transform: translateY(0);
+    will-change: transform;
+}
+
+header.header-hidden {
+    transform: translateY(-100%);
 }
 
 .header-top {
@@ -60,14 +68,12 @@ header {
     align-items: center;
     justify-content: space-between;
     gap: 8px;
-    transition: padding 0.3s ease;
 }
 
 .logo img {
     height: 50px;
     width: auto;
     display: block;
-    transition: all var(--transition-fast);
 }
 
 .search-bar {
@@ -85,12 +91,6 @@ header {
     outline: none;
     font-size: 16px;
     box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
-    margin-top: 2px;
-    transition: all var(--transition-fast);
-}
-
-.search-bar input:focus {
-    box-shadow: 0 0 0 3px rgba(255,255,255,0.5);
 }
 
 .search-bar i.fa-search {
@@ -108,11 +108,6 @@ header {
     text-decoration: none;
     color: var(--text-dark);
     font-weight: 600;
-    transition: transform var(--transition-fast);
-}
-
-.user-profile a:hover {
-    transform: scale(1.05);
 }
 
 .user-profile img {
@@ -121,51 +116,41 @@ header {
     border-radius: 50%;
     object-fit: cover;
     background-color: var(--text-dark);
-    transition: all var(--transition-fast);
 }
 
 .user-profile span {
     font-size: 14px;
     white-space: nowrap;
-    transition: all var(--transition-fast);
 }
 
-.hamburger {
+.menu-hamburger {
     display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 24px;
-    background: transparent;
+    background: none;
     border: none;
+    font-size: 1.8rem;
+    color: var(--white);
     cursor: pointer;
-    padding: 0;
-    z-index: 110;
-}
-
-.hamburger span {
-    width: 100%;
-    height: 3px;
-    background-color: var(--white);
-    border-radius: 2px;
-    transition: all 0.2s ease;
+    margin-left: auto;
+    z-index: 101;
 }
 
 .header-nav {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: center;
-    gap: 6px;
+    gap: 4px;
     background: rgba(249, 237, 207, 0.95);
     backdrop-filter: blur(8px);
-    padding: 6px 12px;
+    padding: 6px 5px;          
     border-radius: 40px;
-    max-width: 700px;
-    width: 90%;
-    margin: 0 auto;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08), 0 0 0 1px rgba(255,255,255,0.2) inset;
-    transition: all 0.3s ease;
+    width: auto;              
+    max-width: 90%;           
+    margin: 0 auto;           
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     border: 1px solid rgba(255,255,255,0.3);
+    overflow-x: auto;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
 }
 
 .nav-item {
@@ -174,18 +159,13 @@ header {
     font-weight: 600;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     padding: 8px 12px;
     border-radius: 30px;
     transition: all var(--transition-fast);
     position: relative;
-    outline: none;
-    white-space: nowrap; /* Evita que el texto se rompa */
-}
-
-.nav-item:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
+    white-space: nowrap;
+    flex-shrink: 0;           
 }
 
 .nav-item::after {
@@ -207,68 +187,122 @@ header {
 
 .nav-item:hover {
     color: var(--accent);
-    transform: translateY(-2px);
     background-color: rgba(255,255,255,0.2);
 }
 
 .nav-item.active {
     background-color: rgba(255,255,240,0.9);
     color: var(--accent);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 .nav-item.active::after {
     width: 0;
 }
 
-/* ===== EFECTO AL HACER SCROLL (HEADER MÁS DELGADO) ===== */
-header.header-shrink {
-    padding: 2px 2px;      /* Reduce el padding superior e inferior */
-    gap: 0px;              /* Elimina la separación entre filas */
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100%;
+    background: var(--header-bg);
+    z-index: 2000;
+    transition: right 0.3s ease;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
 }
 
-/* Opcional: si quieres que el header se vuelva aún más delgado, descomenta estas líneas:
-header.header-shrink .logo img {
-    height: 35px;
-}
-header.header-shrink .user-profile img {
-    width: 35px;
-    height: 35px;
-}
-header.header-shrink .user-profile span {
-    font-size: 12px;
-}
-header.header-shrink .search-bar input {
-    padding: 4px 20px 4px 40px;
-    font-size: 14px;
-}
-*/
-
-header.header-shrink .header-nav {
-    opacity: 0;
-    visibility: hidden;
-    padding-top: 0;
-    padding-bottom: 0;
-    transform: translateY(-10px);
-    pointer-events: none;
+.side-menu.active {
+    right: 0;
 }
 
-/* ===== RESPONSIVE ===== */
+.side-menu-header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px;
+}
+
+.close-menu {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: white;
+    cursor: pointer;
+}
+
+.side-menu-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.side-menu-profile {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+
+.side-menu-profile a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    text-decoration: none;
+}
+
+.side-menu-profile img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--white);
+}
+
+.side-menu-profile span {
+    font-weight: 600;
+}
+
+.side-menu-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.side-menu-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
 @media (min-width: 1080px) {
     .header-nav {
-        max-width: 900px;
         gap: 8px;
         padding: 8px 20px;
+        justify-content: center;
     }
     .nav-item {
         padding: 6px 18px;
     }
 }
 
+@media (min-width: 768px) and (max-width: 1099px) {
+    .nav-item {
+        padding: 6px 10px;
+        font-size: 0.95rem;
+    }
+    .nav-item i {
+        font-size: 0.9rem;
+    }
+}
+
 @media (max-width: 768px) {
     header {
         padding: 6px 2px;
-        gap: 2px;
     }
     .header-top {
         flex-wrap: wrap;
@@ -281,71 +315,16 @@ header.header-shrink .header-nav {
         margin-top: 4px;
     }
     .user-profile {
-        order: 2;
-    }
-    .hamburger {
-        display: flex;
-        order: 1;
-        margin-left: auto;
-    }
-    /* Menú móvil: oculto por defecto, se abre con el botón */
-    .header-nav {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        flex-direction: column;
-        align-items: stretch;
-        background: rgba(249, 237, 207, 0.98);
-        backdrop-filter: blur(12px);
-        border-radius: 0 0 24px 24px;
-        box-shadow: 0 12px 20px rgba(0,0,0,0.15);
-        padding: 0;
-        max-width: none;
-        gap: 0;
-        transform: scaleY(0);
-        transform-origin: top;
-        opacity: 0;
-        visibility: hidden;
-        transition: transform 0.3s ease, opacity 0.2s ease, visibility 0s 0.3s;
-        z-index: 99;
-        margin: 0;
-        border-radius: 0 0 20px 20px;
-        border: none;
-    }
-    .header-nav.open {
-        transform: scaleY(1);
-        opacity: 1;
-        visibility: visible;
-        transition: transform 0.3s ease, opacity 0.2s ease;
-    }
-    .nav-item {
-        padding: 14px 20px;
-        border-radius: 0;
-        justify-content: center;
-        border-bottom: 1px solid rgba(0,0,0,0.05);
-        white-space: normal; /* Permite que el texto se ajuste en móvil si es necesario */
-    }
-    .nav-item::after {
         display: none;
     }
-    .nav-item:hover {
-        background-color: rgba(0,0,0,0.05);
-        transform: none;
+    .menu-hamburger {
+        display: block;
     }
-    header.header-shrink .header-nav {
-        opacity: 0;
-        visibility: hidden;
-        transform: scaleY(0);
-        padding: 0;
-    }
-    header.header-shrink {
-        padding: 2px 2px;
-        gap: 0;
+    .header-nav {
+        display: none;
     }
 }
 
-/* ===== ESTILOS ADICIONALES PARA QUE LAS TARJETAS DE RECETAS SE VEAN BIEN ===== */
 .hero-section {
     text-align: center;
     margin: 2rem 1rem;
@@ -423,7 +402,6 @@ header.header-shrink .header-nav {
     font-size: 1.4rem;
     padding: 1rem 1rem 0.5rem;
     color: var(--header-bg);
-    margin-bottom: 0.25rem;
 }
 
 .receta .autor {
@@ -433,12 +411,10 @@ header.header-shrink .header-nav {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin-bottom: 0.5rem;
 }
 
 .receta .autor::before {
     content: "👩‍🍳";
-    font-size: 0.9rem;
 }
 
 .receta p:not(.autor) {
@@ -446,7 +422,7 @@ header.header-shrink .header-nav {
     line-height: 1.5;
     color: #4a3b2c;
     flex: 1;
-    margin-bottom: 1rem;
+    margin: 0.5rem 0 1rem;
 }
 
 .receta a {
@@ -459,7 +435,6 @@ header.header-shrink .header-nav {
     border-radius: 40px;
     font-weight: bold;
     text-align: center;
-    transition: background 0.2s;
     align-self: flex-start;
 }
 

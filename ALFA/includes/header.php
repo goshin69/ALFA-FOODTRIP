@@ -33,7 +33,11 @@ if (empty($_SESSION['csrf_token'])) {
                 <span><?= $logueado ? htmlspecialchars($usuario['nombre']) : 'Inicia sesión' ?></span>
             </a>
         </div>
+        <button id="menu-hamburger" class="menu-hamburger" aria-label="Menú">
+            <i class="fa-solid fa-bars"></i>
+        </button>
     </div>
+
     <nav class="header-nav">
         <a href="index.php" class="nav-item <?= basename($_SERVER['PHP_SELF']) == 'index.php' ? 'active' : '' ?>"><i class="fa-solid fa-house"></i> Inicio</a>
         <a href="tendencia.php" class="nav-item <?= basename($_SERVER['PHP_SELF']) == 'tendencia.php' ? 'active' : '' ?>"><i class="fa-solid fa-fire"></i> Tendencia</a>
@@ -43,3 +47,27 @@ if (empty($_SESSION['csrf_token'])) {
         <a href="configuracion.php" class="nav-item <?= basename($_SERVER['PHP_SELF']) == 'configuracion.php' ? 'active' : '' ?>"><i class="fa-solid fa-gear"></i> Configuración</a>
     </nav>
 </header>
+
+<div id="side-menu" class="side-menu">
+    <div class="side-menu-header">
+        <button id="close-menu" class="close-menu" aria-label="Cerrar menú">
+            <i class="fa-solid fa-times"></i>
+        </button>
+    </div>
+    <div class="side-menu-content">
+        <div class="side-menu-profile">
+            <a href="<?= $logueado ? 'perfil.php' : 'login.php' ?>">
+                <img src="<?= $logueado && !empty($usuario['imagen_perfil']) ? $usuario['imagen_perfil'] : 'imageness/Logo Sesion.png' ?>" alt="Perfil">
+                <span><?= $logueado ? htmlspecialchars($usuario['nombre']) : 'Inicia sesión' ?></span>
+            </a>
+        </div>
+        <nav class="side-menu-nav">
+            <a href="index.php"><i class="fa-solid fa-house"></i> Inicio</a>
+            <a href="tendencia.php"><i class="fa-solid fa-fire"></i> Tendencia</a>
+            <a href="videos.php"><i class="fa-solid fa-play"></i> Videos</a>
+            <a href="notificacion.php"><i class="fa-solid fa-bell"></i> Notificación</a>
+            <a href="crear_receta.php"><i class="fa-solid fa-utensils"></i> Crear Receta</a>
+            <a href="configuracion.php"><i class="fa-solid fa-gear"></i> Configuración</a>
+        </nav>
+    </div>
+</div>
