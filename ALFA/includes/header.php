@@ -6,7 +6,7 @@ $logueado = false;
 $usuario = null;
 
 if (isset($_SESSION['usuario_id'])) {
-    $stmt = $pdo->prepare("SELECT id, nombre, imagen_perfil FROM usuarios WHERE id = ?");
+    $stmt = $pdo->prepare("SELECT id, nombre, email, imagen_perfil FROM usuarios WHERE id = ?");
     $stmt->execute([$_SESSION['usuario_id']]);
     $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($usuario) $logueado = true;
@@ -28,10 +28,33 @@ if (empty($_SESSION['csrf_token'])) {
             <input type="text" placeholder="Buscar recetas...">
         </div>
         <div class="user-profile">
-            <a href="<?= $logueado ? 'perfil.php' : 'login.php' ?>">
-                <img src="<?= $logueado && !empty($usuario['imagen_perfil']) ? $usuario['imagen_perfil'] : 'imageness/Logo Sesion.png' ?>" alt="Perfil">
-                <span><?= $logueado ? htmlspecialchars($usuario['nombre']) : 'Inicia sesión' ?></span>
-            </a>
+            <?php if ($logueado): ?>
+                <div class="profile-trigger" id="profile-trigger">
+                    <img src="<?= !empty($usuario['imagen_perfil']) ? htmlspecialchars($usuario['imagen_perfil']) : 'imageness/Logo Sesion.png' ?>" alt="Perfil">
+                    <span><?= htmlspecialchars($usuario['nombre']) ?></span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="profile-dropdown" id="profile-dropdown">
+                    <a href="perfil.php?id=<?= $usuario['id'] ?>"><i class="fa-solid fa-user"></i> Mi perfil</a>
+                    <div class="dropdown-divider"></div>
+                    <div class="theme-switch" id="theme-switch">
+                        <i class="fa-solid fa-moon"></i> Claro / Oscuro
+                    </div>
+                    <div class="language-switch" id="language-switch">
+                        <i class="fa-solid fa-globe"></i> Idioma
+                        <span class="current-lang">Español</span>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <div class="logout-btn" id="logout-btn">
+                        <i class="fa-solid fa-sign-out-alt"></i> Cerrar sesión
+                    </div>
+                </div>
+            <?php else: ?>
+                <a href="login.php">
+                    <img src="imageness/Logo Sesion.png" alt="Perfil">
+                    <span>Inicia sesión</span>
+                </a>
+            <?php endif; ?>
         </div>
         <button id="menu-hamburger" class="menu-hamburger" aria-label="Menú">
             <i class="fa-solid fa-bars"></i>
@@ -56,8 +79,8 @@ if (empty($_SESSION['csrf_token'])) {
     </div>
     <div class="side-menu-content">
         <div class="side-menu-profile">
-            <a href="<?= $logueado ? 'perfil.php' : 'login.php' ?>">
-                <img src="<?= $logueado && !empty($usuario['imagen_perfil']) ? $usuario['imagen_perfil'] : 'imageness/Logo Sesion.png' ?>" alt="Perfil">
+            <a href="<?= $logueado ? 'perfil.php?id=' . $usuario['id'] : 'login.php' ?>">
+                <img src="<?= $logueado && !empty($usuario['imagen_perfil']) ? htmlspecialchars($usuario['imagen_perfil']) : 'imageness/Logo Sesion.png' ?>" alt="Perfil">
                 <span><?= $logueado ? htmlspecialchars($usuario['nombre']) : 'Inicia sesión' ?></span>
             </a>
         </div>

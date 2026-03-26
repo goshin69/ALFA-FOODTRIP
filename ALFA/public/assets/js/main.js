@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const container = document.getElementById('recetas-container');
     if (!container) return;
 
-    fetch('/api/recetas.php')
+    fetch('api/recetas.php')
         .then(resp => {
             if (!resp.ok) throw new Error('Error en la respuesta de la API');
             return resp.json();
@@ -13,78 +13,51 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(err => {
             console.error(err);
-            container.innerHTML = '<div class="error-message">No se pudieron cargar las recetas. Intenta más tarde.</div>';
+            container.textContent = 'No se pudieron cargar las recetas.';
         });
 });
 
 function renderRecetas(recetas, container) {
     container.innerHTML = '';
     if (!recetas || recetas.length === 0) {
-        container.innerHTML = '<div class="empty-message">Aún no hay recetas. ¡Sé el primero en publicar!</div>';
+        container.textContent = 'Aún no hay recetas. ¡Sé el primero en publicar!';
         return;
     }
 
     recetas.forEach(r => {
-        const card = document.createElement('div');
-        card.className = 'receta';
-        if (r.autor_rol === 'restaurante') card.classList.add('restaurante');
+        const div = document.createElement('div');
+        div.className = 'receta';
 
-        const titulo = document.createElement('h3');
-        titulo.textContent = r.titulo || 'Sin título';
-        card.appendChild(titulo);
+        const h3 = document.createElement('h3');
+        h3.textContent = r.titulo || 'Sin título';
+        div.appendChild(h3);
 
-        const autor = document.createElement('div');
-        autor.className = 'autor';
-        autor.textContent = `Publicado por: ${r.autor_nombre || 'Anónimo'}`;
-        if (r.autor_rol) autor.innerHTML += ` <span class="rol">(${r.autor_rol})</span>`;
-        card.appendChild(autor);
+        const pAutor = document.createElement('p');
+        pAutor.className = 'autor';
+        pAutor.textContent = `Publicado por: ${r.autor_nombre || 'Anónimo'}`;
+        div.appendChild(pAutor);
 
-        if (r.descripcion) {
-            const desc = document.createElement('p');
-            desc.innerHTML = nl2br(escapeHtml(r.descripcion));
-            card.appendChild(desc);
+        if (r.imagen) {
+            const imgContainer = document.createElement('div');
+            imgContainer.className = 'imagenes';
+            const img = document.createElement('img');
+            img.src = r.imagen;
+            img.alt = 'Imagen de receta';
+            imgContainer.appendChild(img);
+            div.appendChild(imgContainer);
         }
 
-        if (r.imagenes && r.imagenes.length > 0) {
-            const galeria = document.createElement('div');
-            galeria.className = 'imagenes';
-            r.imagenes.forEach(src => {
-                const lower = String(src).toLowerCase();
-                if (lower.match(/\.(mp4|webm|ogg)$/)) {
-                    const video = document.createElement('video');
-                    video.controls = true;
-                    video.src = src;
-                    video.style.maxWidth = '100%';
-                    galeria.appendChild(video);
-                } else {
-                    const img = document.createElement('img');
-                    img.src = src;
-                    img.alt = 'Imagen de receta';
-                    img.loading = 'lazy';
-                    galeria.appendChild(img);
-                }
-            });
-            card.appendChild(galeria);
-        }
+        const pDesc = document.createElement('p');
+        pDesc.innerHTML = r.descripcion ? r.descripcion.substring(0, 200) + (r.descripcion.length > 200 ? '...' : '') : '';
+        div.appendChild(pDesc);
 
-        const link = document.createElement('a');
-        link.href = `receta.html?id=${encodeURIComponent(r.id)}`;
-        link.textContent = 'Ver detalles';
-        card.appendChild(link);
+        const pLink = document.createElement('p');
+        const a = document.createElement('a');
+        a.href = `receta.php?id=${encodeURIComponent(r.id)}`;
+        a.textContent = 'Ver detalles y comentar';
+        pLink.appendChild(a);
+        div.appendChild(pLink);
 
-        container.appendChild(card);
+        container.appendChild(div);
     });
-}
-
-function escapeHtml(str) {
-    return String(str)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#039;');
-}
-
-function nl2br(str) {
-    return str.replace(/\r?\n/g, '<br>');
 }

@@ -46,7 +46,7 @@
             <div id="mensaje" class="mensaje"></div>
 
             <div class="registro-link">
-                ¿No tienes cuenta? <a href="registro.html">Crea una aquí</a>
+                ¿No tienes cuenta? <a href="registro.php">Crea una aquí</a>
             </div>
         </div>
     </div>

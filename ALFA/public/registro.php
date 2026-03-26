@@ -57,7 +57,7 @@
             </form>
 
             <div id="mensaje" class="mensaje"></div>
-            <div class="login-link">¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></div>
+            <div class="login-link">¿Ya tienes cuenta? <a href="login.php">Inicia sesión</a></div>
         </div>
     </div>
     <script src="assets/js/registro.js"></script>

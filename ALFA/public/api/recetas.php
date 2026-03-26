@@ -1,28 +1,20 @@
 <?php
-header('Content-Type: application/json; charset=utf-8');
-require_once __DIR__ . '/../../includes/database.php';
+header('Content-Type: application/json');
+require_once '../../includes/database.php';
 
-$sql = "
-    SELECT r.id, r.titulo, r.descripcion, u.nombre as autor_nombre, u.rol as autor_rol,
-           (SELECT GROUP_CONCAT(ruta) FROM imagenes WHERE receta_id = r.id ORDER BY orden) as imagenes
-    FROM recetas r
-    JOIN usuarios u ON r.usuario_id = u.id
-    ORDER BY 
-        CASE u.rol 
-            WHEN 'restaurante' THEN 1
-            WHEN 'usuario' THEN 2
-            ELSE 3
-        END,
-        r.fecha_publicacion DESC
-";
-
-$stmt = $pdo->query($sql);
+$stmt = $pdo->prepare("SELECT r.id, r.titulo, r.descripcion, r.fecha_publicacion, u.nombre as autor_nombre, u.id as autor_id, 
+                              (SELECT MIN(ruta) FROM imagenes WHERE receta_id = r.id) as imagen
+                       FROM recetas r
+                       JOIN usuarios u ON r.usuario_id = u.id
+                       WHERE r.estado = 1
+                       ORDER BY r.fecha_publicacion DESC
+                       LIMIT 20");
+$stmt->execute();
 $recetas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Procesar imágenes (convertir GROUP_CONCAT en array)
-foreach ($recetas as &$r) {
-    $r['imagenes'] = $r['imagenes'] ? explode(',', $r['imagenes']) : [];
+foreach ($recetas as &$receta) {
+    $receta['descripcion'] = nl2br(htmlspecialchars($receta['descripcion']));
+    $receta['imagen'] = $receta['imagen'] ?: 'imageness/default_receta.jpg';
 }
 
 echo json_encode(['ok' => true, 'recetas' => $recetas]);
-?>

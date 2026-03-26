@@ -1,5 +1,4 @@
 <?php
 session_start();
 session_destroy();
-header('Location: /login.html');
-exit;
+echo json_encode(['ok' => true]);
