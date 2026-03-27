@@ -6,8 +6,8 @@
     <title>Crear Receta - Koalicius</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/global.css?v=5.3">
-    <link rel="stylesheet" href="assets/css/crear_receta.css?v=5.3">
+    <link rel="stylesheet" href="assets/css/global.css?v=5.4">
+    <link rel="stylesheet" href="assets/css/crear_receta.css?v=5.4">
 </head>
 <body>
     <div id="loader-wrapper">
@@ -29,8 +29,47 @@
                     </div>
 
                     <div class="input-group">
-                        <label for="descripcion">Descripción / Preparación:</label>
-                        <textarea id="descripcion" name="descripcion" rows="4" placeholder="Explica cómo se prepara..."></textarea>
+                        <label for="descripcion">Descripción (presentación):</label>
+                        <textarea id="descripcion" name="descripcion" rows="2" placeholder="Un pequeño mensaje para tus seguidores..."></textarea>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="preparacion">Preparación (pasos detallados):</label>
+                        <textarea id="preparacion" name="preparacion" rows="6" placeholder="Explica paso a paso cómo se prepara..."></textarea>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="ingredientes">Ingredientes:</label>
+                        <textarea id="ingredientes" name="ingredientes" rows="4" placeholder="Lista de ingredientes (1 taza de harina, 2 huevos, etc.)"></textarea>
+                    </div>
+
+                    <div class="row-fields">
+                        <div class="half-width">
+                            <label for="dificultad"><i class="fa-solid fa-chart-simple"></i> Dificultad</label>
+                            <div class="custom-select" id="custom-dificultad">
+                                <div class="select-selected" data-value="media">Media</div>
+                                <div class="select-items">
+                                    <div data-value="facil">Fácil</div>
+                                    <div data-value="media">Media</div>
+                                    <div data-value="dificil">Difícil</div>
+                                </div>
+                                <input type="hidden" name="dificultad" id="dificultad" value="media">
+                            </div>
+                        </div>
+
+                        <div class="half-width">
+                            <label for="tiempo_preparacion"><i class="fa-regular fa-clock"></i> Tiempo de preparación</label>
+                            <div class="custom-select" id="custom-tiempo">
+                                <div class="select-selected" data-value="25">20 a 30 minutos</div>
+                                <div class="select-items">
+                                    <div data-value="5">Menos de 10 minutos</div>
+                                    <div data-value="25">20 a 30 minutos</div>
+                                    <div data-value="45">Menos de 1 hora</div>
+                                    <div data-value="90">Más de 1 hora</div>
+                                </div>
+                                <input type="hidden" name="tiempo_preparacion" id="tiempo_preparacion" value="25">
+                            </div>
+                        </div>
                     </div>
 
                     <div class="input-group" id="etiquetas-group">
@@ -103,8 +142,45 @@
         </div>
     </div>
 
-    <script src="assets/js/global.js?v=5.3"></script>
-    <script src="assets/js/etiquetas.js?v=5.3"></script>
-    <script src="assets/js/crear_receta.js?v=5.3"></script>
+    <script src="assets/js/global.js?v=5.4"></script>
+    <script src="assets/js/etiquetas.js?v=5.4"></script>
+    <script src="assets/js/crear_receta.js?v=5.4"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function initCustomSelect(selectId) {
+                const customSelect = document.getElementById(selectId);
+                if (!customSelect) return;
+                const selectedDiv = customSelect.querySelector('.select-selected');
+                const itemsContainer = customSelect.querySelector('.select-items');
+                const hiddenInput = customSelect.querySelector('input[type="hidden"]');
+
+                selectedDiv.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    itemsContainer.classList.toggle('show');
+                });
+
+                const items = itemsContainer.querySelectorAll('div');
+                items.forEach(item => {
+                    item.addEventListener('click', function() {
+                        const value = this.getAttribute('data-value');
+                        const text = this.textContent;
+                        selectedDiv.textContent = text;
+                        selectedDiv.setAttribute('data-value', value);
+                        hiddenInput.value = value;
+                        itemsContainer.classList.remove('show');
+                    });
+                });
+
+                document.addEventListener('click', function(e) {
+                    if (!customSelect.contains(e.target)) {
+                        itemsContainer.classList.remove('show');
+                    }
+                });
+            }
+
+            initCustomSelect('custom-dificultad');
+            initCustomSelect('custom-tiempo');
+        });
+    </script>
 </body>
 </html>

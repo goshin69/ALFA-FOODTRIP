@@ -1,17 +1,9 @@
 <?php
 session_start();
-error_reporting(E_ALL);
+error_reporting(0);
 ini_set('display_errors', 0);
-ini_set('log_errors', 1);
-ini_set('error_log', __DIR__ . '/error.log');
-
 header('Content-Type: application/json; charset=utf-8');
 require_once __DIR__ . '/../../includes/database.php';
-require_once __DIR__ . '/../../includes/filtro_palabras.php';
-
-$getID3Path = __DIR__ . '/../../includes/getid3/getid3.php';
-$getID3_disponible = file_exists($getID3Path);
-if ($getID3_disponible) require_once $getID3Path;
 
 if (!isset($_SESSION['usuario_id'])) {
     http_response_code(401);
@@ -27,19 +19,17 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 $titulo = trim($_POST['titulo'] ?? '');
 $descripcion = trim($_POST['descripcion'] ?? '');
+$preparacion = trim($_POST['preparacion'] ?? '');
+$ingredientes = trim($_POST['ingredientes'] ?? '');
+$dificultad = $_POST['dificultad'] ?? 'media';
+$tiempo_preparacion = intval($_POST['tiempo_preparacion'] ?? 0);
 $usuario_id = $_SESSION['usuario_id'];
 $etiquetas_ids = $_POST['etiquetas'] ?? '';
 $receta_id_temp = $_POST['receta_id_temp'] ?? null;
 
-if (empty($titulo) || empty($descripcion)) {
+if (empty($titulo) || empty($descripcion) || empty($preparacion) || empty($ingredientes)) {
     http_response_code(400);
-    echo json_encode(['ok' => false, 'error' => 'Título y descripción son obligatorios']);
-    exit;
-}
-
-if (contienePalabraProhibida($titulo) || contienePalabraProhibida($descripcion)) {
-    http_response_code(400);
-    echo json_encode(['ok' => false, 'error' => 'El título o descripción contiene palabras inapropiadas.']);
+    echo json_encode(['ok' => false, 'error' => 'Título, descripción, preparación e ingredientes son obligatorios']);
     exit;
 }
 
@@ -49,12 +39,12 @@ try {
         $stmt = $pdo->prepare("SELECT id FROM recetas WHERE id = ? AND usuario_id = ? AND estado = 0");
         $stmt->execute([$receta_id_temp, $usuario_id]);
         if ($stmt->rowCount() === 0) throw new Exception('Borrador no encontrado o no autorizado');
-        $stmt = $pdo->prepare("UPDATE recetas SET titulo = ?, descripcion = ?, estado = 1, fecha_publicacion = NOW() WHERE id = ?");
-        $stmt->execute([$titulo, $descripcion, $receta_id_temp]);
+        $stmt = $pdo->prepare("UPDATE recetas SET titulo = ?, descripcion = ?, preparacion = ?, ingredientes = ?, dificultad = ?, tiempo_preparacion = ?, estado = 1, fecha_publicacion = NOW() WHERE id = ?");
+        $stmt->execute([$titulo, $descripcion, $preparacion, $ingredientes, $dificultad, $tiempo_preparacion, $receta_id_temp]);
         $receta_id = $receta_id_temp;
     } else {
-        $stmt = $pdo->prepare("INSERT INTO recetas (titulo, descripcion, usuario_id, estado, fecha_publicacion) VALUES (?, ?, ?, 1, NOW())");
-        $stmt->execute([$titulo, $descripcion, $usuario_id]);
+        $stmt = $pdo->prepare("INSERT INTO recetas (titulo, descripcion, preparacion, ingredientes, dificultad, tiempo_preparacion, usuario_id, estado, fecha_publicacion) VALUES (?, ?, ?, ?, ?, ?, ?, 1, NOW())");
+        $stmt->execute([$titulo, $descripcion, $preparacion, $ingredientes, $dificultad, $tiempo_preparacion, $usuario_id]);
         $receta_id = $pdo->lastInsertId();
     }
 
@@ -71,109 +61,103 @@ try {
     $uploadDir = __DIR__ . '/../../uploads/comidas/' . $receta_id . '/';
     if (!is_dir($uploadDir)) mkdir($uploadDir, 0755, true);
 
+    if ($receta_id_temp) {
+        $stmtDel = $pdo->prepare("DELETE FROM imagenes WHERE receta_id = ?");
+        $stmtDel->execute([$receta_id]);
+        array_map('unlink', glob($uploadDir . "*.*"));
+    }
+
     $archivosSubidos = [];
     $videoCount = 0;
     $imageCount = 0;
     $MAX_VIDEOS = 1;
     $MAX_IMAGES = 5;
+    $MAX_FILE_SIZE = 100 * 1024 * 1024;
+    $orden = 0;
 
     $allowedImageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
-    $allowedVideoExtensions = ['mp4', 'avi', 'mov', 'mkv', 'webm'];
-    $allowedVideoMimes = ['video/mp4', 'video/x-msvideo', 'video/quicktime', 'video/x-matroska', 'video/webm', 'video/mpeg'];
+    $allowedVideoExtensions = ['mp4', 'webm', 'mov', 'avi', 'mkv'];
+    $allowedVideoMimes = ['video/mp4', 'video/webm', 'video/quicktime', 'video/x-msvideo', 'video/x-matroska'];
 
     if (isset($_FILES['archivos']) && !empty($_FILES['archivos']['name'][0])) {
         $total = count($_FILES['archivos']['name']);
-        if ($receta_id_temp) {
-            $stmtDel = $pdo->prepare("DELETE FROM imagenes WHERE receta_id = ?");
-            $stmtDel->execute([$receta_id]);
-            array_map('unlink', glob($uploadDir . "*.*"));
-        }
-
         for ($i = 0; $i < $total; $i++) {
-            $error = $_FILES['archivos']['error'][$i];
-            if ($error !== UPLOAD_ERR_OK) continue;
+            if ($_FILES['archivos']['error'][$i] !== UPLOAD_ERR_OK) continue;
 
             $tmpFile = $_FILES['archivos']['tmp_name'][$i];
             $originalName = $_FILES['archivos']['name'][$i];
             $mime = $_FILES['archivos']['type'][$i];
             $extension = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
+            $fileSize = $_FILES['archivos']['size'][$i];
 
-            if (strpos($mime, 'video/') === 0) {
-                if ($videoCount >= $MAX_VIDEOS) throw new Exception("Solo se permite $MAX_VIDEOS video");
-            } elseif (strpos($mime, 'image/') === 0) {
-                if ($imageCount >= $MAX_IMAGES) throw new Exception("Solo se permiten $MAX_IMAGES imágenes");
+            if ($fileSize > $MAX_FILE_SIZE) {
+                throw new Exception("El archivo \"$originalName\" supera el límite de 100 MB");
             }
 
-            if (strpos($mime, 'image/') === 0 && in_array($extension, $allowedImageExtensions)) {
-                $nuevoNombre = uniqid() . '_' . $usuario_id . '.' . $extension;
-                $rutaBase = '/uploads/comidas/' . $receta_id . '/' . $nuevoNombre;
-                if (move_uploaded_file($tmpFile, $uploadDir . $nuevoNombre)) {
-                    $processed = false;
-                    if (function_exists('imagecreatefromstring')) {
-                        $imgInfo = getimagesize($uploadDir . $nuevoNombre);
-                        if ($imgInfo !== false && in_array($imgInfo[2], [IMAGETYPE_JPEG, IMAGETYPE_PNG, IMAGETYPE_GIF, IMAGETYPE_WEBP])) {
-                            switch ($imgInfo[2]) {
-                                case IMAGETYPE_JPEG: $img = imagecreatefromjpeg($uploadDir . $nuevoNombre); break;
-                                case IMAGETYPE_PNG:  $img = imagecreatefrompng($uploadDir . $nuevoNombre); break;
-                                case IMAGETYPE_GIF:  $img = imagecreatefromgif($uploadDir . $nuevoNombre); break;
-                                case IMAGETYPE_WEBP: $img = imagecreatefromwebp($uploadDir . $nuevoNombre); break;
-                                default: $img = false;
-                            }
-                            if ($img) {
-                                $maxWidth = 1920;
-                                $maxHeight = 1920;
-                                $width = imagesx($img);
-                                $height = imagesy($img);
-                                $scale = min($maxWidth / $width, $maxHeight / $height, 1);
-                                if ($scale < 1) {
-                                    $newWidth = (int)($width * $scale);
-                                    $newHeight = (int)($height * $scale);
-                                    $imgResized = imagecreatetruecolor($newWidth, $newHeight);
-                                    imagecopyresampled($imgResized, $img, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
-                                    imagedestroy($img);
-                                    $img = $imgResized;
-                                }
-                                $webpPath = $uploadDir . pathinfo($nuevoNombre, PATHINFO_FILENAME) . '.webp';
-                                imagewebp($img, $webpPath, 80);
-                                imagedestroy($img);
-                                unlink($uploadDir . $nuevoNombre);
-                                $nuevoNombre = pathinfo($nuevoNombre, PATHINFO_FILENAME) . '.webp';
-                                $ruta = '/uploads/comidas/' . $receta_id . '/' . $nuevoNombre;
-                                $processed = true;
-                            }
-                        }
-                    }
-                    if (!$processed) {
-                        $ruta = $rutaBase;
-                    }
-                    $archivosSubidos[] = $ruta;
-                    $imageCount++;
-                } else throw new Exception("Error al mover imagen: $originalName");
-            } elseif (in_array($mime, $allowedVideoMimes) && in_array($extension, $allowedVideoExtensions)) {
-                if ($getID3_disponible) {
-                    $getID3 = new getID3;
-                    $info = $getID3->analyze($tmpFile);
-                    $duracion = $info['playtime_seconds'] ?? 0;
-                    $ancho = $info['video']['resolution_x'] ?? 0;
-                    $alto = $info['video']['resolution_y'] ?? 0;
-                    if ($duracion > 2400) throw new Exception('El video no puede durar más de 40 minutos');
-                    if ($ancho > 1920 || $alto > 1080) throw new Exception('El video no puede tener resolución mayor a 1080p');
-                }
-                $nuevoNombre = uniqid() . '_' . $usuario_id . '.' . $extension;
+            if (strpos($mime, 'video/') === 0 && in_array($extension, $allowedVideoExtensions) && in_array($mime, $allowedVideoMimes)) {
+                if ($videoCount >= $MAX_VIDEOS) throw new Exception("Solo se permite $MAX_VIDEOS video");
+                $orden++;
+                $nuevoNombre = "video_$orden." . $extension;
                 $ruta = '/uploads/comidas/' . $receta_id . '/' . $nuevoNombre;
                 if (move_uploaded_file($tmpFile, $uploadDir . $nuevoNombre)) {
                     $archivosSubidos[] = $ruta;
                     $videoCount++;
-                } else throw new Exception('Error al guardar el video');
+                } else throw new Exception("Error al guardar el video \"$originalName\"");
+            }
+            elseif (strpos($mime, 'image/') === 0 && in_array($extension, $allowedImageExtensions)) {
+                if ($imageCount >= $MAX_IMAGES) throw new Exception("Solo se permiten $MAX_IMAGES imágenes");
+                $orden++;
+                $nuevoNombre = "img_$orden.webp";
+                $ruta = '/uploads/comidas/' . $receta_id . '/' . $nuevoNombre;
+
+                $imgInfo = getimagesize($tmpFile);
+                if ($imgInfo !== false && in_array($imgInfo[2], [IMAGETYPE_JPEG, IMAGETYPE_PNG, IMAGETYPE_GIF, IMAGETYPE_WEBP])) {
+                    switch ($imgInfo[2]) {
+                        case IMAGETYPE_JPEG: $img = imagecreatefromjpeg($tmpFile); break;
+                        case IMAGETYPE_PNG:  $img = imagecreatefrompng($tmpFile); break;
+                        case IMAGETYPE_GIF:  $img = imagecreatefromgif($tmpFile); break;
+                        case IMAGETYPE_WEBP: $img = imagecreatefromwebp($tmpFile); break;
+                        default: $img = false;
+                    }
+                    if ($img) {
+                        $maxWidth = 1920;
+                        $maxHeight = 1920;
+                        $width = imagesx($img);
+                        $height = imagesy($img);
+                        $scale = min($maxWidth / $width, $maxHeight / $height, 1);
+                        if ($scale < 1) {
+                            $newWidth = (int)($width * $scale);
+                            $newHeight = (int)($height * $scale);
+                            $imgResized = imagecreatetruecolor($newWidth, $newHeight);
+                            imagecopyresampled($imgResized, $img, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+                            imagedestroy($img);
+                            $img = $imgResized;
+                        }
+                        imagewebp($img, $uploadDir . $nuevoNombre, 80);
+                        imagedestroy($img);
+                        $archivosSubidos[] = $ruta;
+                        $imageCount++;
+                    } else {
+                        throw new Exception("Error al procesar la imagen \"$originalName\"");
+                    }
+                } else {
+                    throw new Exception("Formato de imagen no soportado para \"$originalName\"");
+                }
+            } else {
+                throw new Exception("Formato de archivo no permitido: \"$originalName\"");
             }
         }
     }
 
-    if (empty($archivosSubidos)) throw new Exception('Debes subir al menos una imagen o video');
+    if (empty($archivosSubidos)) {
+        throw new Exception('Debes subir al menos una imagen o video');
+    }
 
-    $orden = 0;
+    $ordenDB = 0;
     $stmtImg = $pdo->prepare("INSERT INTO imagenes (receta_id, ruta, orden) VALUES (?, ?, ?)");
-    foreach ($archivosSubidos as $ruta) $stmtImg->execute([$receta_id, $ruta, $orden++]);
+    foreach ($archivosSubidos as $ruta) {
+        $stmtImg->execute([$receta_id, $ruta, $ordenDB++]);
+    }
 
     $pdo->commit();
     echo json_encode(['ok' => true, 'receta_id' => $receta_id]);

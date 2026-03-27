@@ -6,12 +6,32 @@ function mostrarMensaje(texto, tipo) {
     setTimeout(() => mensajeDiv.style.display = 'none', 5000);
 }
 
+function guardarBorradorLocal() {
+    const borrador = {
+        titulo: document.getElementById('titulo').value,
+        descripcion: document.getElementById('descripcion').value,
+        preparacion: document.getElementById('preparacion').value,
+        ingredientes: document.getElementById('ingredientes').value,
+        dificultad: document.getElementById('dificultad').value,
+        tiempo_preparacion: document.getElementById('tiempo_preparacion').value,
+        etiquetas: document.getElementById('etiquetas-hidden').value,
+        receta_id: window.recetaIdTemp || document.getElementById('receta_id_temp').value,
+        timestamp: new Date().getTime()
+    };
+    localStorage.setItem('borrador_receta', JSON.stringify(borrador));
+    mostrarMensaje('Borrador guardado localmente', 'success');
+}
+
 function cargarBorrador() {
     const borradorGuardado = localStorage.getItem('borrador_receta');
     if (borradorGuardado) {
         const borrador = JSON.parse(borradorGuardado);
         if (borrador.titulo) document.getElementById('titulo').value = borrador.titulo;
         if (borrador.descripcion) document.getElementById('descripcion').value = borrador.descripcion;
+        if (borrador.preparacion) document.getElementById('preparacion').value = borrador.preparacion;
+        if (borrador.ingredientes) document.getElementById('ingredientes').value = borrador.ingredientes;
+        if (borrador.dificultad) document.getElementById('dificultad').value = borrador.dificultad;
+        if (borrador.tiempo_preparacion) document.getElementById('tiempo_preparacion').value = borrador.tiempo_preparacion;
         if (borrador.etiquetas && typeof cargarEtiquetasDesdeIds === 'function') {
             cargarEtiquetasDesdeIds(borrador.etiquetas.split(','));
         }
@@ -52,18 +72,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let recetaIdTemp = document.getElementById('receta_id_temp').value || null;
     const MAX_VIDEOS = 1;
     const MAX_IMAGES = 5;
-
-    function guardarBorradorLocal() {
-        const borrador = {
-            titulo: document.getElementById('titulo').value,
-            descripcion: document.getElementById('descripcion').value,
-            etiquetas: document.getElementById('etiquetas-hidden').value,
-            receta_id: recetaIdTemp,
-            timestamp: new Date().getTime()
-        };
-        localStorage.setItem('borrador_receta', JSON.stringify(borrador));
-        mostrarMensaje('Borrador guardado localmente', 'success');
-    }
 
     function actualizarContadores() {
         videoCount = selectedFiles.filter(f => f.type.startsWith('video/')).length;
@@ -134,22 +142,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         setTimeout(() => removeBtn.click(), 100);
                     }
                 };
-                video.onerror = () => {
-                    const errorMsg = document.createElement('div');
-                    errorMsg.textContent = 'Error al cargar video';
-                    errorMsg.style.cssText = 'color:red;font-size:12px;';
-                    previewItem.appendChild(errorMsg);
-                };
                 previewItem.appendChild(video);
             } else {
                 const img = document.createElement('img');
                 img.src = blobUrl;
-                img.onerror = () => {
-                    const errorMsg = document.createElement('div');
-                    errorMsg.textContent = 'Error al cargar imagen';
-                    errorMsg.style.cssText = 'color:red;font-size:12px;';
-                    previewItem.appendChild(errorMsg);
-                };
                 previewItem.appendChild(img);
             }
             previewContainer.appendChild(previewItem);
@@ -232,10 +228,12 @@ document.addEventListener('DOMContentLoaded', function() {
     async function enviarFormulario(accion) {
         const titulo = document.getElementById('titulo').value.trim();
         const descripcion = document.getElementById('descripcion').value.trim();
+        const preparacion = document.getElementById('preparacion').value.trim();
+        const ingredientes = document.getElementById('ingredientes').value.trim();
 
         if (accion === 'publicar') {
-            if (!titulo || !descripcion) {
-                mostrarMensaje('Título y descripción son obligatorios para publicar', 'error');
+            if (!titulo || !descripcion || !preparacion || !ingredientes) {
+                mostrarMensaje('Título, descripción, preparación e ingredientes son obligatorios', 'error');
                 return false;
             }
             if (selectedFiles.length === 0) {
@@ -247,7 +245,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return false;
             }
         } else {
-            if (!titulo && !descripcion && selectedFiles.length === 0) {
+            if (!titulo && !descripcion && !preparacion && !ingredientes && selectedFiles.length === 0) {
                 mostrarMensaje('No hay datos para guardar', 'error');
                 return false;
             }
@@ -257,6 +255,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const formData = new FormData();
         formData.append('titulo', titulo);
         formData.append('descripcion', descripcion);
+        formData.append('preparacion', preparacion);
+        formData.append('ingredientes', ingredientes);
+        formData.append('dificultad', document.getElementById('dificultad').value);
+        formData.append('tiempo_preparacion', document.getElementById('tiempo_preparacion').value);
         formData.append('etiquetas', document.getElementById('etiquetas-hidden').value);
         if (recetaIdTemp) formData.append('receta_id_temp', recetaIdTemp);
         selectedFiles.forEach(file => formData.append('archivos[]', file));
@@ -274,11 +276,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     actualizarContadores();
                     actualizarPreviews();
                     form.reset();
-                    setTimeout(() => window.location.href = 'receta.html?id=' + data.receta_id, 2000);
+                    setTimeout(() => window.location.href = 'receta.php?id=' + data.receta_id, 2000);
                 } else {
                     mostrarMensaje('Borrador guardado exitosamente', 'success');
                     recetaIdTemp = data.receta_id;
                     document.getElementById('receta_id_temp').value = recetaIdTemp;
+                    window.recetaIdTemp = recetaIdTemp;
                     guardarBorradorLocal();
                 }
                 return true;
@@ -316,12 +319,16 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(() => {
         const titulo = document.getElementById('titulo').value;
         const descripcion = document.getElementById('descripcion').value;
-        if (titulo || descripcion || selectedFiles.length) guardarBorradorLocal();
+        const preparacion = document.getElementById('preparacion').value;
+        const ingredientes = document.getElementById('ingredientes').value;
+        if (titulo || descripcion || preparacion || ingredientes || selectedFiles.length) guardarBorradorLocal();
     }, 30000);
 
     window.addEventListener('beforeunload', () => {
         const titulo = document.getElementById('titulo').value;
         const descripcion = document.getElementById('descripcion').value;
-        if (titulo || descripcion || selectedFiles.length) guardarBorradorLocal();
+        const preparacion = document.getElementById('preparacion').value;
+        const ingredientes = document.getElementById('ingredientes').value;
+        if (titulo || descripcion || preparacion || ingredientes || selectedFiles.length) guardarBorradorLocal();
     });
 });
