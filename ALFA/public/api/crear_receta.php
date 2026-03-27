@@ -1,7 +1,5 @@
 <?php
 session_start();
-error_reporting(0);
-ini_set('display_errors', 0);
 header('Content-Type: application/json; charset=utf-8');
 require_once __DIR__ . '/../../includes/database.php';
 
@@ -107,42 +105,12 @@ try {
             elseif (strpos($mime, 'image/') === 0 && in_array($extension, $allowedImageExtensions)) {
                 if ($imageCount >= $MAX_IMAGES) throw new Exception("Solo se permiten $MAX_IMAGES imágenes");
                 $orden++;
-                $nuevoNombre = "img_$orden.webp";
+                $nuevoNombre = "img_$orden." . $extension;
                 $ruta = '/uploads/comidas/' . $receta_id . '/' . $nuevoNombre;
-
-                $imgInfo = getimagesize($tmpFile);
-                if ($imgInfo !== false && in_array($imgInfo[2], [IMAGETYPE_JPEG, IMAGETYPE_PNG, IMAGETYPE_GIF, IMAGETYPE_WEBP])) {
-                    switch ($imgInfo[2]) {
-                        case IMAGETYPE_JPEG: $img = imagecreatefromjpeg($tmpFile); break;
-                        case IMAGETYPE_PNG:  $img = imagecreatefrompng($tmpFile); break;
-                        case IMAGETYPE_GIF:  $img = imagecreatefromgif($tmpFile); break;
-                        case IMAGETYPE_WEBP: $img = imagecreatefromwebp($tmpFile); break;
-                        default: $img = false;
-                    }
-                    if ($img) {
-                        $maxWidth = 1920;
-                        $maxHeight = 1920;
-                        $width = imagesx($img);
-                        $height = imagesy($img);
-                        $scale = min($maxWidth / $width, $maxHeight / $height, 1);
-                        if ($scale < 1) {
-                            $newWidth = (int)($width * $scale);
-                            $newHeight = (int)($height * $scale);
-                            $imgResized = imagecreatetruecolor($newWidth, $newHeight);
-                            imagecopyresampled($imgResized, $img, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
-                            imagedestroy($img);
-                            $img = $imgResized;
-                        }
-                        imagewebp($img, $uploadDir . $nuevoNombre, 80);
-                        imagedestroy($img);
-                        $archivosSubidos[] = $ruta;
-                        $imageCount++;
-                    } else {
-                        throw new Exception("Error al procesar la imagen \"$originalName\"");
-                    }
-                } else {
-                    throw new Exception("Formato de imagen no soportado para \"$originalName\"");
-                }
+                if (move_uploaded_file($tmpFile, $uploadDir . $nuevoNombre)) {
+                    $archivosSubidos[] = $ruta;
+                    $imageCount++;
+                } else throw new Exception("Error al guardar la imagen \"$originalName\"");
             } else {
                 throw new Exception("Formato de archivo no permitido: \"$originalName\"");
             }

@@ -3,11 +3,12 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Crear Receta - Koalicius</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/global.css?v=5.4">
-    <link rel="stylesheet" href="assets/css/crear_receta.css?v=5.4">
+    <link rel="stylesheet" href="assets/css/global.css?v=5.5">
+    <link rel="stylesheet" href="assets/css/crear_receta.css?v=5.5">
 </head>
 <body>
     <div id="loader-wrapper">
@@ -45,7 +46,7 @@
 
                     <div class="row-fields">
                         <div class="half-width">
-                            <label for="dificultad"><i class="fa-solid fa-chart-simple"></i> Dificultad</label>
+                            <label for="dificultad"><i class="fa-regular fa-chart-line"></i> Dificultad</label>
                             <div class="custom-select" id="custom-dificultad">
                                 <div class="select-selected" data-value="media">Media</div>
                                 <div class="select-items">
@@ -94,7 +95,7 @@
                 </div>
 
                 <div class="right-column">
-                    <div class="input-group upload-box" id="uploadBox">
+                    <div class="upload-box" id="uploadBox">
                         <div class="upload-icon">
                             <i class="fa-solid fa-cloud-upload-alt"></i>
                         </div>
@@ -142,9 +143,9 @@
         </div>
     </div>
 
-    <script src="assets/js/global.js?v=5.4"></script>
-    <script src="assets/js/etiquetas.js?v=5.4"></script>
-    <script src="assets/js/crear_receta.js?v=5.4"></script>
+    <script src="assets/js/global.js?v=5.5"></script>
+    <script src="assets/js/etiquetas.js?v=5.5"></script>
+    <script src="assets/js/crear_receta.js?v=5.5"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             function initCustomSelect(selectId) {

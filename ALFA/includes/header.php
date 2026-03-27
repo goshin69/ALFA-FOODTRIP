@@ -101,4 +101,3 @@ if (empty($_SESSION['csrf_token'])) {
     </div>
 </div>
 <div id="menu-overlay" class="menu-overlay"></div>
-<div id="menu-overlay" class="menu-overlay"></div>
