@@ -72,18 +72,14 @@ if (empty($_SESSION['csrf_token'])) {
 </header>
 
 <div id="side-menu" class="side-menu">
-    <div class="side-menu-header">
-        <button id="close-menu" class="close-menu" aria-label="Cerrar menú">
-            <i class="fa-solid fa-times"></i>
-        </button>
+    <div class="side-menu-profile">
+        <a href="<?= $logueado ? 'perfil.php?id=' . $usuario['id'] : 'login.php' ?>">
+            <img src="<?= $logueado && !empty($usuario['imagen_perfil']) ? htmlspecialchars($usuario['imagen_perfil']) : 'imageness/Logo Sesion.png' ?>" alt="Perfil">
+            <span><?= $logueado ? htmlspecialchars($usuario['nombre']) : 'Inicia sesión' ?></span>
+        </a>
     </div>
+
     <div class="side-menu-content">
-        <div class="side-menu-profile">
-            <a href="<?= $logueado ? 'perfil.php?id=' . $usuario['id'] : 'login.php' ?>">
-                <img src="<?= $logueado && !empty($usuario['imagen_perfil']) ? htmlspecialchars($usuario['imagen_perfil']) : 'imageness/Logo Sesion.png' ?>" alt="Perfil">
-                <span><?= $logueado ? htmlspecialchars($usuario['nombre']) : 'Inicia sesión' ?></span>
-            </a>
-        </div>
         <nav class="side-menu-nav">
             <a href="index.php"><i class="fa-solid fa-house"></i> Inicio</a>
             <a href="tendencia.php"><i class="fa-solid fa-fire"></i> Tendencia</a>
@@ -91,6 +87,18 @@ if (empty($_SESSION['csrf_token'])) {
             <a href="notificacion.php"><i class="fa-solid fa-bell"></i> Notificación</a>
             <a href="crear_receta.php"><i class="fa-solid fa-utensils"></i> Crear Receta</a>
             <a href="configuracion.php"><i class="fa-solid fa-gear"></i> Configuración</a>
+            <a href="#" id="close-menu-button"><i class="fa-solid fa-times"></i> Cerrar →</a>
         </nav>
+
+        <div class="side-menu-footer">
+            <div class="theme-switch side-menu-theme">
+                <i class="fa-solid fa-moon"></i> Claro / Oscuro
+            </div>
+            <div class="logout-btn side-menu-logout">
+                <i class="fa-solid fa-sign-out-alt"></i> Cerrar sesión
+            </div>
+        </div>
     </div>
 </div>
+<div id="menu-overlay" class="menu-overlay"></div>
+<div id="menu-overlay" class="menu-overlay"></div>

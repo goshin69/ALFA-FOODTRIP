@@ -68,24 +68,33 @@
     const hamburger = document.getElementById('menu-hamburger');
     const sideMenu = document.getElementById('side-menu');
     const closeMenu = document.getElementById('close-menu');
+    const overlay = document.getElementById('menu-overlay');
+    
+    function closeSideMenu() {
+        sideMenu.classList.remove('active');
+        if (overlay) overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    const closeMenuButton = document.getElementById('close-menu-button');
+    if (closeMenuButton) {
+        closeMenuButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeSideMenu();
+        });
+    }
     
     if (hamburger && sideMenu) {
         hamburger.addEventListener('click', () => {
             sideMenu.classList.add('active');
+            if (overlay) overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
         });
         if (closeMenu) {
-            closeMenu.addEventListener('click', () => {
-                sideMenu.classList.remove('active');
-                document.body.style.overflow = '';
-            });
+            closeMenu.addEventListener('click', closeSideMenu);
         }
-        sideMenu.addEventListener('click', (e) => {
-            if (e.target === sideMenu) {
-                sideMenu.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
+        if (overlay) {
+            overlay.addEventListener('click', closeSideMenu);
+        }
     }
 
     const trigger = document.getElementById('profile-trigger');
@@ -111,13 +120,14 @@
         }
     }
     loadTheme();
-    const themeBtn = document.getElementById('theme-switch');
-    if (themeBtn) {
-        themeBtn.addEventListener('click', () => {
+
+    const themeSwitches = document.querySelectorAll('.theme-switch');
+    themeSwitches.forEach(btn => {
+        btn.addEventListener('click', () => {
             const isDark = document.body.classList.toggle('dark-theme');
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
         });
-    }
+    });
 
     const translations = {
         es: {
@@ -172,11 +182,11 @@
         });
     }
 
-    const logoutBtn = document.getElementById('logout-btn');
-    if (logoutBtn) {
-        logoutBtn.addEventListener('click', () => {
+    const logoutBtns = document.querySelectorAll('.logout-btn');
+    logoutBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
             fetch('api/logout.php', { method: 'POST', credentials: 'include' })
                 .then(() => location.reload());
         });
-    }
+    });
 })();
