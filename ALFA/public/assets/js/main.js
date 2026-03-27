@@ -1,63 +1,67 @@
+const BASE_URL = '/ALFA/';
+
 document.addEventListener('DOMContentLoaded', function() {
     const container = document.getElementById('recetas-container');
     if (!container) return;
 
     fetch('api/recetas.php')
-        .then(resp => {
-            if (!resp.ok) throw new Error('Error en la respuesta de la API');
-            return resp.json();
-        })
+        .then(resp => resp.json())
         .then(data => {
-            if (!data.ok) throw new Error(data.error || 'API returned error');
+            if (!data.ok) throw new Error(data.error || 'Error al cargar recetas');
             renderRecetas(data.recetas, container);
         })
         .catch(err => {
             console.error(err);
-            container.textContent = 'No se pudieron cargar las recetas.';
+            container.innerHTML = '<p class="error">No se pudieron cargar las recetas.</p>';
         });
 });
 
 function renderRecetas(recetas, container) {
     container.innerHTML = '';
     if (!recetas || recetas.length === 0) {
-        container.textContent = 'Aún no hay recetas. ¡Sé el primero en publicar!';
+        container.innerHTML = '<p class="sin-recetas">Aún no hay recetas publicadas. ¡Sé el primero!</p>';
         return;
     }
 
+    const grid = document.createElement('div');
+    grid.className = 'recetas-grid';
+
     recetas.forEach(r => {
-        const div = document.createElement('div');
-        div.className = 'receta';
+        const recetaDiv = document.createElement('article');
+        recetaDiv.className = 'receta';
 
-        const h3 = document.createElement('h3');
-        h3.textContent = r.titulo || 'Sin título';
-        div.appendChild(h3);
-
-        const pAutor = document.createElement('p');
-        pAutor.className = 'autor';
-        pAutor.textContent = `Publicado por: ${r.autor_nombre || 'Anónimo'}`;
-        div.appendChild(pAutor);
-
-        if (r.imagen) {
-            const imgContainer = document.createElement('div');
-            imgContainer.className = 'imagenes';
-            const img = document.createElement('img');
-            img.src = r.imagen;
-            img.alt = 'Imagen de receta';
-            imgContainer.appendChild(img);
-            div.appendChild(imgContainer);
+        let imagenSrc = r.imagen;
+        if (imagenSrc && !imagenSrc.startsWith('http') && !imagenSrc.startsWith('/')) {
+            imagenSrc = BASE_URL + imagenSrc;
+        } else if (imagenSrc && imagenSrc.startsWith('/')) {
+            imagenSrc = BASE_URL + imagenSrc.substring(1);
         }
 
-        const pDesc = document.createElement('p');
-        pDesc.innerHTML = r.descripcion ? r.descripcion.substring(0, 200) + (r.descripcion.length > 200 ? '...' : '') : '';
-        div.appendChild(pDesc);
+        const dificultadIcon = r.dificultad === 'facil' ? '😊' : (r.dificultad === 'media' ? '👍' : '🔥');
+        
+        recetaDiv.innerHTML = `
+            <div class="imagenes"><img src="${imagenSrc}" alt="${escapeHTML(r.titulo)}"></div>
+            <h3>${escapeHTML(r.titulo)}</h3>
+            <div class="autor">${escapeHTML(r.autor_nombre)} · ${new Date(r.fecha_publicacion).toLocaleDateString()}</div>
+            <div class="meta">
+                <span><i class="fa-regular fa-clock"></i> ${r.tiempo_preparacion || '?'} min</span>
+                <span><i class="fa-regular fa-chart-line"></i> ${dificultadIcon} ${r.dificultad}</span>
+            </div>
+            <p>${r.descripcion.substring(0, 120)}${r.descripcion.length > 120 ? '...' : ''}</p>
+            <a href="receta.php?id=${r.id}">Ver receta</a>
+        `;
+        grid.appendChild(recetaDiv);
+    });
 
-        const pLink = document.createElement('p');
-        const a = document.createElement('a');
-        a.href = `receta.php?id=${encodeURIComponent(r.id)}`;
-        a.textContent = 'Ver detalles y comentar';
-        pLink.appendChild(a);
-        div.appendChild(pLink);
+    container.appendChild(grid);
+}
 
-        container.appendChild(div);
+function escapeHTML(str) {
+    if (!str) return '';
+    return str.replace(/[&<>]/g, function(m) {
+        if (m === '&') return '&amp;';
+        if (m === '<') return '&lt;';
+        if (m === '>') return '&gt;';
+        return m;
     });
 }

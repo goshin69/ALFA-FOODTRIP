@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../includes/database.php';
+$baseUrl = '/ALFA/';
 
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     die('Receta no válida');
@@ -18,12 +19,10 @@ if (!$receta) {
     die('Receta no encontrada');
 }
 
-// Obtener imágenes
 $stmt = $pdo->prepare("SELECT ruta FROM imagenes WHERE receta_id = ? ORDER BY orden ASC");
 $stmt->execute([$id]);
 $imagenes = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
-// Obtener etiquetas
 $stmt = $pdo->prepare("SELECT e.nombre FROM etiquetas e
                        JOIN recetas_etiquetas re ON e.id = re.etiqueta_id
                        WHERE re.receta_id = ?");
@@ -46,7 +45,7 @@ $etiquetas = $stmt->fetchAll(PDO::FETCH_COLUMN);
         <div class="receta-header">
             <h1><?= htmlspecialchars($receta['titulo']) ?></h1>
             <div class="autor-info">
-                <img src="<?= !empty($receta['autor_foto']) ? htmlspecialchars($receta['autor_foto']) : 'imageness/Logo Sesion.png' ?>" alt="Avatar">
+                <img src="<?= $baseUrl . (!empty($receta['autor_foto']) ? htmlspecialchars($receta['autor_foto']) : 'imageness/Logo Sesion.png') ?>" alt="Avatar">
                 <a href="perfil.php?id=<?= $receta['autor_id'] ?>"><?= htmlspecialchars($receta['autor']) ?></a>
                 <span class="fecha">Publicado el <?= date('d/m/Y', strtotime($receta['fecha_publicacion'])) ?></span>
             </div>
@@ -78,9 +77,9 @@ $etiquetas = $stmt->fetchAll(PDO::FETCH_COLUMN);
             <div class="galeria">
                 <?php foreach ($imagenes as $img): ?>
                     <?php if (preg_match('/\.(mp4|avi|mov|mkv|webm)$/i', $img)): ?>
-                        <video controls src="<?= htmlspecialchars($img) ?>"></video>
+                        <video controls src="<?= $baseUrl . htmlspecialchars($img) ?>"></video>
                     <?php else: ?>
-                        <img src="<?= htmlspecialchars($img) ?>" alt="Imagen de receta">
+                        <img src="<?= $baseUrl . htmlspecialchars($img) ?>" alt="Imagen de receta">
                     <?php endif; ?>
                 <?php endforeach; ?>
             </div>

@@ -29,7 +29,7 @@ if (isset($_FILES['imagen_perfil']) && $_FILES['imagen_perfil']['error'] === UPL
         if (!is_dir($uploadDir)) mkdir($uploadDir, 0755, true);
         $nuevoNombre = uniqid() . '_' . $usuario_id . '.' . $ext;
         if (move_uploaded_file($file['tmp_name'], $uploadDir . $nuevoNombre)) {
-            $imagen_perfil = '/uploads/perfiles/' . $nuevoNombre;
+            $imagen_perfil = 'uploads/perfiles/' . $nuevoNombre;
         } else {
             echo json_encode(['ok' => false, 'error' => 'Error al guardar la imagen']);
             exit;

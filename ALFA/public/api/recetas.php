@@ -14,7 +14,9 @@ $recetas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 foreach ($recetas as &$receta) {
     $receta['descripcion'] = nl2br(htmlspecialchars($receta['descripcion']));
-    $receta['imagen'] = $receta['imagen'] ?: 'imageness/default_receta.jpg';
+    if (!$receta['imagen']) {
+        $receta['imagen'] = 'imageness/default_receta.jpg';
+    }
 }
 
 echo json_encode(['ok' => true, 'recetas' => $recetas]);

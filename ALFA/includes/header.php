@@ -1,4 +1,5 @@
 <?php
+$baseUrl = '/ALFA/';
 if (session_status() === PHP_SESSION_NONE) session_start();
 require_once __DIR__ . '/database.php';
 
@@ -30,7 +31,7 @@ if (empty($_SESSION['csrf_token'])) {
         <div class="user-profile">
             <?php if ($logueado): ?>
                 <div class="profile-trigger" id="profile-trigger">
-                    <img src="<?= !empty($usuario['imagen_perfil']) ? htmlspecialchars($usuario['imagen_perfil']) : 'imageness/Logo Sesion.png' ?>" alt="Perfil">
+                    <img src="<?= $baseUrl . (!empty($usuario['imagen_perfil']) ? htmlspecialchars($usuario['imagen_perfil']) : 'imageness/Logo Sesion.png') ?>" alt="Perfil">
                     <span><?= htmlspecialchars($usuario['nombre']) ?></span>
                     <i class="fa-solid fa-chevron-down"></i>
                 </div>
@@ -74,7 +75,7 @@ if (empty($_SESSION['csrf_token'])) {
 <div id="side-menu" class="side-menu">
     <div class="side-menu-profile">
         <a href="<?= $logueado ? 'perfil.php?id=' . $usuario['id'] : 'login.php' ?>">
-            <img src="<?= $logueado && !empty($usuario['imagen_perfil']) ? htmlspecialchars($usuario['imagen_perfil']) : 'imageness/Logo Sesion.png' ?>" alt="Perfil">
+            <img src="<?= $baseUrl . ($logueado && !empty($usuario['imagen_perfil']) ? htmlspecialchars($usuario['imagen_perfil']) : 'imageness/Logo Sesion.png') ?>" alt="Perfil">
             <span><?= $logueado ? htmlspecialchars($usuario['nombre']) : 'Inicia sesión' ?></span>
         </a>
     </div>

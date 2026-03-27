@@ -1,4 +1,5 @@
 <?php
+$baseUrl = '/ALFA/';
 include '../includes/header.php';
 require_once '../includes/database.php';
 
@@ -70,7 +71,7 @@ function time_elapsed_string($datetime, $full = false) {
         <div class="profile-container">
             <div class="profile-header">
                 <div class="profile-photo">
-                    <img src="<?= !empty($usuario['imagen_perfil']) ? htmlspecialchars($usuario['imagen_perfil']) : 'imageness/Logo Sesion.png' ?>" alt="Foto de perfil" id="profile-image">
+                    <img src="<?= $baseUrl . (!empty($usuario['imagen_perfil']) ? htmlspecialchars($usuario['imagen_perfil']) : 'imageness/Logo Sesion.png') ?>" alt="Foto de perfil" id="profile-image">
                 </div>
                 <div class="profile-info">
                     <div class="user-header">
@@ -114,7 +115,7 @@ function time_elapsed_string($datetime, $full = false) {
                     <?php else: foreach ($recetas as $receta): ?>
                         <div class="publication-card" onclick="location.href='receta.php?id=<?= $receta['id'] ?>'">
                             <div class="card-image">
-                                <img src="<?= htmlspecialchars($receta['imagen'] ?? 'https://via.placeholder.com/250x200/FF9A50/ffffff?text=Sin+imagen') ?>" alt="<?= htmlspecialchars($receta['titulo']) ?>">
+                                <img src="<?= $baseUrl . htmlspecialchars($receta['imagen'] ?? 'imageness/default_receta.jpg') ?>" alt="<?= htmlspecialchars($receta['titulo']) ?>">
                             </div>
                             <div class="card-content">
                                 <h3 class="card-title"><?= htmlspecialchars($receta['titulo']) ?></h3>
@@ -134,7 +135,7 @@ function time_elapsed_string($datetime, $full = false) {
         <h3>Editar perfil</h3>
         <form id="edit-form">
             <div class="edit-photo-section">
-                <img src="<?= !empty($usuario['imagen_perfil']) ? htmlspecialchars($usuario['imagen_perfil']) : 'imageness/Logo Sesion.png' ?>" alt="Vista previa" class="edit-photo-preview" id="photo-preview">
+                <img src="<?= $baseUrl . (!empty($usuario['imagen_perfil']) ? htmlspecialchars($usuario['imagen_perfil']) : 'imageness/Logo Sesion.png') ?>" alt="Vista previa" class="edit-photo-preview" id="photo-preview">
                 <label for="edit-photo-input" class="edit-photo-btn"><i class="fas fa-camera"></i> Cambiar foto</label>
                 <input type="file" id="edit-photo-input" accept="image/*">
             </div>

@@ -96,7 +96,7 @@ try {
                 if ($videoCount >= $MAX_VIDEOS) throw new Exception("Solo se permite $MAX_VIDEOS video");
                 $orden++;
                 $nuevoNombre = "video_$orden." . $extension;
-                $ruta = '/uploads/comidas/' . $receta_id . '/' . $nuevoNombre;
+                $ruta = 'uploads/comidas/' . $receta_id . '/' . $nuevoNombre;
                 if (move_uploaded_file($tmpFile, $uploadDir . $nuevoNombre)) {
                     $archivosSubidos[] = $ruta;
                     $videoCount++;
@@ -106,7 +106,7 @@ try {
                 if ($imageCount >= $MAX_IMAGES) throw new Exception("Solo se permiten $MAX_IMAGES imágenes");
                 $orden++;
                 $nuevoNombre = "img_$orden." . $extension;
-                $ruta = '/uploads/comidas/' . $receta_id . '/' . $nuevoNombre;
+                $ruta = 'uploads/comidas/' . $receta_id . '/' . $nuevoNombre;
                 if (move_uploaded_file($tmpFile, $uploadDir . $nuevoNombre)) {
                     $archivosSubidos[] = $ruta;
                     $imageCount++;
