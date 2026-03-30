@@ -1,0 +1,417 @@
+:root {
+    --fondo: #eedbb6;
+    --rojo: #d64040;
+    --rojo-oscuro: #b32e2e;
+    --texto-oscuro: #2d1e1e;
+    --texto-claro: #5a3e3e;
+    --blanco: #ffffff;
+    --sombra: 0 15px 35px rgba(0, 0, 0, 0.2);
+    --borde-input: #e0c9a6;
+    --hover-rojo: #c03939;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, rgba(255, 231, 170, 0.9) 0%, rgba(255, 224, 172, 0.9) 100%), url('../../imageness/fondoComi.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.registro-wrapper {
+    width: 100%;
+    max-width: 550px;
+}
+
+.registro-card {
+    background: var(--blanco);
+    border-radius: 32px;
+    padding: 3rem 2.5rem;
+    box-shadow: var(--sombra);
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.registro-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.logo-registro {
+    height: 80px;
+    margin-bottom: 1rem;
+}
+
+.registro-header h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--texto-oscuro);
+    margin-bottom: 0.25rem;
+}
+
+.registro-header p {
+    color: var(--texto-claro);
+    font-weight: 400;
+    font-size: 1.1rem;
+}
+
+.registro-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.campo label {
+    font-weight: 700;
+    color: var(--texto-oscuro);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.campo label i {
+    color: var(--rojo);
+    font-size: 1.1rem;
+}
+
+/* Estilos unificados para inputs y select */
+.campo input,
+.campo select {
+    padding: 1rem 1.2rem;
+    border: 2px solid var(--borde-input);
+    border-radius: 18px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
+    background-color: #fefcf7;
+    width: 100%;
+    appearance: none; /* Elimina la flecha nativa */
+    cursor: pointer;
+}
+
+/* Estilo específico para el select con flecha personalizada */
+.campo select {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%235a3e3e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 1.2rem center;
+    background-size: 1.2rem;
+    padding-right: 3rem; /* Espacio para la flecha */
+}
+
+.campo select:hover {
+    background-color: #fff5e6; /* Color más claro al pasar el ratón */
+    border-color: #d6b58a;
+}
+
+.campo input:focus,
+.campo select:focus {
+    border-color: var(--rojo);
+    box-shadow: 0 0 0 4px rgba(214, 64, 64, 0.2);
+    background-color: #ffffff;
+}
+
+/* Opcional: estilizar las opciones del select (no todos los navegadores lo soportan) */
+.campo select option {
+    background: var(--blanco);
+    color: var(--texto-oscuro);
+    padding: 0.5rem;
+}
+
+.btn-registro {
+    background: var(--rojo);
+    color: white;
+    border: none;
+    padding: 1.2rem;
+    border-radius: 40px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 8px 20px rgba(214, 64, 64, 0.3);
+}
+
+.btn-registro:hover {
+    background: var(--rojo-oscuro);
+    transform: translateY(-2px);
+}
+
+.btn-registro:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-loader i {
+    margin-right: 6px;
+}
+
+.mensaje {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: 16px;
+    text-align: center;
+    font-weight: 600;
+    display: none;
+}
+
+.mensaje.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #a3d0b1;
+    display: block;
+}
+
+.mensaje.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f1b0b7;
+    display: block;
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1rem;
+    color: var(--texto-claro);
+}
+
+.login-link a {
+    color: var(--rojo);
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.login-link a:hover {
+    border-bottom-color: var(--rojo);
+}
+
+@media (max-width: 480px) {
+    .registro-card {
+        padding: 2rem 1.5rem;
+    }
+    .registro-header h1 {
+        font-size: 1.8rem;
+    }
+    .campo input,
+    .campo select {
+        padding: 0.9rem 1rem;
+    }
+    .btn-registro {
+        padding: 1rem;
+    }
+}
+:root {
+    --fondo: #eedbb6;
+    --rojo: #d64040;
+    --rojo-oscuro: #b32e2e;
+    --texto-oscuro: #2d1e1e;
+    --texto-claro: #5a3e3e;
+    --blanco: #ffffff;
+    --sombra: 0 15px 35px rgba(0, 0, 0, 0.2);
+    --borde-input: #e0c9a6;
+    --hover-rojo: #c03939;
+    --gris-claro: #f8f4ed;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, rgba(255, 231, 170, 0.9) 0%, rgba(255, 224, 172, 0.9) 100%), url('../../imageness/fondoComi.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.registro-wrapper {
+    width: 100%;
+    max-width: 550px;
+}
+
+.registro-card {
+    background: var(--blanco);
+    border-radius: 32px;
+    padding: 3rem 2.5rem;
+    box-shadow: var(--sombra);
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.registro-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.logo-registro {
+    height: 80px;
+    margin-bottom: 1rem;
+}
+
+.registro-header h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--texto-oscuro);
+    margin-bottom: 0.25rem;
+}
+
+.registro-header p {
+    color: var(--texto-claro);
+    font-weight: 400;
+    font-size: 1.1rem;
+}
+
+.registro-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.campo label {
+    font-weight: 700;
+    color: var(--texto-oscuro);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.campo label i {
+    color: var(--rojo);
+    font-size: 1.1rem;
+}
+
+.campo input {
+    padding: 1rem 1.2rem;
+    border: 2px solid var(--borde-input);
+    border-radius: 18px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-color: #fefcf7;
+    width: 100%;
+}
+
+.campo input:focus {
+    border-color: var(--rojo);
+    box-shadow: 0 0 0 4px rgba(214, 64, 64, 0.2);
+}
+
+/* Custom dropdown */
+.custom-select {
+    position: relative;
+    width: 100%;
+}
+
+.select-selected {
+    padding: 1rem 1.2rem;
+    border: 2px solid var(--borde-input);
+    border-radius: 18px;
+    background-color: #fefcf7;
+    cursor: pointer;
+    user-select: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.select-selected:after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid var(--texto-claro);
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-25%);
+    transition: transform 0.3s;
+}
+
+.select-selected.select-arrow-active:after {
+    transform: translateY(-75%) rotate(180deg);
+}
+
+.select-items {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--blanco);
+    border: 2px solid var(--borde-input);
+    border-radius: 18px;
+    margin-top: 5px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s;
+    opacity: 0;
+    z-index: 10;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.select-items.show {
+    max-height: 200px;
+    opacity: 1;
+}
+
+.select-items div {
+    padding: 1rem 1.2rem;
+    cursor: pointer;
+    border-bottom: 1px solid #f0e4d4;
+    transition: background-color 0.2s;
+}
+
+.select-items div:last-child {
+    border-bottom: none;
+}
+
+.select-items div:hover,
+.select-items div.same-as-selected {
+    background-color: #fceae3;
+    color: var(--rojo);
+}
+
+.custom-select input[type="hidden"] {
+    display: none;
+}
