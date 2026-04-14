@@ -46,7 +46,7 @@
 
                     <div class="row-fields">
                         <div class="half-width">
-                            <label for="dificultad"><i class="fa-regular fa-chart-line"></i> Dificultad</label>
+                            <label for="dificultad"><i class="fa-solid fa-chart-simple"></i> Dificultad</label>
                             <div class="custom-select" id="custom-dificultad">
                                 <div class="select-selected" data-value="media">Media</div>
                                 <div class="select-items">

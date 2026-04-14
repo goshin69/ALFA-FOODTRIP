@@ -21,9 +21,11 @@ $stmt = $pdo->prepare("SELECT id, nombre, email, password, imagen_perfil, rol FR
 $stmt->execute([$email]);
 $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if (!$usuario || !password_verify($password, $usuario['password'])) {
-    http_response_code(401);
-    echo json_encode(['ok' => false, 'error' => 'Credenciales incorrectas']);
+if ($usuario && password_verify($password, $usuario['password'])) {
+    $_SESSION['usuario_id'] = $usuario['id'];
+    $_SESSION['usuario_nombre'] = $usuario['nombre'];
+    $_SESSION['usuario_rol'] = $usuario['rol']; // <--- Añadir esta línea
+    echo json_encode(['ok' => true]);
     exit;
 }
 

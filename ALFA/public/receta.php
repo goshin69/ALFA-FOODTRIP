@@ -37,8 +37,9 @@ $etiquetas = $stmt->fetchAll(PDO::FETCH_COLUMN);
     <title><?= htmlspecialchars($receta['titulo']) ?> - Koalicius</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/global.css?v=5.4">
-    <link rel="stylesheet" href="assets/css/receta.css?v=5.4">
+    <link rel="stylesheet" href="assets/css/global.css?v=5.9">
+    <link rel="stylesheet" href="assets/css/receta.css?v=5.9">
+    <link rel="icon" type="image/x-icon" href="imageness/favicon.ico">
 </head>
 <body>
     <main class="receta-detalle">
@@ -94,6 +95,17 @@ $etiquetas = $stmt->fetchAll(PDO::FETCH_COLUMN);
                 <?php endforeach; ?>
             </div>
         </div>
+
+        <?php if (isset($_SESSION['usuario_rol']) && $_SESSION['usuario_rol'] === 'admin'): ?>
+        <div class="admin-actions">
+            <button id="btn-moderar" class="btn-moderar"><i class="fa-solid fa-ellipsis-vertical"></i> Moderar</button>
+            <div id="moderar-menu" class="moderar-menu hidden">
+                <button id="revision-btn">Marcar para revisión</button>
+                <button id="eliminar-btn">Eliminar receta</button>
+            </div>
+        </div>
+        <?php endif; ?>
     </main>
+
 </body>
 </html>

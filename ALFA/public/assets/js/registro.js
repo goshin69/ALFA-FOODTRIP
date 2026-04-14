@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (data.ok) {
                 mostrarMensaje('Registro exitoso. Redirigiendo...', 'success');
                 setTimeout(() => {
-                    window.location.href = 'login.html';
+                    window.location.href = 'login.php';
                 }, 2000);
             } else {
                 mostrarMensaje(data.error || 'Error en registro.', 'error');

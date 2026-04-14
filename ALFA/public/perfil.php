@@ -62,12 +62,11 @@ function time_elapsed_string($datetime, $full = false) {
     <link rel="stylesheet" href="assets/css/global.css?v=5.3">
     <link rel="stylesheet" href="assets/css/perfil.css?v=5.3">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
 </head>
 <body>
+    <div class="header-banner"></div>
     <main>
-        <div class="header-banner"></div>
-        <button class="exit-button" onclick="history.back()"><i class="fas fa-door-open"></i> Salir</button>
-
         <div class="profile-container">
             <div class="profile-header">
                 <div class="profile-photo">
@@ -155,5 +154,18 @@ function time_elapsed_string($datetime, $full = false) {
 
     <script src="assets/js/global.js?v=5.3"></script>
     <script src="assets/js/perfil.js?v=5.3"></script>
+    <script>
+    (function() {
+        const header = document.querySelector('header');
+        const main = document.querySelector('main');
+        if (header && main) {
+            function setPadding() {
+                main.style.paddingTop = header.offsetHeight + 'px';
+            }
+            setPadding();
+            window.addEventListener('resize', setPadding);
+        }
+    })();
+    </script>
 </body>
 </html>
