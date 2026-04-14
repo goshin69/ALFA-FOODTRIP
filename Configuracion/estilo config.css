@@ -1,0 +1,116 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* FONDO (el tuyo aplicado) */
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffe7aa, #762a23);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CONTENEDOR */
+.config-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 15px;
+}
+
+/* TARJETA */
+.card {
+  width: 360px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 15px;
+  background: #d64040;
+  color: white;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+/* SECCIONES */
+.section-title {
+  font-size: 14px;
+  color: #666;
+  margin: 15px 0 5px;
+  padding: 8px 10px;
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+
+/* ITEMS */
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.item:hover {
+  background: #f9f9f9;
+  border-radius: 10px;
+}
+
+/* IZQUIERDA */
+.left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ICONOS */
+.icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: #ddd;
+}
+
+/* COLORES DE ICONOS */
+.icon.pro { background: #4CAF50; }
+.icon.tools { background: #2196F3; }
+.icon.location { background: #FF5722; }
+.icon.lock { background: #9C27B0; }
+.icon.friends { background: #FFC107; }
+.icon.block { background: #F44336; }
+.icon.msg { background: #00BCD4; }
+.icon.tag { background: #795548; }
+
+/* TEXTO */
+.text {
+  font-size: 15px;
+  color: #333;
+}
+
+/* FLECHA */
+.arrow {
+  color: #aaa;
+  font-size: 18px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  .card {
+    border-radius: 15px;
+  }
+}
