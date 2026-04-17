@@ -34,7 +34,7 @@ body {
 
 /* Tarjeta central del login */
 .login-wrapper {
-    width: 100%;
+    width: 150%;
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -166,17 +166,20 @@ filter: drop-shadow(0 8px 15px rgba(0,0,0,0.15));
 .btn-login {
     margin-top: 8px;
     border: none;
-    border-radius: 18px;
-    background: linear-gradient(135deg, #C21514, #9D6934);
+    border-radius: 14px;
+    background: linear-gradient(75deg, #C21514, #9D6934);
     color: #fff;
-    padding: 15px 18px;
-    font-size: 1rem;
-    font-weight: 800;
+    padding: 11px 14px;
+    font-size: 0.92rem;
+    font-weight: 500;
     cursor: pointer;
     transition: transform 0.18s ease, box-shadow 0.28s ease, left 0.12s ease, top 0.12s ease;
     box-shadow: 0 12px 24px rgba(194, 21, 20, 0.22);
     position: relative;
     overflow: hidden;
+    width: fit-content;
+    min-width: 180px;
+    align-self: center;
 }
 
 .btn-login:hover {
