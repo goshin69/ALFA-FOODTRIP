@@ -21,6 +21,31 @@ function camposValidos() {
     return email.value.trim() !== "" && password.value.trim() !== "";
 }
 
+function obtenerMensajeCamposFaltantes() {
+    const correoVacio = email.value.trim() === "";
+    const passwordVacia = password.value.trim() === "";
+
+    if (correoVacio && passwordVacia) {
+        return "Debes escribir tu correo y contraseña.";
+    }
+
+    if (correoVacio) {
+        return "Debes escribir tu correo electrónico.";
+    }
+
+    if (passwordVacia) {
+        return "Debes escribir tu contraseña.";
+    }
+
+    return "";
+}
+
+function mostrarWarningCampos() {
+    const texto = obtenerMensajeCamposFaltantes();
+    mensaje.textContent = texto;
+    mensaje.className = texto ? "mensaje warning" : "mensaje";
+}
+
 // Activa/desactiva el estado visual del boton segun validacion
 function actualizarEstadoBoton() {
     if (camposValidos()) {
@@ -34,6 +59,7 @@ function actualizarEstadoBoton() {
     } else {
         btnLogin.classList.remove("ready");
         btnLogin.classList.add("locked");
+        mostrarWarningCampos();
     }
 }
 
@@ -46,8 +72,7 @@ function moverBoton() {
     moveY = (Math.random() * 2 - 1) * maxY;
 
     btnLogin.style.transform = `translate(${moveX}px, ${moveY}px)`;
-    mensaje.textContent = "Primero escribe tu correo y contraseña.";
-    mensaje.className = "mensaje error";
+    mostrarWarningCampos();
 }
 
 // Si el cursor se acerca al boton bloqueado, este se mueve
@@ -88,6 +113,7 @@ loginForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
     if (!camposValidos()) {
+        mostrarWarningCampos();
         moverBoton();
         return;
     }

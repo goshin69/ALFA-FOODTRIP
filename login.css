@@ -231,6 +231,10 @@ filter: drop-shadow(0 8px 15px rgba(0,0,0,0.15));
     color: #C21514;
 }
 
+.mensaje.warning {
+    color: #b26c00;
+}
+
 .mensaje.success {
     color: #2e7d32;
 }
