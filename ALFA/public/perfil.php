@@ -1,5 +1,5 @@
 <?php
-$baseUrl = '/ALFA/';
+$baseUrl = '/ALFA/public/';
 include '../includes/header.php';
 require_once '../includes/database.php';
 
