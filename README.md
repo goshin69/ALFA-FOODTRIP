@@ -66,16 +66,17 @@ Fomenta la interacción entre usuarios mediante comentarios, valoraciones y segu
 
 ### Inicio de sesion 
 
-![Inicio de sesion](https://github.com/user-attachments/assets/29b7f693-f1b0-459e-b172-d62b1cb3afe5)
+![Inicio de sesion](<img width="987" height="712" alt="image" src="https://github.com/user-attachments/assets/bf69ca0d-00a9-4b98-9052-0aa69f79798a" />)
 
 ### Publicar recetas
 
-![Subir receta](https://github.com/user-attachments/assets/<img width="1754" height="1076" alt="image" src="https://github.com/user-attachments/assets/df4534c5-18a1-450c-b21b-7a4e95cfeb96" />
-)
+![Subir receta](https://github.com/user-attachments/assets/<img <img width="1750" height="1073" alt="image" src="https://github.com/user-attachments/assets/afd5c668-a28e-4fb5-8f3f-11e549b5f5ac" />
+" />
+
 
 ### Pagina principal
 
-![Recetas](https://github.com/user-attachments/assets/65fcc540-29e0-4c7c-a0e1-9a5df424d141)
+![Recetas]()
 
 ## ⚙️ Cómo usar la plataforma
 
