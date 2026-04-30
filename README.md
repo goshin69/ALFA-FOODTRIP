@@ -71,7 +71,6 @@ Fomenta la interacción entre usuarios mediante comentarios, valoraciones y segu
 ### Publicar recetas
 
 ![Subir receta](https://github.com/user-attachments/assets/<img <img width="1750" height="1073" alt="image" src="https://github.com/user-attachments/assets/afd5c668-a28e-4fb5-8f3f-11e549b5f5ac" />
-" />
 
 
 ### Pagina principal
