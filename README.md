@@ -70,7 +70,8 @@ Fomenta la interacción entre usuarios mediante comentarios, valoraciones y segu
 
 ### Publicar recetas
 
-![Subir receta](https://github.com/user-attachments/assets/4473a3f8-8dd6-4a97-b446-4394fab16b7b)
+![Subir receta](https://github.com/user-attachments/assets/<img width="1754" height="1076" alt="image" src="https://github.com/user-attachments/assets/df4534c5-18a1-450c-b21b-7a4e95cfeb96" />
+)
 
 ### Pagina principal
 
