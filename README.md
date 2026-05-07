@@ -1,156 +1,209 @@
-<h1>
+<h1 align="center">
   <img src="imageness/Logo-Koalicius.png" width="80">
+  <br>
   Koalicius
 </h1>
 
-![HTML](https://img.shields.io/badge/HTML-5-orange?logo=html5&logoColor=white)
-![CSS](https://img.shields.io/badge/CSS-3-blue?logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow?logo=javascript&logoColor=black)
-![PHP](https://img.shields.io/badge/PHP-Backend-purple?logo=php&logoColor=white)
+<p align="center">
+  Plataforma web interactiva para descubrir, compartir y organizar recetas culinarias 🍜
+</p>
 
-### (LINK DE LA PAGINA)
+<p align="center">
+  <img src="https://img.shields.io/badge/HTML-5-orange?logo=html5&logoColor=white">
+  <img src="https://img.shields.io/badge/CSS-3-blue?logo=css3&logoColor=white">
+  <img src="https://img.shields.io/badge/JavaScript-ES6-yellow?logo=javascript&logoColor=black">
+  <img src="https://img.shields.io/badge/PHP-Backend-purple?logo=php&logoColor=white">
+</p>
 
-## 📖 Descripción
+---
 
-La presente plataforma web interactiva está orientada a los personas que le entusiasme la gastronomia, con el propósito de ofrecer un espacio digital integral que facilite el descubrimiento, la creación y la organización de recetas culinarias de manera eficiente y accesible.
+## 🌐 Demo
 
-El sistema ha sido diseñado bajo un enfoque centrado en la experiencia del usuario, incorporando una interfaz intuitiva, dinámica y visualmente atractiva que permite explorar una amplia variedad de culturas gastronómicas. A través de su estructura, los usuarios pueden navegar entre diferentes categorías de cocina, acceder a recetas detalladas y descubrir nuevas propuestas culinarias de forma sencilla y organizada.
+🔗 **Próximamente**
 
-Asi mismo, la plataforma fomenta la interacción social al integrar funcionalidades que permiten a los usuarios compartir sus propias recetas, interactuar con otros miembros de la comunidad y generar conexiones basadas en intereses comunes dentro del ámbito culinario. Esto contribuye a la creación de un entorno colaborativo en el que se promueve el intercambio de conocimientos, técnicas y experiencias relacionadas con la cocina.
+---
 
-Por otra parte, el sistema incorpora herramientas que optimizan la búsqueda y gestión de contenido, como un buscador inteligente, etiquetas de ingredientes y sistemas de valoración, los cuales facilitan la localización de recetas específicas y la evaluación de su calidad por parte de la comunidad.
+# 📖 Descripción
 
-En conjunto, la plataforma no solo actúa como un repositorio de recetas, sino como un ecosistema digital que integra exploración, aprendizaje e interacción, brindando a los usuarios una experiencia completa, estructurada y enriquecedora dentro del mundo gastronómico.
+Koalicius es una plataforma web interactiva orientada a personas apasionadas por la gastronomía, diseñada para facilitar el descubrimiento, la creación y la organización de recetas culinarias de manera eficiente y accesible.
 
-## 🚀 Características de la Plataforma
+La plataforma cuenta con una interfaz moderna, intuitiva y visualmente atractiva que permite explorar distintas culturas gastronómicas mediante categorías dinámicas y contenido multimedia.
 
-📝 Publicación de Recetas
+Además, fomenta la interacción social entre usuarios a través de publicaciones, comentarios, valoraciones y seguimiento de perfiles, creando una comunidad colaborativa enfocada en el intercambio de recetas y experiencias culinarias.
 
-Permite a los usuarios crear y compartir recetas propias de forma sencilla, incluyendo título, descripción, lista de ingredientes y pasos detallados de preparación.
+---
 
-🎥 Subida de Videos Integrada
+# 🚀 Características de la Plataforma
 
-Los usuarios pueden adjuntar videos directamente desde su dispositivo, sin necesidad de enlaces externos. Esto permite mostrar el proceso de preparación de manera visual y más completa.
+## 📝 Publicación de Recetas
+Permite crear y compartir recetas incluyendo:
+- Título
+- Descripción
+- Ingredientes
+- Procedimiento
 
-🖼️ Contenido Multimedia
+---
 
-Cada receta puede incluir imágenes y videos que enriquecen la presentación del platillo, facilitando una mejor comprensión del proceso culinario.
+## 🎥 Subida de Videos Integrada
+Los usuarios pueden adjuntar videos directamente desde su dispositivo sin necesidad de enlaces externos.
 
-👤 Perfiles de Usuario
+---
 
-Cada usuario cuenta con un perfil personalizado donde puede:
+## 🖼️ Contenido Multimedia
+Cada receta puede incluir:
+- Imágenes
+- Videos
+- Etiquetas culinarias
 
-Publicar recetas y videos
+---
 
-Visualizar su contenido
+## 👤 Perfiles de Usuario
+Cada usuario dispone de un perfil personalizado para:
+- Publicar recetas
+- Gestionar contenido
+- Visualizar estadísticas
+- Interactuar con otros usuarios
 
-Interactuar con otros usuarios
+---
 
-🔍 Buscador Avanzado
+## 🔍 Buscador Avanzado
+Sistema de búsqueda por:
+- Nombre
+- Ingredientes
+- Etiquetas
 
-Permite encontrar recetas por nombre, ingredientes y Etiquetas
+---
 
-🧭 Navegación Intuitiva
+## 🌎 Comunidad Interactiva
+La plataforma incorpora:
+- Comentarios
+- Valoraciones
+- Seguimiento de perfiles
 
-Interfaz organizada con acceso a secciones como inicio, tendencias, creación de contenido y perfil del usuario.
+---
 
-📂 Gestión de Contenido
+# 🖥️ Capturas de la Plataforma
 
-Los usuarios pueden editar o eliminar sus recetas y videos en cualquier momento, manteniendo actualizado su contenido.
+## 🔐 Inicio de sesión
 
-🌎 Comunidad Interactiva
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/bf69ca0d-00a9-4b98-9052-0aa69f79798a" width="900">
+</p>
 
-Fomenta la interacción entre usuarios mediante comentarios, valoraciones y seguimiento de perfiles.
+---
 
-## Imagenes
+## 📤 Publicar recetas
 
-### Inicio de sesion 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/afd5c668-a28e-4fb5-8f3f-11e549b5f5ac" width="900">
+</p>
 
-![Inicio de sesion](<img width="987" height="712" alt="image" src="https://github.com/user-attachments/assets/bf69ca0d-00a9-4b98-9052-0aa69f79798a" />)
+---
 
-### Publicar recetas
+## 🏠 Página principal
 
-![Subir receta](https://github.com/user-attachments/assets/<img <img width="1750" height="1073" alt="image" src="https://github.com/user-attachments/assets/afd5c668-a28e-4fb5-8f3f-11e549b5f5ac" />
+<p align="center">
+  <img src="imageness/koalicius_ui.png" width="900">
+</p>
 
+---
 
-### Pagina principal
+# ⚙️ Cómo usar la plataforma
 
-![Recetas]()
+## 1️⃣ Acceder a la plataforma
+Ingresa desde tu navegador web.
 
-## ⚙️ Cómo usar la plataforma
+## 2️⃣ Registrarse o iniciar sesión
+Crea una cuenta para acceder a todas las funcionalidades.
 
-Para utilizar la plataforma web de recetas, sigue los siguientes pasos:
+## 3️⃣ Explorar recetas
+Utiliza el buscador o navega por categorías.
 
-Acceso a la plataforma
-Ingresa a la página web desde tu navegador.
+## 4️⃣ Visualizar contenido
+Consulta recetas detalladas con:
+- Ingredientes
+- Procedimientos
+- Imágenes
+- Videos
 
-Registro o inicio de sesión
-Crea una cuenta o inicia sesión para acceder a todas las funcionalidades disponibles.
+## 5️⃣ Publicar recetas
+Completa el formulario de creación:
+- Título
+- Ingredientes
+- Descripción
+- Procedimiento
 
-Explorar contenido
-Navega entre las diferentes categorías o utiliza el buscador para descubrir recetas de tu interés.
+## 6️⃣ Subir archivos multimedia
+Adjunta imágenes y videos desde tu dispositivo.
 
-Visualizar recetas
-Selecciona una receta para ver su información detallada, incluyendo ingredientes, pasos de preparación, imágenes y videos adjuntos.
+## 7️⃣ Interactuar con la comunidad
+- Comenta
+- Califica recetas
+- Sigue usuarios
 
-Publicar una receta
-Dirígete a la sección de creación y completa los campos requeridos:
+---
 
-Título
+# 🛠️ Tecnologías Utilizadas
 
-Descripción
+## 💻 Frontend
+- HTML5
+- CSS3
+- JavaScript (ES6+)
 
-Ingredientes
+## ⚙️ Backend
+- PHP
 
-Procedimiento
+## 🗄️ Base de Datos
+<p>
+  <img src="https://img.shields.io/badge/XAMPP-Local%20Server-orange?style=for-the-badge&logo=xampp&logoColor=white">
+  <img src="https://img.shields.io/badge/MySQL-Database-blue?style=for-the-badge&logo=mysql&logoColor=white">
+</p>
 
-Adjuntar contenido multimedia
-Agrega imágenes y videos directamente desde tu dispositivo para complementar la receta.
+---
 
-Interactuar con la comunidad
-Califica recetas, deja comentarios y sigue a otros usuarios para mantenerte al tanto de su contenido.
-
-Gestionar tu perfil
-Accede a tu perfil para editar o eliminar tus publicaciones y visualizar tus estadísticas.
-
-## 👨‍💻 Contribuyentes
+# 👨‍💻 Contribuyentes
 
 <table align="center">
   <tr>
     <td align="center">
       <a href="https://github.com/goshin69">
         <img src="https://github.com/goshin69.png" width="70"><br>
-        goshin69
+        <sub><b>goshin69</b></sub>
       </a>
     </td>
+
     <td align="center">
       <a href="https://github.com/Enava7-22">
         <img src="https://github.com/Enava7-22.png" width="70"><br>
-        Enava7-22
+        <sub><b>Enava7-22</b></sub>
       </a>
     </td>
+
     <td align="center">
       <a href="https://github.com/fernandoalvarez2442-sys">
         <img src="https://github.com/fernandoalvarez2442-sys.png" width="70"><br>
-        Fer
+        <sub><b>Fer</b></sub>
       </a>
     </td>
+
     <td align="center">
       <a href="https://github.com/YukioSnwoo">
         <img src="https://github.com/YukioSnwoo.png" width="70"><br>
-        YukioSnwoo
+        <sub><b>YukioSnwoo</b></sub>
       </a>
     </td>
+
     <td align="center">
       <a href="https://github.com/TenshiGS">
         <img src="https://github.com/TenshiGS.png" width="70"><br>
-        TenshiGS
+        <sub><b>TenshiGS</b></sub>
       </a>
     </td>
   </tr>
 </table>
 
-## 🌐Base de datos
+---
 
-<img src="https://img.shields.io/badge/XAMPP-Local%20Server-orange?style=for-the-badge&logo=xampp&logoColor=white">
-<img src="https://img.shields.io/badge/MySQL-Database-blue?style=for-the-badge&logo=mysql&logoColor=white">
+# 📌 Estado del Proyecto
+
+🚧 Proyecto en desarrollo
