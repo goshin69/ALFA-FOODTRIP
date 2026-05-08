@@ -65,7 +65,9 @@ Los usuarios pueden editar o eliminar sus recetas y videos en cualquier momento,
 
 Fomenta la interacción entre usuarios mediante comentarios, valoraciones y seguimiento de perfiles.
 
-Registro
+🪪 Registro
+
+Implementamos un apartado de registro que permite a los usuarios crear una cuenta en caso de no contar previamente con una cuenta registrada.
 
 ## Imagenes
 
