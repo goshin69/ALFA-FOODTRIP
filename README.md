@@ -73,11 +73,13 @@ Fomenta la interacción entre usuarios mediante comentarios, valoraciones y segu
 
 ### Publicar recetas
 
-![Subir receta](https://github.com/user-attachments/assets/4473a3f8-8dd6-4a97-b446-4394fab16b7b)
+<img width="1536" height="811" alt="Recetas" src="https://github.com/user-attachments/assets/4786495f-f477-4f8b-be68-027243ebc6d6" />
+
 
 ### Pagina principal
 
-![Recetas](https://github.com/user-attachments/assets/65fcc540-29e0-4c7c-a0e1-9a5df424d141)
+<img width="1514" height="730" alt="Pagina principal" src="https://github.com/user-attachments/assets/31e4cbed-5342-4d82-a91e-5825c278f47f" />
+
 
 ### Pagina de Registro
 <img width="1536" height="720" alt="Registro" src="https://github.com/user-attachments/assets/0582ea85-e56b-4576-b785-4d959eba4bfc" />
