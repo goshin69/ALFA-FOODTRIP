@@ -65,6 +65,8 @@ Los usuarios pueden editar o eliminar sus recetas y videos en cualquier momento,
 
 Fomenta la interacción entre usuarios mediante comentarios, valoraciones y seguimiento de perfiles.
 
+Registro
+
 ## Imagenes
 
 ### Inicio de sesion 
