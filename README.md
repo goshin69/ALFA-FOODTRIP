@@ -7,9 +7,6 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow?logo=javascript&logoColor=black)
 ![PHP](https://img.shields.io/badge/PHP-Backend-purple?logo=php&logoColor=white)
 
-### (LINK DE LA PAGINA)
-https://koalicius.com/
-
 ## 📖 Descripción
 
 La presente plataforma web interactiva está orientada a los personas que le entusiasme la gastronomia, con el propósito de ofrecer un espacio digital integral que facilite el descubrimiento, la creación y la organización de recetas culinarias de manera eficiente y accesible.
@@ -92,6 +89,11 @@ Implementamos un apartado de registro que permite a los usuarios crear una cuent
 <p align="center">
   Proyecto web hecho con HTML, CSS y PHP
 </p>
+
+
+### (LINK DE LA PAGINA)
+https://koalicius.com/
+
 
 ## ⚙️ Cómo usar la plataforma
 
