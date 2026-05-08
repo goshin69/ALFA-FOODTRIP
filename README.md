@@ -1,6 +1,6 @@
 <h1 align="center">
   <img src="imageness/Logo-Koalicius.png" width="80" alt="Logo de Koalicius">
-  <br>
+
   Koalicius
 </h1>
 
