@@ -168,5 +168,6 @@ Accede a tu perfil para editar o eliminar tus publicaciones y visualizar tus est
 
 ## 🌐Base de datos
 
-<img src="https://img.shields.io/badge/XAMPP-Local%20Server-orange?style=for-the-badge&logo=xampp&logoColor=white">
-<img src="https://img.shields.io/badge/MySQL-Database-blue?style=for-the-badge&logo=mysql&logoColor=white">
+![HOSTINGER](https://img.shields.io/badge/HOSTINGER-WEB%20HOSTING-673DE6?style=for-the-badge&logo=hostinger&logoColor=white)
+
+![MYSQL](https://img.shields.io/badge/MYSQL-DATABASE-00758F?style=for-the-badge&logo=mysql&logoColor=white)
