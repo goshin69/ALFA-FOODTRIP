@@ -91,8 +91,9 @@ Implementamos un apartado de registro que permite a los usuarios crear una cuent
 </p>
 
 <p align="center">
-### (LINK DE LA PAGINA)
+(LINK DE LA PAGINA)
 https://koalicius.com/
+</p>
 
 
 ## ⚙️ Cómo usar la plataforma
