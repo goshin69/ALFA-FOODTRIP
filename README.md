@@ -34,7 +34,7 @@ Los usuarios pueden adjuntar videos directamente desde su dispositivo, sin neces
 
 🖼️ Contenido Multimedia
 
-📝 Los usario pueden crear una cuenta desde la pagina.
+Los usario pueden crear una cuenta desde la pagina.
 Los nuevos usuarios pueden crear una cuenta en la plataforma completando un formulario con sus datos básicos para acceder a las funcionalidades de publicación, interacción y personalización del perfil.
 
 Cada receta puede incluir imágenes y videos que enriquecen la presentación del platillo, facilitando una mejor comprensión del proceso culinario.
@@ -80,11 +80,8 @@ Fomenta la interacción entre usuarios mediante comentarios, valoraciones y segu
 ![Recetas](https://github.com/user-attachments/assets/65fcc540-29e0-4c7c-a0e1-9a5df424d141)
 
 ### Pagina de Registro
-<h1 align="center">
-  <img src="assets/img/<img width="450" height="736" alt="image" src="https://github.com/user-attachments/assets/f4160064-1f14-4d9f-8cef-4d1952c489c7" />
-" width="80">
-  Koalicius
-</h1>
+<img width="1536" height="720" alt="Registro" src="https://github.com/user-attachments/assets/0582ea85-e56b-4576-b785-4d959eba4bfc" />
+
 
 <p align="center">
   Proyecto web hecho con HTML, CSS y PHP
