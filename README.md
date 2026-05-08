@@ -1,8 +1,6 @@
 <img width="1406" height="358" alt="Koalii" src="https://github.com/user-attachments/assets/4236c921-c5f9-4a0b-9560-ac59b44c81cd" />
 <h1>
-  <img src="imageness/Logo-Koalicius.png" width="80">
-  Koalicius
-</h1>
+
 
 ![HTML](https://img.shields.io/badge/HTML-5-orange?logo=html5&logoColor=white)
 ![CSS](https://img.shields.io/badge/CSS-3-blue?logo=css3&logoColor=white)
