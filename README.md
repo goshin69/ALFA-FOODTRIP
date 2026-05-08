@@ -1,5 +1,5 @@
 <h1 align="center">
-<img src="./imageness/Logo-Koalicius.png" width="80" alt="Logo de Koalicius">  Koalicius
+<img src="./imagenes/Logo-Koalicius.png" width="80" alt="Logo de Koalicius">  Koalicius
 </h1>
 
 <p align="center">
