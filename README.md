@@ -92,7 +92,7 @@ Implementamos un apartado de registro que permite a los usuarios crear una cuent
 
 <p align="center">
 (LINK DE LA PAGINA)
-  
+ <p align="center"> 
 https://koalicius.com/
 </p>
 
