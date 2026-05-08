@@ -1,0 +1,36 @@
+.tendencias-container {
+  padding: 20px;
+}
+
+.tendencias-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.t-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  transition: 0.2s;
+}
+
+.t-card:hover {
+  transform: scale(1.05);
+}
+
+.t-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.t-card h3 {
+  padding: 10px;
+}
+
+.t-card p {
+  padding: 0 10px 10px;
+  color: #666;
+}
