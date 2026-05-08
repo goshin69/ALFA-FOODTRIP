@@ -90,7 +90,7 @@ Implementamos un apartado de registro que permite a los usuarios crear una cuent
   Proyecto web hecho con HTML, CSS y PHP
 </p>
 
-
+<p align="center">
 ### (LINK DE LA PAGINA)
 https://koalicius.com/
 
