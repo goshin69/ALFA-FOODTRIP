@@ -1,36 +1,191 @@
-.tendencias-container {
-  padding: 20px;
+body{
+    background: #f7ead2;
+    font-family: Arial, sans-serif;
 }
 
-.tendencias-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+.tendencias-container{
+    width: 100%;
+    max-width: 1500px;
+    margin: auto;
+    padding: 40px;
 }
 
-.t-card {
-  background: white;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-  transition: 0.2s;
+.bloque{
+    margin-bottom: 80px;
 }
 
-.t-card:hover {
-  transform: scale(1.05);
+.titulo-box{
+    margin-bottom: 30px;
 }
 
-.t-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
+.titulo-seccion{
+    font-size: 42px;
+    color: #cf3e3e;
+    margin-bottom: 8px;
+    border-left: 8px solid #ff7a00;
+    padding-left: 15px;
 }
 
-.t-card h3 {
-  padding: 10px;
+.subtitulo{
+    color: #666;
+    font-size: 18px;
+    margin-left: 20px;
 }
 
-.t-card p {
-  padding: 0 10px 10px;
-  color: #666;
+.cards-grid{
+    display: grid;
+
+    grid-template-columns:
+    repeat(auto-fill,minmax(300px,1fr));
+
+    gap: 30px;
+}
+
+.card-t{
+    background: white;
+
+    border-radius: 24px;
+
+    overflow: hidden;
+
+    position: relative;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.15);
+
+    transition: 0.25s;
+}
+
+.card-t:hover{
+
+    transform:
+    translateY(-10px)
+    scale(1.02);
+
+    box-shadow:
+    0 20px 45px rgba(0,0,0,0.22);
+}
+
+.card-t img{
+
+    width: 100%;
+
+    height: 240px;
+
+    object-fit: cover;
+}
+
+.card-info{
+    padding: 22px;
+}
+
+.card-info h3{
+
+    font-size: 28px;
+
+    color: #222;
+
+    margin-bottom: 10px;
+}
+
+.card-info p{
+
+    color: #666;
+
+    margin-bottom: 18px;
+
+    font-size: 16px;
+}
+
+.card-info button{
+
+    width: 100%;
+
+    border: none;
+
+    padding: 14px;
+
+    border-radius: 14px;
+
+    background: #d63f3f;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.card-info button:hover{
+
+    background: #b92d2d;
+
+    transform: scale(1.03);
+}
+
+.badge{
+
+    position: absolute;
+
+    top: 15px;
+    left: 15px;
+
+    background: #ff7a00;
+
+    color: white;
+
+    padding: 8px 16px;
+
+    border-radius: 30px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+.mensual{
+    background: #7a2cff;
+}
+
+.patrocinador{
+
+    border:
+    3px solid #ffb347;
+
+    background:
+    linear-gradient(
+        135deg,
+        #fff8ec,
+        white
+    );
+}
+
+@media(max-width:900px){
+
+    .titulo-seccion{
+        font-size: 32px;
+    }
+
+    .card-info h3{
+        font-size: 24px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .tendencias-container{
+        padding: 20px;
+    }
+
+    .cards-grid{
+        grid-template-columns: 1fr;
+    }
+
 }
