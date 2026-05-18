@@ -85,6 +85,10 @@ Implementamos un apartado de registro que permite a los usuarios crear una cuent
 ### Pagina de Registro
 <img width="1536" height="720" alt="Registro" src="https://github.com/user-attachments/assets/0582ea85-e56b-4576-b785-4d959eba4bfc" />
 
+### Barra de busquesa
+<img width="1847" height="982" alt="Barra de busqueda" src="https://github.com/user-attachments/assets/9c616611-c944-4122-ba71-7b0510b2f067" />
+
+
 
 <p align="center">
   Proyecto web hecho con HTML, CSS y PHP
