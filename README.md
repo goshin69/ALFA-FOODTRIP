@@ -80,16 +80,16 @@ Implementamos un apartado de registro que permite a los usuarios crear una cuent
 
 <img width="1536" height="811" alt="Recetas" src="https://github.com/user-attachments/assets/4786495f-f477-4f8b-be68-027243ebc6d6" />
 
-
 ### Pagina principal
 
-<img width="1514" height="730" alt="Pagina principal" src="https://github.com/user-attachments/assets/31e4cbed-5342-4d82-a91e-5825c278f47f" />
-
+<img width="1847" height="982" alt="Barra de busqueda" src="https://github.com/user-attachments/assets/ba285a41-468c-4c41-8448-8f27cf9f8599" />
 
 ### Pagina de Registro
+
 <img width="1536" height="720" alt="Registro" src="https://github.com/user-attachments/assets/0582ea85-e56b-4576-b785-4d959eba4bfc" />
 
-### Barra de busquesa
+### Barra de busqueda
+
 <img width="1847" height="982" alt="Barra de busqueda" src="https://github.com/user-attachments/assets/9c616611-c944-4122-ba71-7b0510b2f067" />
 
 
