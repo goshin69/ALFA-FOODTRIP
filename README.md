@@ -82,7 +82,7 @@ Implementamos un apartado de registro que permite a los usuarios crear una cuent
 
 ### Pagina principal
 
-<img width="1847" height="982" alt="Barra de busqueda" src="https://github.com/user-attachments/assets/ba285a41-468c-4c41-8448-8f27cf9f8599" />
+<img width="1841" height="977" alt="pagina principal" src="https://github.com/user-attachments/assets/c8409cd9-0f15-422b-9a67-154f281017b3" />
 
 ### Pagina de Registro
 
