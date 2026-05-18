@@ -46,9 +46,13 @@ Visualizar su contenido
 
 Interactuar con otros usuarios
 
+🔍 Buscador
+
+Una busqueda censilla por nombre
+
 🔍 Buscador Avanzado
 
-Permite encontrar recetas por nombre, ingredientes y Etiquetas
+Permite encontrar recetas por etiquetas, excluir etiquetas y el tiempo de preparacion
 
 🧭 Navegación Intuitiva
 
