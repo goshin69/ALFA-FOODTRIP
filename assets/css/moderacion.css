@@ -1,0 +1,545 @@
+:root {
+    --mod-bg: #ffffff;
+    --mod-card: #fef9f0;
+    --mod-border: #e0d3c5;
+    --mod-tab-active: #d64040;
+    --mod-tab-inactive: #8b6b4d;
+    --mod-text: #3b2b1a;
+    --mod-text-light: #6b5a4a;
+}
+
+body.dark-theme {
+    --mod-bg: #2b1a0f;
+    --mod-card: #3e2a1a;
+    --mod-border: #5a4636;
+    --mod-text: #f0e6d2;
+    --mod-text-light: #cbbda5;
+}
+
+.moderacion-main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 120px 2rem 2rem;
+}
+
+.moderacion-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.moderacion-header h1 {
+    font-size: 2.2rem;
+    color: var(--header-bg);
+    font-weight: 800;
+}
+
+.moderacion-header p {
+    color: var(--mod-text-light);
+}
+
+.moderacion-tabs {
+    display: flex;
+    gap: 0.5rem;
+    border-bottom: 2px solid var(--mod-border);
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--mod-tab-inactive);
+    cursor: pointer;
+    border-radius: 30px 30px 0 0;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tab-btn i {
+    font-size: 1.1rem;
+}
+
+.tab-btn.active {
+    color: var(--mod-tab-active);
+    background: var(--mod-card);
+    border-bottom: 3px solid var(--mod-tab-active);
+}
+
+.tab-btn .badge {
+    background: var(--mod-tab-active);
+    color: white;
+    border-radius: 20px;
+    padding: 0.1rem 0.5rem;
+    font-size: 0.7rem;
+    margin-left: 0.3rem;
+}
+
+.moderacion-contenido {
+    min-height: 500px;
+}
+
+/* Tarjetas de listado */
+.lista-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.item-card {
+    background: var(--mod-card);
+    border: 1px solid var(--mod-border);
+    border-radius: 20px;
+    padding: 1rem 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.item-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+}
+
+.item-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--mod-text);
+}
+
+.item-title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.item-title a:hover {
+    text-decoration: underline;
+    color: var(--header-bg);
+}
+
+.item-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: var(--mod-text-light);
+    margin-bottom: 0.75rem;
+}
+
+.item-meta i {
+    margin-right: 0.2rem;
+}
+
+.item-details {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    color: var(--mod-text);
+    border-left: 3px solid var(--mod-border);
+    padding-left: 1rem;
+}
+
+.item-actions {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.btn-mod {
+    padding: 0.4rem 1rem;
+    border-radius: 30px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.btn-mod.aprobar {
+    background: #2e7d32;
+    color: white;
+}
+.btn-mod.aprobar:hover { background: #1b5e20; }
+
+.btn-mod.rechazar {
+    background: #c62828;
+    color: white;
+}
+.btn-mod.rechazar:hover { background: #b71c1c; }
+
+.btn-mod.eliminar {
+    background: #6c757d;
+    color: white;
+}
+.btn-mod.eliminar:hover { background: #5a6268; }
+
+.btn-mod.restaurar {
+    background: #ff8c00;
+    color: white;
+}
+.btn-mod.restaurar:hover { background: #e07c00; }
+
+.btn-mod.suspender {
+    background: #9c27b0;
+    color: white;
+}
+.btn-mod.suspender:hover { background: #7b1fa2; }
+
+.btn-mod.ver {
+    background: #0288d1;
+    color: white;
+}
+.btn-mod.ver:hover { background: #0277bd; }
+
+.empty-state {
+    text-align: center;
+    padding: 4rem;
+    color: var(--mod-text-light);
+    background: var(--mod-card);
+    border-radius: 20px;
+}
+
+/* Modal */
+.modal-receta {
+    max-width: 800px;
+    width: 90%;
+}
+.modal-receta .modal-body {
+    max-height: 60vh;
+    overflow-y: auto;
+}
+.modal-body img, .modal-body video {
+    max-width: 100%;
+    border-radius: 12px;
+    margin: 0.5rem 0;
+}
+.modal-body pre {
+    white-space: pre-wrap;
+    background: rgba(0,0,0,0.05);
+    padding: 0.5rem;
+    border-radius: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .moderacion-main {
+        padding: 100px 1rem 1rem;
+    }
+    .tab-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    .item-header {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .item-actions {
+        justify-content: flex-start;
+    }
+}
+/* ============================================
+   MODALES MEJORADOS
+   ============================================ */
+
+/* Overlay común */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay:not(.hidden) {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Contenedor de modales */
+.modal-content {
+    background: var(--mod-card, #fffef7);
+    border-radius: 28px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+    width: 90%;
+    max-width: 800px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: scale(0.95);
+    transition: transform 0.2s ease;
+    border: 1px solid var(--mod-border, #e0d3c5);
+}
+
+.modal-overlay:not(.hidden) .modal-content {
+    transform: scale(1);
+}
+
+/* Cabecera del modal */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 1.5rem;
+    background: var(--header-bg, #d64040);
+    color: white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.modal-header h3 i {
+    font-size: 1.3rem;
+}
+
+.close-modal,
+.close-confirm {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    line-height: 1;
+    color: white;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+
+.close-modal:hover,
+.close-confirm:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Cuerpo del modal */
+.modal-body {
+    padding: 1.5rem;
+    overflow-y: auto;
+    flex: 1;
+    color: var(--mod-text, #3b2b1a);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.modal-body h4 {
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--header-bg, #d64040);
+}
+
+.modal-body p {
+    margin: 0.5rem 0;
+}
+
+.modal-body pre {
+    background: rgba(0, 0, 0, 0.05);
+    padding: 0.75rem;
+    border-radius: 12px;
+    overflow-x: auto;
+    font-family: monospace;
+    white-space: pre-wrap;
+    margin: 0.5rem 0;
+}
+
+.galeria-mini {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.galeria-mini img,
+.galeria-mini video {
+    max-width: 120px;
+    border-radius: 8px;
+    border: 1px solid var(--mod-border);
+}
+
+/* Pie del modal */
+.modal-footer {
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    border-top: 1px solid var(--mod-border);
+    background: var(--mod-card);
+}
+
+/* Botones del pie */
+.modal-footer .btn-secondary,
+.modal-footer .btn-cancelar,
+.modal-footer .btn-confirmar {
+    padding: 0.6rem 1.2rem;
+    border-radius: 40px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    font-size: 0.9rem;
+}
+
+.modal-footer .btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+.modal-footer .btn-secondary:hover {
+    background: #5a6268;
+}
+
+.modal-footer .btn-cancelar {
+    background: #d64040;
+    color: white;
+}
+.modal-footer .btn-cancelar:hover {
+    background: #b32e2e;
+}
+
+.modal-footer .btn-confirmar {
+    background: #2e7d32;
+    color: white;
+}
+.modal-footer .btn-confirmar:hover {
+    background: #1b5e20;
+}
+
+/* Modal específico para ver receta (más ancho) */
+.modal-receta {
+    max-width: 900px;
+}
+
+/* Modal de confirmación (más pequeño) */
+.modal-confirm {
+    max-width: 450px;
+    text-align: center;
+}
+
+.modal-confirm .modal-body {
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.modal-confirm .modal-footer {
+    justify-content: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        max-height: 90vh;
+        border-radius: 20px;
+    }
+
+    .modal-header {
+        padding: 1rem;
+    }
+
+    .modal-header h3 {
+        font-size: 1.2rem;
+    }
+
+    .modal-body {
+        padding: 1rem;
+    }
+
+    .modal-footer {
+        flex-direction: column;
+    }
+
+    .modal-footer button {
+        width: 100%;
+    }
+
+    .galeria-mini img,
+    .galeria-mini video {
+        max-width: 80px;
+    }
+}
+
+/* Tema oscuro para modales */
+body.dark-theme .modal-content {
+    background: var(--mod-card, #3e2a1a);
+    border-color: #5a4636;
+}
+
+body.dark-theme .modal-body {
+    color: #f0e6d2;
+}
+
+body.dark-theme .modal-body pre {
+    background: rgba(255, 255, 255, 0.1);
+    color: #f0e6d2;
+}
+
+body.dark-theme .modal-footer {
+    background: #3e2a1a;
+    border-top-color: #5a4636;
+}
+
+/* Fuerza estilos de modales */
+.modal-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(0,0,0,0.7) !important;
+    z-index: 10000 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+.modal-content {
+    background: white !important;
+    border-radius: 20px !important;
+    max-width: 90% !important;
+    width: 600px !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important;
+}
+.modal-header {
+    background: #d64040 !important;
+    color: white !important;
+    padding: 15px !important;
+    border-radius: 20px 20px 0 0 !important;
+}
+.modal-body {
+    padding: 20px !important;
+    max-height: 60vh !important;
+    overflow-y: auto !important;
+}
+.modal-footer {
+    padding: 15px !important;
+    text-align: right !important;
+    border-top: 1px solid #ddd !important;
+}

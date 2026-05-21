@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesion · Koalicius</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/koali.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/login.css">
+</head>
+<body>
+    <!-- Capa visual para suavizar el fondo -->
+    <div class="overlay"></div>
+
+    <!-- Contenedor principal del formulario de acceso -->
+    <div class="login-wrapper">
+        <div class="login-card">
+            <div class="login-header">
+                <img src="imageness/Koalii.png" alt="Koalicius" class="logo-login">
+                <h1>Bienvenido.</h1>
+                <p>Ingresa tus datos para continuar</p>
+            </div>
+
+            <!-- Formulario de inicio de sesion -->
+            <form id="loginForm" class="login-form">
+                <div class="campo">
+                    <label for="email">
+                        <i class="fa-regular fa-envelope"></i> Correo electronico
+                    </label>
+                    <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+                </div>
+
+                <div class="campo password-field">
+                    <label for="password">
+                        <i class="fa-solid fa-lock"></i> Contraseña
+                    </label>
+                    <div class="password-wrapper">
+                        <input type="password" id="password" name="password" placeholder="••••••••" required>
+                        <button type="button" class="toggle-password" id="togglePassword" aria-label="Mostrar contraseña">
+                            <i class="fa-regular fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-login" id="btnLogin">
+                    <span class="btn-text">Iniciar sesion</span>
+                    <span class="btn-loader">
+                        <i class="fa-solid fa-circle-notch fa-spin"></i> Ingresando...
+                    </span>
+                </button>
+            </form>
+
+            <!-- Mensajes dinamicos de error/exito -->
+            <div id="mensaje" class="mensaje"></div>
+
+            <div class="registro-link">
+                ¿No tienes cuenta? <a href="registro.php">Crea una aqui</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logica de validacion y animaciones del boton -->
+    <script src="assets/js/login.js"></script>
+</body>
+</html>

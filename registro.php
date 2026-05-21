@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro · Koalicius</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/koali.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/registro.css">
+</head>
+<body>
+    <div class="registro-wrapper">
+        <div class="registro-card">
+            <div class="registro-header">
+                <img src="imageness/Koalii.png" alt="Koalicius" class="logo-registro">
+                <h1>Únete a Koalicius</h1>
+                <p>Comparte tus recetas con la comunidad</p>
+            </div>
+
+            <form id="registro-form" class="registro-form">
+                <div class="campo">
+                    <label for="nombre"><i class="fa-regular fa-user"></i> Nombre completo</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ej. Juan Pérez" required>
+                </div>
+
+                <div class="campo">
+                    <label for="email"><i class="fa-regular fa-envelope"></i> Correo electrónico</label>
+                    <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+                </div>
+
+                <div class="campo">
+                    <label for="password"><i class="fa-solid fa-lock fa-2x"></i> Contraseña</label>
+                    <input type="password" id="password" name="password" placeholder="Mínimo 6 caracteres, 2 números, 1 carácter especial" required>
+                </div>
+
+                <div class="campo">
+                    <label for="confirm_password"><i class="fa-solid fa-lock fa-2x"></i> Confirmar contraseña</label>
+                    <input type="password" id="confirm_password" name="confirm_password" placeholder="Repite la contraseña" required>
+                </div>
+
+                <div class="campo">
+                    <label for="rol"><i class="fa-regular fa-envelope"></i> Tipo de cuenta</label>
+                    <div class="custom-select" id="custom-select">
+                        <div class="select-selected" data-value="">Selecciona una opción</div>
+                        <div class="select-items">
+                            <div data-value="usuario">Usuario normal</div>
+                            <div data-value="restaurante">Restaurante</div>
+                        </div>
+                        <input type="hidden" name="rol" id="rol" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-registro" id="btnRegistro">
+                    <span class="btn-text">Crear cuenta</span>
+                    <span class="btn-loader" style="display: none;"><i class="fa-solid fa-circle-notch fa-spin"></i> Registrando...</span>
+                </button>
+            </form>
+
+            <div id="mensaje" class="mensaje"></div>
+            <div class="login-link">¿Ya tienes cuenta? <a href="login.php">Inicia sesión</a></div>
+        </div>
+    </div>
+    <script src="assets/js/registro.js"></script>
+</body>
+</html>

@@ -1,0 +1,396 @@
+:root {
+    --bg-main: #faf7f2;
+    --bg-card: #ffffff;
+    --text-primary: #3b2b1a;
+    --text-secondary: #6b5a4a;
+    --accent: #b45f2a;
+    --accent-hover: #9a4e1e;
+    --border: #e0d3c5;
+    --carrousel-bg: #f5e9db;
+}
+
+body.dark-theme {
+    --bg-main: #2b1a0f;
+    --bg-card: #3e2a1a;
+    --text-primary: #f0e6d2;
+    --text-secondary: #cbbda5;
+    --accent: #d18b4a;
+    --accent-hover: #e09b5a;
+    --border: #5a4636;
+    --carrousel-bg: #4a3625;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    background: linear-gradient(135deg, rgba(255,231,170,0.8) 0%, rgba(255,224,172,0.838) 100%), url('../../imageness/fondoComi.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+
+header, .header-principal {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 15px;
+}
+
+.tendencias-main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 150px 2rem 4rem;
+    overflow-x: hidden;
+}
+
+.bloque {
+    margin-bottom: 4rem;
+}
+
+.seccion-header,
+.carrusel-header {
+    display: flex;
+    justify-content: flex-star;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0 0.5rem;
+    width: 100%;
+}
+
+.titulo-box {
+    border-left: 5px solid var(--accent);
+    padding-left: 1rem;
+    margin: 0;
+}
+
+.titulo-seccion,
+.seccion-titulo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.carrusel-nav,
+.carrusel-controls {
+    color: #FF6B35;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.carrusel-btn {
+    position: static !important;
+    transform: none !important;
+    background: var(--carrousel-bg);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    width: 2.5em;
+    height: 2.5em;
+    min-width: 32px;
+    min-height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+    z-index: 20;
+}
+
+.carrusel-btn:hover {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+
+.carrusel-contenedor {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: visible;
+    padding: 35px 10px;
+    margin-top: -15px;
+    margin-bottom: -15px;
+}
+
+.carrusel-track {
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.3s ease;
+    will-change: transform;
+    overflow: visible;
+    padding-right: 20px;
+}
+
+.receta-card {
+    flex: 0 0 auto;
+    width: 280px;
+    background: var(--bg-card);
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    border: 2px solid rgb(255, 194, 11);
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    position: relative;
+    z-index: 1;
+    scroll-snap-align: start;
+}
+
+.receta-card:hover {
+    transform: translateY(-10px) rotate(2deg);
+    box-shadow: 0 20px 35px rgba(0,0,0,0.18);
+    border-color: #FF6B35;
+    z-index: 10;
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    background-color: var(--carrousel-bg);
+    flex-shrink: 0;
+}
+
+.card-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 28px 28px 0 0;
+}
+
+.tiempo-badge {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.card-body {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.card-body h3,
+.receta-titulo {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    word-break: break-word;
+    line-height: 1.3;
+    text-transform: capitalize;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 2.6rem;
+}
+
+.descripcion,
+.receta-desc {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin: 0 0 1rem 0;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: auto;
+}
+
+.autor {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.avatar-mini {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.stats {
+    display: flex;
+    gap: 10px;
+}
+
+.loading-spinner {
+    text-align: center;
+    padding: 2rem;
+    display: none;
+}
+
+.loading-spinner i {
+    font-size: 2rem;
+    color: var(--accent);
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.no-results {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: var(--carrousel-bg);
+    border-radius: 2rem;
+    margin-top: 2rem;
+    color: var(--text-primary);
+}
+
+.no-results i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--accent);
+}
+
+.footer-simple {
+    background-color: #2c2c2c;
+    color: #eee;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+    .tendencias-main {
+        padding: 100px 0.5rem 2rem;
+    }
+
+    .seccion-header,
+    .carrusel-header {
+        padding: 0 0.5rem;
+        gap: 0.5rem;
+    }
+
+    .titulo-seccion,
+    .seccion-titulo {
+        font-size: 1.3rem;
+    }
+
+    .carrusel-nav,
+    .carrusel-controls {
+        gap: 0.5rem;
+        display: none;
+    }
+
+    .carrusel-btn {
+        width: 2.25em;
+        height: 2.25em;
+        min-width: 30px;
+        min-height: 30px;
+        display: none;
+    }
+
+    .carrusel-contenedor {
+        overflow-x: auto;
+        overflow-y: visible;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        padding: 25px 5px;
+    }
+
+    .carrusel-track {
+        transform: none !important;
+        width: max-content;
+        padding-right: 20px;
+        gap: 1rem;
+    }
+
+    .receta-card {
+        width: 240px;
+    }
+
+    .receta-card:hover {
+        transform: translateY(-6px) rotate(1deg);
+    }
+
+    .card-body h3,
+    .receta-titulo {
+        font-size: 1rem;
+        height: 2.4rem;
+    }
+
+    .descripcion,
+    .receta-desc {
+        font-size: 0.8rem;
+        -webkit-line-clamp: 2;
+    }
+
+    .tiempo-badge {
+        font-size: 0.7rem;
+        padding: 2px 8px;
+    }
+
+    .avatar-mini {
+        width: 20px;
+        height: 20px;
+    }
+
+    .card-footer {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .receta-card {
+        width: 200px;
+    }
+
+    .card-body h3,
+    .receta-titulo {
+        font-size: 0.9rem;
+        height: 2.2rem;
+    }
+
+    .descripcion,
+    .receta-desc {
+        -webkit-line-clamp: 1;
+    }
+}

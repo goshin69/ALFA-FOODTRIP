@@ -1,0 +1,307 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', 'Oswald', sans-serif;
+    background: linear-gradient(135deg, #d86262 0%, #F1DEAF 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+}
+
+.upload-box {
+    background: white;
+    border-radius: 16px;
+    padding: 60px 40px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    border: 2px dashed transparent;
+    transition: all 0.3s ease;
+}
+
+.upload-box.drag-over {
+    border-color: #C21514;
+    background: #fffbfb;
+    transform: scale(1.02);
+}
+
+.upload-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #4a7c7e;
+    border-radius: 50%;
+    font-size: 50px;
+    color: #4a7c7e;
+    animation: slideUp 0.6s ease;
+}
+
+.upload-text {
+    margin-bottom: 25px;
+}
+
+.upload-text h3 {
+    color: #333;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.upload-text p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.upload-subtitle {
+    color: #999;
+    font-size: 0.85rem;
+    margin-top: 12px;
+    font-style: italic;
+}
+
+.upload-btn {
+    background: linear-gradient(135deg, #EDBCA8 0%, #F1DEAF 100%);
+    color: #C21514;
+    border: none;
+    padding: 16px 40px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 5px 15px rgba(194, 21, 20, 0.2);
+}
+
+.upload-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(194, 21, 20, 0.3);
+    background: linear-gradient(135deg, #F1DEAF 0%, #EDBCA8 100%);
+}
+
+.upload-btn:active {
+    transform: translateY(0);
+}
+
+/* Input file hidden */
+#fileInput {
+    display: none;
+}
+
+/* Preview de archivos */
+.preview-section {
+    margin-top: 40px;
+    border-top: 2px solid #f0f0f0;
+    padding-top: 30px;
+}
+
+.preview-section h4 {
+    color: #C21514;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.file-preview {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.preview-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.4s ease;
+}
+
+.preview-item img,
+.preview-item video {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    display: block;
+}
+
+.preview-item-name {
+    font-size: 0.7rem;
+    color: #666;
+    padding: 5px;
+    text-align: center;
+    background: #f5f5f5;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.remove-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: #C21514;
+    color: white;
+    border: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.preview-item:hover .remove-btn {
+    opacity: 1;
+}
+
+.remove-btn:hover {
+    background: #9D6934;
+}
+
+.submit-section {
+    margin-top: 30px;
+    display: flex;
+    gap: 10px;
+}
+
+.submit-btn {
+    flex: 1;
+    padding: 14px;
+    background: linear-gradient(135deg, #C21514 0%, #A01210 100%);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(194, 21, 20, 0.3);
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(194, 21, 20, 0.4);
+}
+
+.submit-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.cancel-btn {
+    background: #ddd;
+    color: #333;
+}
+
+.cancel-btn:hover {
+    background: #bbb;
+}
+
+.loading {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.spinner {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #C21514;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.success-message {
+    display: none;
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    text-align: center;
+    animation: slideUp 0.4s ease;
+}
+
+.error-message {
+    display: none;
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    text-align: center;
+    animation: slideUp 0.4s ease;
+}
+
+@media (max-width: 600px) {
+    .upload-box {
+        padding: 40px 25px;
+    }
+
+    .upload-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 40px;
+    }
+
+    .file-preview {
+        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+        gap: 10px;
+    }
+
+    .submit-section {
+        flex-direction: column;
+    }
+}
