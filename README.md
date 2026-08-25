@@ -132,6 +132,7 @@ Accede a tu perfil para editar o eliminar tus publicaciones y visualizar tus est
       <a href="https://github.com/fernandoalvarez2442-sys">
         <img src="https://github.com/fernandoalvarez2442-sys.png" width="70"><br>
         Fer
+        Alvarez Ruelas Fernando
       </a>
     </td>
     <td align="center">
